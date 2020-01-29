@@ -1,1 +1,118 @@
-theme: jekyll-theme-minimal
+#
+# Awesome App Landing Page Config
+#
+
+# Be sure all REQUIRED fields are filled out!
+
+#
+# General App Info
+#
+app:
+  name: Stotina Wallet # REQUIRED - Enter your app name
+  ios_id: 1234567890 # REQUIRED - 10 Digit Numeric App ID (lookup in iTunes Connect)
+  android_id: com.stotina.wallet # Optional - Enter Android app id like: com.example.app
+
+  icon: images/logo.png # Leave blank to auto-magically populate
+  # To update use path relative to project root with no leading slash:
+  # e.g. images/app-icon-512.png
+  # 512px or greater, square
+
+  favicon: images/logo.png # uncomment if uploading own favicon
+  # To update use path relative to project root with no leading slash:
+  # e.g. images/app-favicon.png - can be .ico or .png
+  # 16px or greater, square
+
+  screenshot: images/screenshot.jpg # Leave blank to auto-magically populate
+  # To update use path relative to project root with no leading slash:
+  # e.g. images/app-screen-640x1136.png
+  # 640x1136px
+
+  #video: # uncomment if prefer to show a video preview in the screen instead of image
+  # To update use path relative to project root with no leading slash:
+  # e.g. images/app-preview.mp4
+  # 640x1136px
+
+  app_twitter: "@Stotina1" # uncomment if the app has a twitter account "@my-awesome-app"
+  creator_twitter: "@BitcoinSofia" # uncomment if creator has a twitter account "@awesome-dev"
+  #social_image: # uncomment and add an image - defaults to icon
+  # This will show up when your url is shared on sites like facebook and twitter
+  # To update use path relative to project root with no leading slash:
+  # e.g. images/app-social_image.png
+  # 512px or greater, square or width = 2X height
+#
+# Marketing
+#
+marketing_header: The wallet for the rest of us. # Optional
+marketing_desc: Stotina Wallet is the wallet for the rest of us.<br/>Simple, Focused and Pleasant to Use.<br/><br/>Stotina Wallet will manage various types of payment protocols, will give the ability to use FIAT pegged tokens as the main currency and will even let users interact with payment channels.
+
+#
+# Social Links
+#
+# Includes an icon for each username you enter
+#
+social-links:
+  github: stotina
+  facebook:
+  twitter: Stotina1
+  pinterest:
+  instagram:
+  email: aleks@bitcoinsofia.com
+  youtube: # channel/<your_long_string> or <user-name>
+  googleplus: # anything in your profile username that comes after plus.google.com/
+
+#
+# Enable/Disable Features & Page Elements
+#
+enable:
+  app_icon: true
+  smart_app_banner: true
+
+#
+# Device
+#
+# Available devices:
+# * iphone-se-silver-vertical
+# * iphone-se-space-gray-vertical
+# * ipod-touch-blue-vertical
+#
+device: iphone-se-space-gray-vertical # REQUIRED
+
+#
+# Theme Settings
+#
+background_color: "#989898" # Optional
+background_image: /images/backgrounds/selectedBackground.jpg # Optional - Use Relative path e.g. images/backgrounds/image.jpg
+text_color: white # Optional
+link_color: # Optional
+social_link_color: white # Optional
+download_button_background_color: "#0191FF" # Optional
+download_button_text_color: white; # Optional
+
+#
+# Site Info
+#
+# If you want specific meta info for your <head></head> tags
+#
+title: Stotina Wallet # Optional - Enter your site title
+description: # Optional - Enter your site description
+
+#
+# Google Analytics
+#
+google_analytics: # Enter your tracking code (e.g. UA-2110908-2) to activate tracking
+
+#
+# !! You don't need to change any of the configuration flags below !!
+#
+
+# The release of Awesome App Landing Page that you're using
+version: v1.0
+
+# Set the Sass partials directory, as we're using @imports
+sass:
+  style: :compressed
+
+# Exclude these files from your production _site
+exclude:
+  - LICENSE
+  - README.md
