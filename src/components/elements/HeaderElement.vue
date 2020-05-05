@@ -45,6 +45,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .header {
+  position: relative;
+  z-index: 2;
+  background-color: #060606;
   border-bottom: 1px solid #96969636;
 }
 .nav-item.active {

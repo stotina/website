@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="interactive-logo-container">
-      <InteractiveLogo></InteractiveLogo>
+      <InteractiveLogo :widthPercent="40"></InteractiveLogo>
     </div>
     <div class="statement">make the amazing simple.</div>
   </div>

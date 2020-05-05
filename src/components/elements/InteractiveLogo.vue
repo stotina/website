@@ -1,9 +1,9 @@
 <template>
   <div class="interactive-logo">
-    <div id="logoBox">
+    <div id="logoBox" :style="`width: ${this.widthPercent}%;`">
       <div id="logoFrame" class="absolutePosition"></div>
-      <div class="absolutePosition">
-        <img id="logoImage" src="/images/logo.png" />
+      <div id="logoImageBox" class="absolutePosition">
+        <!-- <img id="logoImage" src="/images/logo.png" /> -->
       </div>
       <div id="logoFilter"></div>
     </div>
@@ -18,7 +18,7 @@ export default {
   data() {
     return {};
   },
-  props: {},
+  props: { widthPercent: Number },
   computed: {},
   methods: {},
   created() {
@@ -53,32 +53,38 @@ export default {
   display: block;
   margin: auto;
   text-align: center;
-  width: 40vw;
-  height: 40vw;
-  border-radius: 40vw;
+
+  position: relative;
+  border-radius: 100vw;
 }
-#logoBox img {
-  width: 40vw;
-  height: 40vw;
-  border-radius: 40vw;
+#logoBox #logoImageBox {
+  width: 100%;
+  padding-top: 100%;
+  border-radius: 100vw;
+  background-image: url("/images/logo.png");
+  background-size: 100% 100%;
 }
 .absolutePosition {
   position: absolute;
 }
-#logoFrame,
-#logoFilter {
-  width: 40vw;
-  height: 40vw;
-  border-radius: 40vw;
+#logoFrame {
+  width: 100%;
+  padding-bottom: 100%;
+  border-radius: 100vw;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-}
-#logoFrame {
+
   background-image: linear-gradient(180deg, #2a9fd6, #06060622, #060606);
 }
 #logoFilter {
+  width: 100%;
+  padding-bottom: 100%;
+  border-radius: 100vw;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   position: relative;
   transition: 1s ease-in;
+
   background-image: linear-gradient(180deg, transparent, #06060622, #060606);
 }
 #logoFilter:hover {
