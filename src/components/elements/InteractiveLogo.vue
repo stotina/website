@@ -23,6 +23,7 @@ export default {
   methods: {},
   created() {
     document.addEventListener("mousemove", e => {
+      if (!window.logoBox) return;
       var logoBox = $(window.logoBox);
       var center = [
         logoBox.offset().left + logoBox.width() / 2,
