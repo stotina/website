@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand navbar-fixed-top">
       <a class="navbar-brand pointer" v-on:click="navigate('/')">
         <span class="site-title">
-          <img id="site-title-logo" src="../../assets/logo-small.png" />
+          <img id="site-title-logo" src="/images/logo-small.png" />
           STOTINA
         </span>
       </a>

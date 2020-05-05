@@ -3,7 +3,7 @@
     <div id="logoBox">
       <div id="logoFrame" class="absolutePosition"></div>
       <div class="absolutePosition">
-        <img id="logoImage" src="../../assets/logo.png" />
+        <img id="logoImage" src="/images/logo.png" />
       </div>
       <div id="logoFilter"></div>
     </div>
