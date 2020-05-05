@@ -1,18 +1,15 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link>
-      <router-link to="/apps">Apps</router-link>
-      <router-link to="/apps/news">News App</router-link>
-    </nav>
+    <HeaderElement></HeaderElement>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import HeaderElement from "./components/elements/HeaderElement";
 export default {
   name: "App",
-  components: {}
+  components: { HeaderElement }
 };
 </script>
 
