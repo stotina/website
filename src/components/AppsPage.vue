@@ -1,18 +1,20 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div>
+    <AppListElement></AppListElement>
   </div>
 </template>
 
 <script>
+import AppListElement from "./elements/AppListElement";
 export default {
   name: "AppsPage",
   data() {
-    return {
-      msg: "Apps Page"
-    };
+    return {};
   },
-  props: {}
+  props: {},
+  components: {
+    AppListElement
+  }
 };
 </script>
 
