@@ -3,7 +3,7 @@
     <div class="interactive-logo-container">
       <InteractiveLogo></InteractiveLogo>
     </div>
-    <div class="statement">We aim to do better.</div>
+    <div class="statement">make the amazing simple.</div>
   </div>
 </template>
 
