@@ -5,10 +5,12 @@
         <h3>Applications:</h3>
         <p>These are the applications we have developed so far.</p>
       </div>
-      <div id="appsPageHeaderPhone">
+      <PhoneElement id="appsPageHeaderPhone" :widthPx="250"></PhoneElement>
+      <PhoneElement id="appsPageHeaderPhone2" :widthPx="280"></PhoneElement>
+      <!-- <div id="appsPageHeaderPhone">
         <InteractiveLogo :widthPercent="60"></InteractiveLogo>
         <div class="appPageHeaderPhoneTitle">STOTINA</div>
-      </div>
+      </div>-->
     </div>
     <div id="appListArea">
       <AppListElement></AppListElement>
@@ -18,7 +20,7 @@
 
 <script>
 import AppListElement from "./elements/AppListElement";
-import InteractiveLogo from "./elements/InteractiveLogo";
+import PhoneElement from "./elements/PhoneElement";
 
 export default {
   name: "AppsPage",
@@ -28,7 +30,7 @@ export default {
   props: {},
   components: {
     AppListElement,
-    InteractiveLogo
+    PhoneElement
   }
 };
 </script>
@@ -54,23 +56,18 @@ export default {
 }
 
 #appsPageHeaderPhone {
-  width: 300px;
-  height: 600px;
-  background-color: #d5f0ff2d;
-  border: 10px solid black;
-  border-top: 40px solid black;
-  border-bottom: 30px solid black;
-  border-radius: 10px;
-  transform: rotate(50deg);
+  transform: rotate(40deg);
   position: fixed;
-  left: 70%;
+  left: 65%;
   top: 5%;
   z-index: 1;
-  padding-top: 130px;
-  text-align: center;
-  color: black;
-  font-size: 30px;
-  font-weight: bold;
+}
+#appsPageHeaderPhone2 {
+  transform: rotate(50deg);
+  position: fixed;
+  left: 75%;
+  top: 5%;
+  z-index: 1;
 }
 #appListArea {
   background-color: #060606;

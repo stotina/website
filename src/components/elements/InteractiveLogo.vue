@@ -1,11 +1,9 @@
 <template>
   <div class="interactive-logo">
-    <div id="logoBox" :style="`width: ${this.widthPercent}%;`">
-      <div id="logoFrame" class="absolutePosition"></div>
-      <div id="logoImageBox" class="absolutePosition">
-        <!-- <img id="logoImage" src="/images/logo.png" /> -->
-      </div>
-      <div id="logoFilter"></div>
+    <div class="logoBox" :style="`width: ${this.widthPercent}%;`">
+      <div class="logoFrame absolutePosition"></div>
+      <div class="logoImageBox absolutePosition"></div>
+      <div class="logoFilter"></div>
     </div>
   </div>
 </template>
@@ -23,25 +21,28 @@ export default {
   methods: {},
   created() {
     document.addEventListener("mousemove", e => {
-      if (!window.logoBox) return;
-      var logoBox = $(window.logoBox);
-      var center = [
-        logoBox.offset().left + logoBox.width() / 2,
-        logoBox.offset().top + logoBox.height() / 2
-      ];
-      var angle =
-        Math.atan2(e.pageX - center[0], -(e.pageY - center[1])) *
-        (180 / Math.PI);
-      angle = Math.floor(angle - 180);
+      var logos = $(".logoBox");
+      if (!logos[0]) return;
+      for (let i = 0; i < logos.length; i++) {
+        const logoBox = $(logos[i]);
+        var center = [
+          logoBox.offset().left + logoBox.width() / 2,
+          logoBox.offset().top + logoBox.height() / 2
+        ];
+        var angle =
+          Math.atan2(e.pageX - center[0], -(e.pageY - center[1])) *
+          (180 / Math.PI);
+        angle = Math.floor(angle - 180);
 
-      $(window.logoFrame).css(
-        "background-image",
-        `linear-gradient(${angle}deg, #2a9fd6, #06060622, #060606)`
-      );
-      $(window.logoFilter).css(
-        "background-image",
-        `linear-gradient(${angle}deg, transparent, #06060622, #060606)`
-      );
+        $(logoBox.find(".logoFrame")).css(
+          "background-image",
+          `linear-gradient(${angle}deg, #2a9fd6, #06060622, #060606)`
+        );
+        $(window.find(".logoFilter")).css(
+          "background-image",
+          `linear-gradient(${angle}deg, transparent, #06060622, #060606)`
+        );
+      }
     });
   }
 };
@@ -49,7 +50,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#logoBox {
+.logoBox {
   display: block;
   margin: auto;
   text-align: center;
@@ -57,7 +58,7 @@ export default {
   position: relative;
   border-radius: 100vw;
 }
-#logoBox #logoImageBox {
+.logoBox .logoImageBox {
   width: 100%;
   padding-top: 100%;
   border-radius: 100vw;
@@ -67,7 +68,7 @@ export default {
 .absolutePosition {
   position: absolute;
 }
-#logoFrame {
+.logoFrame {
   width: 100%;
   padding-bottom: 100%;
   border-radius: 100vw;
@@ -76,7 +77,7 @@ export default {
 
   background-image: linear-gradient(180deg, #2a9fd6, #06060622, #060606);
 }
-#logoFilter {
+.logoFilter {
   width: 100%;
   padding-bottom: 100%;
   border-radius: 100vw;
@@ -87,7 +88,7 @@ export default {
 
   background-image: linear-gradient(180deg, transparent, #06060622, #060606);
 }
-#logoFilter:hover {
+.logoFilter:hover {
   opacity: 0;
   transition: 1s ease-in;
 }
