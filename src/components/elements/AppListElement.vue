@@ -53,6 +53,16 @@ export default {
           name: "Stotina News",
           iconBackground: "black",
           icon: "/images/logo-news2.png",
+          background: "#0080bb",
+          textColor: "black",
+          screenImage:
+            "https://docs.microsoft.com/en-us/samples/xamarin/monodroid-samples/android50-appusagestatistics/media/2-view-weekly.png"
+        },
+        {
+          id: 4,
+          name: "Stotina News",
+          iconBackground: "black",
+          icon: "/images/logo-news2.png",
           background: "#02c262",
           textColor: "black",
           screenImage:
