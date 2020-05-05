@@ -14,6 +14,9 @@ export default {
 </script>
 
 <style>
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
