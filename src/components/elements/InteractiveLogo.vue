@@ -35,7 +35,7 @@ export default {
 
       $(window.logoFrame).css(
         "background-image",
-        `linear-gradient(${angle}deg, #2a9fd6, #06060666, #060606)`
+        `linear-gradient(${angle}deg, #2a9fd6, #06060622, #060606)`
       );
       $(window.logoFilter).css(
         "background-image",
@@ -73,11 +73,12 @@ export default {
   background-size: 100% 100%;
 }
 #logoFrame {
-  background-image: linear-gradient(180deg, #2a9fd6, #06060666, #060606);
+  background-image: linear-gradient(180deg, #2a9fd6, #06060622, #060606);
 }
 #logoFilter {
   position: relative;
-  background-image: linear-gradient(180deg, transparent, #06060666, #060606);
+  transition: 1s ease-in;
+  background-image: linear-gradient(180deg, transparent, #06060622, #060606);
 }
 #logoFilter:hover {
   opacity: 0;
