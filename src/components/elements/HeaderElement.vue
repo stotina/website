@@ -1,7 +1,9 @@
 <template>
   <div class="header">
     <nav class="navbar navbar-expand navbar-fixed-top">
-      <a class="navbar-brand" v-on:click="navigate('/')">STOTINA</a>
+      <a class="navbar-brand" v-on:click="navigate('/')">
+        <span class="site-title">STOTINA</span>
+      </a>
 
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item">
@@ -44,5 +46,10 @@ export default {
 }
 .nav-link {
   color: #2a9fd6;
+}
+.site-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 </style>
