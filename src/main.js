@@ -6,6 +6,10 @@ import AppNewsPage from "./components/AppNewsPage.vue";
 import AppsPage from "./components/AppsPage.vue";
 import HomePage from "./components/HomePage.vue";
 
+var $ = require("jquery");
+require("bootstrap");
+console.log("jquery loaded: " + (typeof $));
+
 Vue.config.productionTip = false
 
 Vue.use(VueRouter)
