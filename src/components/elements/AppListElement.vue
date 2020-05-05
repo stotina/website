@@ -3,9 +3,14 @@
   <div>
     <div class="appListBox row">
       <div v-for="app in apps" v-bind:key="app.id" class="col-lg-4 col-md-6">
-        <div class="appListItem">
+        <div
+          class="appListItem"
+          :style="'background-color:'+ app.background + '; color:'+ app.textColor"
+        >
           <div class="appTitleArea">
-            <img v-bind:src="app.icon" :alt="app.name" />
+            <div class="appTitleIconBox" :style="'background-color:'+ app.iconBackground">
+              <img v-bind:src="app.icon" :alt="app.name" />
+            </div>
             <div class="appTitle">{{app.name}}</div>
           </div>
           <div class="appPhoneBox">
@@ -26,21 +31,30 @@ export default {
         {
           id: 1,
           name: "Stotina News",
+          iconBackground: "black",
           icon: "/images/logo-news2.png",
+          background: "#0080bb",
+          textColor: "black",
           screenImage:
             "https://docs.microsoft.com/en-us/samples/xamarin/monodroid-samples/android50-appusagestatistics/media/2-view-weekly.png"
         },
         {
           id: 2,
           name: "Stotina News",
+          iconBackground: "#b68c00",
           icon: "/images/logo-news2.png",
+          background: "#cdd656",
+          textColor: "black",
           screenImage:
             "https://docs.microsoft.com/en-us/samples/xamarin/monodroid-samples/android50-appusagestatistics/media/2-view-weekly.png"
         },
         {
           id: 3,
           name: "Stotina News",
+          iconBackground: "black",
           icon: "/images/logo-news2.png",
+          background: "#02c262",
+          textColor: "black",
           screenImage:
             "https://docs.microsoft.com/en-us/samples/xamarin/monodroid-samples/android50-appusagestatistics/media/2-view-weekly.png"
         }
@@ -58,9 +72,9 @@ export default {
 .appListBox {
   width: 80%;
   margin: auto;
+  color: #b68c00;
 }
 .appListItem {
-  background: #00aeff42;
   margin-top: 20px;
 }
 
@@ -68,14 +82,20 @@ export default {
   padding-top: 10px;
   text-align: center;
 }
-.appTitleArea img {
+.appTitleIconBox {
   display: inline-block;
   width: 90px;
   height: 80px;
-  border: 1px solid black;
+  border-radius: 10px;
+}
+.appTitleIconBox img {
+  width: 90%;
+  height: 90%;
+  margin: 5% 5%;
 }
 .appTitle {
   font-size: 20px;
+  font-weight: bold;
 }
 
 .appPhoneBox {
