@@ -1,16 +1,16 @@
 <template>
   <div class="header">
     <nav class="navbar navbar-expand navbar-fixed-top">
-      <a class="navbar-brand" href="#" v-on:click="navigate('/')">STOTINA</a>
+      <a class="navbar-brand" v-on:click="navigate('/')">STOTINA</a>
 
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#" v-on:click="navigate('/')">
+          <a class="nav-link" v-on:click="navigate('/')">
             <i class="fas fa-home"></i> Home
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" v-on:click="navigate('/apps')">Applications</a>
+          <a class="nav-link" v-on:click="navigate('/apps')">Applications</a>
         </li>
       </ul>
     </nav>
@@ -41,5 +41,8 @@ export default {
 <style scoped>
 .nav-item.active {
   text-decoration: underline;
+}
+.nav-link {
+  color: #2a9fd6;
 }
 </style>
