@@ -1,9 +1,8 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
     <nav>
-      <router-link to="/">Home</router-link>...
-      <router-link to="/apps">Apps</router-link>...
+      <router-link to="/">Home</router-link>
+      <router-link to="/apps">Apps</router-link>
       <router-link to="/apps/news">News App</router-link>
     </nav>
     <router-view></router-view>
