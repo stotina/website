@@ -1,9 +1,18 @@
 <template>
   <div class="header">
-    <nav>
-      <router-link to="/">Home</router-link>
-      <router-link to="/apps">Apps</router-link>
-      <router-link to="/apps/news">News App</router-link>
+    <nav class="navbar navbar-expand navbar-fixed-top">
+      <a class="navbar-brand" href="#" v-on:click="navigate('/')">STOTINA</a>
+
+      <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#" v-on:click="navigate('/')">
+            <i class="fas fa-home"></i> Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" v-on:click="navigate('/apps')">Applications</a>
+        </li>
+      </ul>
     </nav>
   </div>
 </template>
@@ -14,10 +23,23 @@ export default {
   data() {
     return {};
   },
-  props: {}
+  props: {},
+  computed: {
+    currentPage() {
+      return this.$router.currentRoute.path;
+    }
+  },
+  methods: {
+    navigate(path) {
+      this.$router.push(path);
+    }
+  }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.nav-item.active {
+  text-decoration: underline;
+}
 </style>

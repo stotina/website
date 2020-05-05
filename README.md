@@ -9,3 +9,4 @@ Whatever is in the ```/docs``` folder is the currently published static website.
 - eslint
 - JQuery
 - Bootstrap
+- Font Awesome

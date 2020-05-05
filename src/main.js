@@ -6,8 +6,12 @@ import AppNewsPage from "./components/AppNewsPage.vue";
 import AppsPage from "./components/AppsPage.vue";
 import HomePage from "./components/HomePage.vue";
 
-var $ = require("jquery");
+require("jquery");
 require("bootstrap");
+require("./assets/bootstrap-cyborg.min.css");
+require("@fortawesome/fontawesome-free")
+require("@fortawesome/fontawesome-free/css/all.css")
+
 console.log("jquery loaded: " + (typeof $));
 
 Vue.config.productionTip = false
