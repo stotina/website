@@ -92,7 +92,6 @@ export default {
 }
 .content {
   padding-bottom: 120px;
-  border: 1px solid pink;
   width: 50%;
   min-height: max(800px, 60vw);
 }
@@ -101,8 +100,9 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100px;
-  background-color: #b9b9b923;
+  height: 150px;
+  border-top: 1px solid #ffffff44;
+  background-color: #060606;
 }
 @media only screen and (max-width: 1300px) {
   .phones3d {
