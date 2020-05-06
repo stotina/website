@@ -1,21 +1,27 @@
 <template>
   <div>
-    <Phone3DElement
-      :showControls="true"
-      :positionRight="true"
-      :positionSide="150"
-      :positionTop="100"
-      :y="-20"
-      :s="1.1"
-    ></Phone3DElement>
-    <Phone3DElement
-      :showControls="true"
-      :positionRight="true"
-      :positionSide="220"
-      :positionTop="160"
-      :y="-12"
-      :s="1"
-    ></Phone3DElement>
+    <div class="phones">
+      <Phone3DElement
+        :frameColor="'#535353'"
+        :showControls="false"
+        :positionRight="true"
+        :positionSide="150"
+        :positionTop="100"
+        :y="-15 + this.x*30"
+        :x="10"
+        :s="1.1"
+      ></Phone3DElement>
+      <Phone3DElement
+        :frameColor="'white'"
+        :showControls="false"
+        :positionRight="true"
+        :positionSide="300"
+        :positionTop="160"
+        :y="-25 + this.x*50"
+        :x="15"
+        :s="1"
+      ></Phone3DElement>
+    </div>
   </div>
 </template>
 
@@ -26,8 +32,14 @@ export default {
   name: "AppNewsPage",
   data() {
     return {
-      msg: "News App"
+      x: 2
     };
+  },
+  computed: {},
+  created() {
+    document.addEventListener("mousemove", e => {
+      this.x = e.pageX / window.screen.width;
+    });
   },
   components: {
     Phone3DElement

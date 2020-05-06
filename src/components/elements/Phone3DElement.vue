@@ -17,8 +17,8 @@
       <br />
       <br />
       <span>S:</span>
-      <input type="range" min="-5" max="3" step="0.01" v-model="s" /> -
-      <input type="number" min="-5" max="3" step="0.01" v-model="s" />
+      <input type="range" min="0" max="3" step="0.01" v-model="s" /> -
+      <input type="number" min="0" max="3" step="0.01" v-model="s" />
       <br />
       <br />
       <span>top :</span>
@@ -31,12 +31,18 @@
     </div>
 
     <div class="phoneWrapper" v-bind:style="this.wrapperPositionCss">
-      <div class="phoneFrame" v-bind:style="this.phoneTransformCSS">
+      <div class="phoneThickness" v-bind:style="this.getThicknessCSS(1, 6)"></div>
+      <div class="phoneThickness" v-bind:style="this.getThicknessCSS(2, 6)"></div>
+      <div class="phoneThickness" v-bind:style="this.getThicknessCSS(3, 6)"></div>
+      <div class="phoneThickness" v-bind:style="this.getThicknessCSS(4, 6)"></div>
+      <div class="phoneThickness" v-bind:style="this.getThicknessCSS(5, 6)"></div>
+      <div class="phoneThickness" v-bind:style="this.getThicknessCSS(6, 6)"></div>
+      <div
+        class="phoneFrame"
+        v-bind:style=" `border-color:${this.frameColor};` + this.phoneTransformCSS"
+      >
         <img :src="this.imagePath" />
       </div>
-      <div class="phoneThickness phoneThickness1" v-bind:style="this.thickness1TransformCSS"></div>
-      <div class="phoneThickness phoneThickness2" v-bind:style="this.thickness2TransformCSS"></div>
-      <div class="phoneThickness phoneThickness3" v-bind:style="this.thickness3TransformCSS"></div>
     </div>
   </div>
 </template>
@@ -52,12 +58,13 @@ export default {
     getRotationsCSS() {
       return `transform: scale(${this.s}) rotateX(${this.x}deg) rotateY(${this.y}deg) rotateZ(${this.z}deg)`;
     },
-    getThicknessCSSPart(step) {
-      return (
-        `translateX(${(this.x / 3) * step}px) ` +
-        `translateY(${(this.y / 10) * step}px) ` +
-        `translateZ(${-0.15 * step}vw)`
-      );
+    getThicknessCSS(index, ofTotal) {
+      var translateCSS =
+        `translateX(${-(this.y / ofTotal) * index}px) ` +
+        `translateY(${(this.x / ofTotal) * index}px) ` +
+        `translateZ(${(-0.9 / ofTotal) * index}vw) scale(${1 -
+          (0.03 / ofTotal) * index})`;
+      return this.getRotationsCSS() + " " + translateCSS + ";";
     }
   },
   computed: {
@@ -71,15 +78,6 @@ export default {
     phoneTransformCSS() {
       console.log("phoneTransformCSS CALLED");
       return this.getRotationsCSS() + ";";
-    },
-    thickness1TransformCSS() {
-      return this.getRotationsCSS() + " " + this.getThicknessCSSPart(1) + ";";
-    },
-    thickness2TransformCSS() {
-      return this.getRotationsCSS() + " " + this.getThicknessCSSPart(2) + ";";
-    },
-    thickness3TransformCSS() {
-      return this.getRotationsCSS() + " " + this.getThicknessCSSPart(3) + ";";
     }
   },
   props: {
@@ -121,7 +119,7 @@ export default {
     },
     imagePath: {
       type: String,
-      default: "/images/screenshots/vulcano.jpg"
+      default: "/images/screenshots/idle.jpg"
     }
   }
 };
@@ -136,9 +134,9 @@ export default {
   width: auto;
 }
 .phoneWrapper {
-  perspective: 500px;
   width: 20vw;
   height: 40vw;
+  perspective: 500px;
   transform-style: preserve-3d;
 }
 .phoneFrame {
@@ -165,7 +163,6 @@ export default {
   display: block;
   width: 100%;
   height: 100%;
-  background-color: #818181;
-  border: 1px solid #5e5e5e;
+  background-color: #7a7181;
 }
 </style>
