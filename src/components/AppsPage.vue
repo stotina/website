@@ -45,14 +45,12 @@ export default {
 }
 
 #appsPageHeaderContent {
-  border: 1px solid pink;
-  transition: 1s ease-in-out;
-
   width: 50%;
-  height: 200px;
   position: relative;
   top: 100px;
-  padding: 20px;
+  padding: 40px 25px;
+  background-color: #ffffff11;
+  border-radius: 50px;
 }
 
 #appsPageHeaderPhone {
