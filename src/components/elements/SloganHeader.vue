@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="appsPageHeader">
-      <div id="appsPageHeaderContent">
+      <div id="appsPageHeaderContent" :style="this.contentStyle">
         <h3 class="titleFont">{{this.title}}</h3>
         <p>{{this.description}}</p>
       </div>
@@ -28,6 +28,7 @@ export default {
       type: String,
       default: "Make the amazing simple."
     },
+    contentLeft: { type: Boolean, default: true },
     phone1Rotate: { type: Number, default: 40 },
     phone1PositionLeftPercent: { type: Number, default: 65 },
     phone1PositionTopPercent: { type: Number, default: 5 },
@@ -58,6 +59,12 @@ export default {
           `top: ${this.phone2PositionTopPercent}%`
         ].join("; ") + ";"
       );
+    },
+    contentStyle() {
+      return (
+        "position: relative; top: 10%;" +
+        (this.contentLeft ? "left: 5%" : "left: 65%")
+      );
     }
   }
 };
@@ -67,26 +74,27 @@ export default {
 <style scoped>
 #appsPageHeader {
   background-color: #ffffff11;
-  padding: 0 10%;
   height: 400px;
   overflow: hidden;
 }
 
 #appsPageHeaderContent {
-  width: 50%;
-  min-width: 15rem;
-  position: relative;
+  transition: 1s ease-in-out;
+  width: 20%;
+  min-width: 20rem;
   z-index: 2;
-  top: 100px;
   padding: 40px 25px;
-  background-color: #ffffff11;
+  background-color: #0e3e53;
   border-radius: 50px;
+  font-weight: bold;
 }
 
 #appsPageHeaderPhone {
   transition: 1s ease-in-out;
+  z-index: 1;
 }
 #appsPageHeaderPhone2 {
   transition: 1s ease-in-out;
+  z-index: 1;
 }
 </style>
