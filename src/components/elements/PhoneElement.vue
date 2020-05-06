@@ -54,7 +54,7 @@ export default {
           `border-bottom: ${this.borderBottom}px solid ${this.borderColor}`,
           `border-radius: ${this.borderSide}px`,
           `font-size: ${this.fontSize}px`,
-          `padding-top: ${this.paddingTop}px`
+          this.imagePath ? "" : `padding-top: ${this.paddingTop}px`
         ]
           .map(i => i + ";")
           .join(" ") + ";"
@@ -75,5 +75,10 @@ export default {
   text-align: center;
   color: black;
   font-weight: bold;
+}
+.phone img {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 </style>
