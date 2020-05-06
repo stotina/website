@@ -15,7 +15,10 @@ export default {
     return {};
   },
   props: {
-    widthPx: Number,
+    width: {
+      type: String,
+      default: "300px"
+    },
     borderColor: {
       type: String,
       default: "black"
@@ -26,39 +29,22 @@ export default {
     }
   },
   computed: {
-    heightPx() {
-      return this.widthPx * 2;
-    },
-    borderSide() {
-      return Math.floor(this.widthPx / 30);
-    },
-    borderTop() {
-      return Math.floor(this.borderSide * 4);
-    },
-    borderBottom() {
-      return Math.floor(this.borderSide * 3);
-    },
-    fontSize() {
-      return Math.floor(this.borderSide * 3);
-    },
-    paddingTop() {
-      return Math.floor(this.borderSide * 13);
-    },
     inlineStyleValue() {
-      return (
+      var css =
         [
-          `width:${this.widthPx}px`,
-          `height:${this.heightPx}px`,
-          `border: ${this.borderSide}px solid ${this.borderColor}`,
-          `border-top: ${this.borderTop}px solid ${this.borderColor}`,
-          `border-bottom: ${this.borderBottom}px solid ${this.borderColor}`,
-          `border-radius: ${this.borderSide}px`,
-          `font-size: ${this.fontSize}px`,
-          this.imagePath ? "" : `padding-top: ${this.paddingTop}px`
+          `width:${this.width}`,
+          `height: calc(2 * ${this.width})`,
+          `border: calc(${this.width} / 30) solid ${this.borderColor}`,
+          `border-top: calc(${this.width} / 7.5) solid ${this.borderColor}`,
+          `border-bottom: calc(${this.width} / 10) solid ${this.borderColor}`,
+          `border-radius: calc(${this.width} / 30)`,
+          `font-size: calc(${this.width} / 10)`,
+          this.imagePath ? "" : `padding-top: calc(${this.width} / 2.5)`
         ]
           .map(i => i + ";")
-          .join(" ") + ";"
-      );
+          .join(" ") + ";";
+
+      return css;
     }
   },
   methods: {},

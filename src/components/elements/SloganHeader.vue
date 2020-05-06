@@ -5,8 +5,8 @@
         <h3 class="titleFont">{{this.title}}</h3>
         <p>{{this.description}}</p>
       </div>
-      <PhoneElement :style="phone1Style" id="appsPageHeaderPhone" :widthPx="250"></PhoneElement>
-      <PhoneElement :style="phone2Style" id="appsPageHeaderPhone2" :widthPx="280"></PhoneElement>
+      <PhoneElement :style="phone1Style" id="appsPageHeaderPhone" :width="'250px'"></PhoneElement>
+      <PhoneElement :style="phone2Style" id="appsPageHeaderPhone2" :width="'280px'"></PhoneElement>
     </div>
   </div>
 </template>
