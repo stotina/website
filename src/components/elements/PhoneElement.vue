@@ -1,8 +1,10 @@
 <template>
   <div class="phone" :style="inlineStyleValue">
-    <InteractiveLogo v-if="!imagePath" :widthPercent="60"></InteractiveLogo>
+    <div v-if="!imagePath">
+      <InteractiveLogo :widthPercent="60"></InteractiveLogo>
+      <div class="appPageHeaderPhoneTitle">STOTINA</div>
+    </div>
     <img v-if="imagePath" :src="imagePath" />
-    <div class="appPageHeaderPhoneTitle">STOTINA</div>
   </div>
 </template>
 
