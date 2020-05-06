@@ -39,7 +39,7 @@
       <div class="phoneThickness" v-bind:style="this.getThicknessCSS(6, 6)"></div>
       <div
         class="phoneFrame"
-        v-bind:style=" `border-color:${this.frameColor};` + this.phoneTransformCSS"
+        v-bind:style=" `border-color:${this.frameColor};${this.getRotationsCSS()};`"
       >
         <img :src="this.imagePath" />
       </div>
@@ -74,10 +74,6 @@ export default {
         `top: ${this.positionTop}px; ` +
         `${this.positionRight ? "right" : "left"}: ${this.positionSide}px;`
       );
-    },
-    phoneTransformCSS() {
-      console.log("phoneTransformCSS CALLED");
-      return this.getRotationsCSS() + ";";
     }
   },
   props: {
