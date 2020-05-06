@@ -37,9 +37,11 @@ export default {
   },
   components: { HeaderElement, SloganHeader },
   methods: {
-    updateSloganHeader() {
+    updateSloganHeader(skipAnimate) {
       var path = window.location.hash.substr(1);
       this.shouldDisplaySloganHeader = path === "/" || path === "/apps";
+
+      if (skipAnimate) return;
 
       switch (path) {
         case "/":
@@ -66,6 +68,7 @@ export default {
     }
   },
   created() {
+    this.updateSloganHeader(true);
     setInterval(this.updateSloganHeader, 200);
   }
 };
