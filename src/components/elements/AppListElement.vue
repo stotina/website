@@ -5,11 +5,13 @@
       <div v-for="app in apps" v-bind:key="app.id" class="col-lg-4 col-md-6">
         <div
           class="appListItem"
+          :class="app.path?'pointer animate':'empty'"
+          v-on:click="onAppClick(app)"
           :style="'background-color:'+ app.background + '; color:'+ app.textColor"
         >
           <div class="appTitleArea">
             <div class="appTitleIconBox" :style="'background-color:'+ app.iconBackground">
-              <img v-bind:src="app.icon" :alt="app.name" />
+              <img v-if="app.icon" v-bind:src="app.icon" :alt="app.name" />
             </div>
             <div class="appTitle">{{app.name}}</div>
           </div>
@@ -30,50 +32,44 @@ export default {
       apps: [
         {
           id: 1,
+          path: "/apps/news",
           name: "Stotina News",
-          iconBackground: "black",
+          iconBackground: "#1b3a8d",
           icon: "/images/logo-news2.png",
-          background: "#0080bb",
+          background: "#849cdf",
           textColor: "black",
-          screenImage:
-            "https://docs.microsoft.com/en-us/samples/xamarin/monodroid-samples/android50-appusagestatistics/media/2-view-weekly.png"
+          screenImage: "/images/screenshots/news.png"
         },
         {
           id: 2,
-          name: "Stotina News",
+          path: "",
+          name: "(work in progress...)",
           iconBackground: "#b68c00",
-          icon: "/images/logo-news2.png",
+          icon: "",
           background: "#cdd656",
           textColor: "black",
-          screenImage:
-            "https://docs.microsoft.com/en-us/samples/xamarin/monodroid-samples/android50-appusagestatistics/media/2-view-weekly.png"
+          screenImage: ""
         },
         {
           id: 3,
-          name: "Stotina News",
-          iconBackground: "black",
-          icon: "/images/logo-news2.png",
-          background: "#0080bb",
+          path: "",
+          name: "(work in progress...)",
+          iconBackground: "#006905",
+          icon: "",
+          background: "#61ff69",
           textColor: "black",
-          screenImage:
-            "https://docs.microsoft.com/en-us/samples/xamarin/monodroid-samples/android50-appusagestatistics/media/2-view-weekly.png"
-        },
-        {
-          id: 4,
-          name: "Stotina News",
-          iconBackground: "black",
-          icon: "/images/logo-news2.png",
-          background: "#02c262",
-          textColor: "black",
-          screenImage:
-            "https://docs.microsoft.com/en-us/samples/xamarin/monodroid-samples/android50-appusagestatistics/media/2-view-weekly.png"
+          screenImage: ""
         }
       ]
     };
   },
   props: {},
   computed: {},
-  methods: {}
+  methods: {
+    onAppClick(app) {
+      if (app.path) this.$router.push(app.path);
+    }
+  }
 };
 </script>
 
@@ -82,7 +78,7 @@ export default {
 .appListBox {
   width: 80%;
   margin: auto;
-  color: #b68c00;
+  color: #1b3a8d;
 }
 .appListItem {
   margin-top: 20px;
@@ -126,8 +122,14 @@ export default {
   position: relative;
   transition: transform 0.3s ease-in-out;
 }
-.appListItem:hover .appPhoneFrame {
+
+.appListItem.animate:hover .appPhoneFrame {
   transform: rotate(5deg);
   transition: transform 0.3s ease-in-out;
+}
+.appListItem.empty:hover .appPhoneFrame {
+  border: 10px solid #00000044;
+  border-top: 30px solid #00000044;
+  transition: 0.5s ease-in-out;
 }
 </style>

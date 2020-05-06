@@ -2,13 +2,14 @@
   <div id="app">
     <HeaderElement></HeaderElement>
     <SloganHeader
+      v-if="this.shouldDisplaySloganHeader"
       :title="this.sloganTitle"
       :description="this.sloganDescription"
       :phone1PositionLeftPercent="this.phone1PositionLeftPercent"
       :phone2PositionLeftPercent="this.phone2PositionLeftPercent"
-      :phone1Rotate="phone1Rotate"
-      :phone2Rotate="phone2Rotate"
-      :contentLeft="sloganContentLeft"
+      :phone1Rotate="this.phone1Rotate"
+      :phone2Rotate="this.phone2Rotate"
+      :contentLeft="this.sloganContentLeft"
     ></SloganHeader>
 
     <div class="bellow-slogan">
@@ -24,6 +25,7 @@ export default {
   name: "App",
   data() {
     return {
+      shouldDisplaySloganHeader: true,
       sloganTitle: "",
       sloganDescription: "",
       phone1PositionLeftPercent: 70,
@@ -37,6 +39,8 @@ export default {
   methods: {
     updateSloganHeader() {
       var path = window.location.hash.substr(1);
+      this.shouldDisplaySloganHeader = path === "/" || path === "/apps";
+
       switch (path) {
         case "/":
           this.sloganTitle = "STOTINA";
@@ -57,13 +61,6 @@ export default {
           this.sloganContentLeft = true;
           break;
         default:
-          this.sloganTitle = "Stotina";
-          this.sloganDescription = "";
-          this.phone1PositionLeftPercent = 60;
-          this.phone2PositionLeftPercent = 75;
-          this.phone1Rotate = 40;
-          this.phone2Rotate = 50;
-          this.sloganContentLeft = true;
           break;
       }
     }
@@ -97,5 +94,8 @@ html {
   position: relative;
   z-index: 2;
   min-height: max(20vw, 20vh);
+}
+.pointer {
+  cursor: pointer;
 }
 </style>

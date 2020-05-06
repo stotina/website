@@ -68,7 +68,4 @@ export default {
   border: 2px solid #96969636;
   border-radius: 2rem;
 }
-.pointer {
-  cursor: pointer;
-}
 </style>
