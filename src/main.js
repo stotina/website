@@ -12,8 +12,6 @@ require("./assets/bootstrap-cyborg.min.css");
 require("@fortawesome/fontawesome-free")
 require("@fortawesome/fontawesome-free/css/all.css")
 
-console.log("jquery loaded: " + (typeof $));
-
 Vue.config.productionTip = false
 
 Vue.use(VueRouter)
