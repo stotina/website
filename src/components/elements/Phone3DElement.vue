@@ -62,8 +62,7 @@ export default {
       var translateCSS =
         `translateX(${-(this.y / ofTotal) * index}px) ` +
         `translateY(${(this.x / ofTotal) * index}px) ` +
-        `translateZ(${(-0.9 / ofTotal) * index}vw) scale(${1 -
-          (0.03 / ofTotal) * index})`;
+        `translateZ(${(-0.9 / ofTotal) * index}vw)`;
       return this.getRotationsCSS() + " " + translateCSS + ";";
     }
   },
