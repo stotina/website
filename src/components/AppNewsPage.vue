@@ -20,8 +20,8 @@
           :positionSide="300"
           :positionTop="120"
           :imagePath="'/images/screenshots/idle.jpg'"
-          :y="-25 + this.x*50"
-          :x="15"
+          :y="-15 + this.x*30"
+          :x="10"
           :s="1"
         ></Phone3DElement>
       </div>
@@ -94,6 +94,7 @@ export default {
   padding-bottom: 120px;
   border: 1px solid pink;
   width: 50%;
+  min-height: max(800px, 60vw);
 }
 .footer {
   position: absolute;
@@ -118,7 +119,9 @@ export default {
     display: none;
   }
   .phones2d {
-    display: none;
+    display: block;
+    position: initial;
+    padding: 50px calc(50% - 150px);
   }
   .content {
     width: 100%;
