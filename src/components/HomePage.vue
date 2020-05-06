@@ -3,7 +3,7 @@
     <div class="interactive-logo-container">
       <InteractiveLogo :widthPercent="40"></InteractiveLogo>
     </div>
-    <div class="statement">make the amazing simple.</div>
+    <div class="statement">Make the amazing simple.</div>
   </div>
 </template>
 
