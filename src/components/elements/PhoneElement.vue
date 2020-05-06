@@ -1,6 +1,7 @@
 <template>
   <div class="phone" :style="inlineStyleValue">
-    <InteractiveLogo :widthPercent="60"></InteractiveLogo>
+    <InteractiveLogo v-if="!imagePath" :widthPercent="60"></InteractiveLogo>
+    <img v-if="imagePath" :src="imagePath" />
     <div class="appPageHeaderPhoneTitle">STOTINA</div>
   </div>
 </template>
@@ -14,7 +15,15 @@ export default {
     return {};
   },
   props: {
-    widthPx: Number
+    widthPx: Number,
+    borderColor: {
+      type: String,
+      default: "black"
+    },
+    imagePath: {
+      type: String,
+      default: null
+    }
   },
   computed: {
     heightPx() {
@@ -40,9 +49,9 @@ export default {
         [
           `width:${this.widthPx}px`,
           `height:${this.heightPx}px`,
-          `border: ${this.borderSide}px solid black`,
-          `border-top: ${this.borderTop}px solid black`,
-          `border-bottom: ${this.borderBottom}px solid black`,
+          `border: ${this.borderSide}px solid ${this.borderColor}`,
+          `border-top: ${this.borderTop}px solid ${this.borderColor}`,
+          `border-bottom: ${this.borderBottom}px solid ${this.borderColor}`,
           `border-radius: ${this.borderSide}px`,
           `font-size: ${this.fontSize}px`,
           `padding-top: ${this.paddingTop}px`
