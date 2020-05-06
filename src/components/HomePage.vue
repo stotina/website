@@ -1,14 +1,16 @@
 <template>
   <div>
-    <div class="interactive-logo-container">
-      <InteractiveLogo :widthPercent="40"></InteractiveLogo>
+    <div class="slogan">
+      <SloganHeader :phone1PositionLeftPercent="60"></SloganHeader>
     </div>
-    <div class="statement">Make the amazing simple.</div>
+    <div class="bellow-slogan">
+      <!-- content -->
+    </div>
   </div>
 </template>
 
 <script>
-import InteractiveLogo from "./elements/InteractiveLogo";
+import SloganHeader from "./elements/SloganHeader";
 
 export default {
   name: "HomePage",
@@ -17,20 +19,17 @@ export default {
   },
   props: {},
   components: {
-    InteractiveLogo
+    SloganHeader
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.interactive-logo-container {
-  margin-top: 1rem;
-}
-.statement {
-  margin-top: 3rem;
-  font-size: 2rem;
-  font-style: italic;
-  text-align: center;
+.bellow-slogan {
+  background-color: #060606;
+  position: relative;
+  z-index: 2;
+  min-height: max(20vw, 20vh);
 }
 </style>

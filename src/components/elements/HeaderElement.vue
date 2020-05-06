@@ -2,7 +2,7 @@
   <div class="header">
     <nav class="navbar navbar-expand navbar-fixed-top">
       <a class="navbar-brand pointer" v-on:click="navigate('/')">
-        <span class="site-title">
+        <span class="site-title titleFont">
           <img id="site-title-logo" src="/images/logo-small.png" />
           STOTINA
         </span>
@@ -60,8 +60,6 @@ export default {
   font-size: 2rem;
   display: inline-block;
   padding: 2px 0;
-  font-weight: bold;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 #site-title-logo {
   height: 2rem;

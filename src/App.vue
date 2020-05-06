@@ -23,4 +23,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   background-color: #060606;
 }
+.titleFont {
+  font-weight: bold;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
 </style>
