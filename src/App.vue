@@ -15,11 +15,13 @@
     <div class="bellow-slogan">
       <router-view></router-view>
     </div>
+    <FooterElement></FooterElement>
   </div>
 </template>
 
 <script>
 import HeaderElement from "./components/elements/HeaderElement";
+import FooterElement from "./components/elements/FooterElement";
 import SloganHeader from "./components/elements/SloganHeader";
 export default {
   name: "App",
@@ -35,7 +37,7 @@ export default {
       sloganContentLeft: true
     };
   },
-  components: { HeaderElement, SloganHeader },
+  components: { HeaderElement, FooterElement, SloganHeader },
   methods: {
     updateSloganHeader(skipAnimate) {
       var path = window.location.hash.substr(1);

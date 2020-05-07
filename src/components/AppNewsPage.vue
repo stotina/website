@@ -47,8 +47,6 @@
       <br />Lorem Ipsum
       <br />Lorem Ipsum
     </div>
-
-    <div class="footer"></div>
   </div>
 </template>
 
@@ -95,15 +93,7 @@ export default {
   width: 50%;
   min-height: max(800px, 60vw);
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 150px;
-  border-top: 1px solid #ffffff44;
-  background-color: #060606;
-}
+
 @media only screen and (max-width: 1300px) {
   .phones3d {
     display: none;

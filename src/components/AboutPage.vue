@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="home">
+    <div class="about">
       <h3>Under Construction...</h3>
     </div>
   </div>
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "HomePage",
+  name: "AboutPage",
   data() {
     return {};
   },
