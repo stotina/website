@@ -57,7 +57,7 @@ export default {
           break;
         case "/apps":
           this.sloganTitle = "APPS";
-          this.sloganDescription = "Our applications so far...";
+          this.sloganDescription = "Our applications so far:";
           this.phone1PositionLeftPercent = 55;
           this.phone2PositionLeftPercent = 45;
           this.phone1Rotate = 50;
