@@ -1,0 +1,93 @@
+/** COLOR sc */
+
+:root {
+    --bg-color1: #0B0F11;
+    --bg-color2: #1A2D32;
+    --bg-color3: #294045;
+    --bg-color4: #6AC3D4;
+    --color1: #6AC3D4;
+    --color2: #58CDCD;
+    --color3: #5CC8FF;
+    --color4: #ffffff;
+    --hover-color1: #6AC3D455;
+    --hover-color2: #58CDCD55;
+    --hover-color3: #5CC8FF55;
+    --hover-color4: #ffffff55;
+    --border-color1: #6AC3D4;
+    --border-color2: #58CDCD;
+    --border-color3: #5CC8FF;
+    --border-color4: #000000;
+}
+
+
+/** BACKGROUND **/
+
+.sc-bg {
+    background-color: var(--bg-color1) !important;
+}
+
+.sc-bg2 {
+    background-color: var(--bg-color2) !important;
+}
+
+.sc-bg3 {
+    background-color: var(--bg-color3) !important;
+}
+
+.sc-bg4 {
+    background-color: var(--bg-color4) !important;
+}
+
+
+/** TEXT **/
+
+.sc-c {
+    color: var(--color1) !important;
+}
+
+.sc-c2 {
+    color: var(--color2) !important;
+}
+
+.sc-c3 {
+    color: var(--color3) !important;
+}
+
+.sc-c4 {
+    color: var(--color4) !important;
+}
+
+.sc-c.sc-c-hover:hover {
+    color: var(--hover-color1) !important;
+}
+
+.sc-c2.sc-c-hover:hover {
+    color: var(--hover-color2) !important;
+}
+
+.sc-c3.sc-c-hover:hover {
+    color: var(--hover-color3) !important;
+}
+
+.sc-c3.sc-c-hover:hover {
+    color: var(--hover-color4) !important;
+}
+
+
+/** BORDERS **/
+
+.sc-br {
+    border-color: var(--border-color1) !important;
+}
+
+.sc-br2 {
+    border-color: var(--border-color2) !important;
+}
+
+.sc-br3 {
+    border-color: var(--border-color3) !important;
+}
+
+.sc-br4 {
+    border-color: var(--border-color4) !important;
+}
