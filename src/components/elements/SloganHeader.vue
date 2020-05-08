@@ -3,7 +3,7 @@
     <div id="appsPageHeader">
       <div id="appsPageHeaderContent" :style="this.contentStyle">
         <h3 class="titleFont">{{this.title}}</h3>
-        <p>{{this.description}}</p>
+        <p class="slogan">{{this.description}}</p>
       </div>
       <PhoneElement :style="phone1Style" id="appsPageHeaderPhone" :width="'250px'"></PhoneElement>
       <PhoneElement :style="phone2Style" id="appsPageHeaderPhone2" :width="'280px'"></PhoneElement>
@@ -80,13 +80,19 @@ export default {
 
 #appsPageHeaderContent {
   transition: 1s ease-in-out;
-  width: 20%;
-  min-width: 20rem;
+  display: inline-block;
+  /* width: 20%; */
+  /* min-width: 20rem; */
   z-index: 2;
   padding: 40px 25px;
   background-color: #0e3e53;
   border-radius: 50px;
   font-weight: bold;
+}
+
+#appsPageHeaderContent .slogan {
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 #appsPageHeaderPhone {
