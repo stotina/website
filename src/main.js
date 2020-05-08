@@ -17,28 +17,28 @@ require("jquery");
 require("bootstrap");
 require("./assets/bootstrap-cyborg.min.css");
 require("@fortawesome/fontawesome-free")
-require("@fortawesome/fontawesome-free/css/all.css")
+require("@fortawesome/fontawesome-free/css/all.min.css")
 
 Vue.config.productionTip = false
 
 Vue.use(VueRouter)
 
 const router = new VueRouter({
-  routes: [
-    { path: '/', component: HomePage },
-    { path: '/apps', component: AppsPage },
-    { path: '/apps/news', component: AppNewsPage },
+    routes: [
+        { path: '/', component: HomePage },
+        { path: '/apps', component: AppsPage },
+        { path: '/apps/news', component: AppNewsPage },
 
-    { path: '/about', component: AboutPage },
-    { path: '/blog', component: BlogPage },
-    { path: '/contact', component: ContactPage },
-    { path: '/faq', component: FaqPage },
-    { path: '/privacy', component: PrivacyPage },
-    { path: '/terms', component: TermsPage },
-  ]
+        { path: '/about', component: AboutPage },
+        { path: '/blog', component: BlogPage },
+        { path: '/contact', component: ContactPage },
+        { path: '/faq', component: FaqPage },
+        { path: '/privacy', component: PrivacyPage },
+        { path: '/terms', component: TermsPage },
+    ]
 })
 
 new Vue({
-  router,
-  render: h => h(App),
+    router,
+    render: h => h(App),
 }).$mount('#app')
