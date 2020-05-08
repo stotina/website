@@ -1,18 +1,18 @@
 <template>
-  <div class="footer sc-bg3">
-    <div class="footer-group" style="text-align:center;">
+  <div class="footer sc-bg3 row">
+    <div class="footer-group col-md-6 col-lg-4" style="text-align:center;">
       <div>
         <img src="/images/logo.png" alt />
       </div>
       <div>Copyright © 2020 Stotina</div>
     </div>
-    <div class="footer-group">
+    <div class="footer-group col-md-3 col-lg-2">
       <div class="footer-group-title">Links</div>
       <div class="footer-link sc-c2 sc-c-hover pointer" v-on:click="navigate('/faq')">FAQ</div>
       <div class="footer-link sc-c2 sc-c-hover pointer" v-on:click="navigate('/terms')">Terms</div>
       <div class="footer-link sc-c2 sc-c-hover pointer" v-on:click="navigate('/privacy')">Privacy</div>
     </div>
-    <div class="footer-group">
+    <div class="footer-group col-md-3 col-lg-2">
       <div class="footer-group-title">Stotina</div>
       <div class="footer-link sc-c2 sc-c-hover pointer" v-on:click="navigate('/contact')">Contact Us</div>
       <div class="footer-link sc-c2 sc-c-hover pointer" v-on:click="navigate('/about')">About Us</div>
@@ -47,10 +47,6 @@ export default {
   padding-top: 1rem;
   position: relative;
   z-index: 2;
-
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
 }
 
 .footer img {
