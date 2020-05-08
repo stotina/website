@@ -36,9 +36,11 @@ export default {
         [
           `width:${this.width}`,
           `height: calc(2 * ${this.width})`,
-          `border: calc(${this.width} / 30) solid ${this.borderColor}`,
-          `border-top: calc(${this.width} / 7.5) solid ${this.borderColor}`,
-          `border-bottom: calc(${this.width} / 10) solid ${this.borderColor}`,
+          `border-style: solid`,
+          `border-color: ${this.borderColor}`,
+          `border-width: calc(${this.width} / 30)`,
+          `border-top-width: calc(${this.width} / 7.5)`,
+          `border-bottom-width: calc(${this.width} / 10)`,
           `border-radius: calc(${this.width} / 30)`,
           `font-size: calc(${this.width} / 10)`,
           this.imagePath ? "" : `padding-top: calc(${this.width} / 2.5)`
