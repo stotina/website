@@ -32,34 +32,24 @@ export default {
       apps: [
         {
           id: 1,
-          path: "/apps/news",
-          name: "Stotina News",
+          path: "",
+          name: "[work in progress...]",
           iconBackground: "#1b3a8d",
-          icon: "/images/logo-news2.png",
-          background: "#849cdf",
-          textColor: "black",
-          screenImage: "/images/screenshots/news.png"
-        },
-        {
-          id: 2,
-          path: "",
-          name: "(work in progress...)",
-          iconBackground: "#b68c00",
           icon: "",
-          background: "#cdd656",
-          textColor: "black",
-          screenImage: ""
-        },
-        {
-          id: 3,
-          path: "",
-          name: "(work in progress...)",
-          iconBackground: "#006905",
-          icon: "",
-          background: "#61ff69",
+          background: "#2a9fd6",
           textColor: "black",
           screenImage: ""
         }
+        // {
+        //   id: 1,
+        //   path: "/apps/news",
+        //   name: "Stotina News",
+        //   iconBackground: "#1b3a8d",
+        //   icon: "/images/logo-news2.png",
+        //   background: "#2a9fd6",
+        //   textColor: "black",
+        //   screenImage: "/images/screenshots/news.png"
+        // }
       ]
     };
   },
