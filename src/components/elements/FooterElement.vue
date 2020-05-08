@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div class="footer sc-bg3">
     <div class="footer-group" style="text-align:center;">
       <div>
         <img src="/images/logo.png" alt />
@@ -45,7 +45,6 @@ export default {
 <style scoped>
 .footer {
   padding-top: 1rem;
-  background-color: #060606;
   position: relative;
   z-index: 2;
 

@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <div id="app" class="sc-bg sc-c sc-br">
+    <link rel="stylesheet" href="/styles/colorScheme.css" />
     <HeaderElement></HeaderElement>
     <SloganHeader
       v-if="this.shouldDisplaySloganHeader"
@@ -12,7 +13,7 @@
       :contentLeft="this.sloganContentLeft"
     ></SloganHeader>
 
-    <div class="bellow-slogan">
+    <div class="bellow-slogan sc-bg2">
       <router-view></router-view>
     </div>
     <FooterElement></FooterElement>
@@ -88,14 +89,12 @@ html {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #060606;
 }
 .titleFont {
   font-weight: bold;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 .bellow-slogan {
-  background-color: #060606;
   position: relative;
   z-index: 2;
   min-height: max(20vw, 20vh);

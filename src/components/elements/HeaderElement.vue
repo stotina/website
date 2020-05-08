@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header sc-bg2">
     <nav class="navbar navbar-expand navbar-fixed-top">
       <a class="navbar-brand pointer" v-on:click="navigate('/')">
         <span class="site-title titleFont">
@@ -47,7 +47,6 @@ export default {
 .header {
   position: relative;
   z-index: 2;
-  background-color: #060606;
   border-bottom: 1px solid #96969636;
 }
 .nav-item.active {
@@ -65,7 +64,7 @@ export default {
   height: 2rem;
   margin-left: 0.5rem;
   margin-right: 0.3rem;
-  border: 2px solid #96969636;
+  border: 2px solid #ffffff40;
   border-radius: 2rem;
 }
 </style>

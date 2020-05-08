@@ -1,0 +1,46 @@
+/** COLOR sc */
+
+
+/** BACKGROUND **/
+
+.sc-bg {
+    background-color: #000000;
+}
+
+.sc-bg2 {
+    background-color: #001130;
+}
+
+.sc-bg3 {
+    background-color: #1b2435;
+}
+
+
+/** TEXT **/
+
+.sc-c {
+    color: #72757d;
+}
+
+.sc-c2 {
+    color: #2d66f1;
+}
+
+.sc-c3 {
+    color: #f1b82d;
+}
+
+
+/** BORDERS **/
+
+.sc-br {
+    border-color: #002d7f;
+}
+
+.sc-br2 {
+    border-color: #f1b82d;
+}
+
+.sc-br3 {
+    background-color: #000000;
+}
