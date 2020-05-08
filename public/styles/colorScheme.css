@@ -1,22 +1,22 @@
 /** COLOR sc */
 
 :root {
-    --bg-color1: #494949;
-    --bg-color2: #1b3057;
-    --bg-color3: #1b2435;
+    --bg-color1: #272727;
+    --bg-color2: #011436;
+    --bg-color3: #08255a;
     --bg-color4: #c3dac4;
-    --color1: #c3dac4;
-    --color2: #93b2ff;
+    --color1: #c6eeee;
+    --color2: #75d3ff;
     --color3: #f1b82d;
     --color4: #000000;
     --hover-color1: #ffffff;
-    --hover-color2: #cfdcfc;
+    --hover-color2: #cef0ff;
     --hover-color3: #f3d17a;
     --hover-color4: #303030;
     --border-color1: #002d7f;
     --border-color2: #f1b82d;
     --border-color3: #5988ff;
-    --border-color4: #000000;
+    --border-color4: #1f1f1f;
 }
 
 

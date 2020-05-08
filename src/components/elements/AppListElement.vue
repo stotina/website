@@ -4,7 +4,7 @@
     <div class="appListBox row">
       <div v-for="app in apps" v-bind:key="app.id" class="col-lg-4 col-md-6">
         <div
-          class="appListItem sc-bg3 sc-c"
+          class="appListItem sc-bg"
           :class="app.path?'pointer animate':'empty'"
           v-on:click="onAppClick(app)"
         >
@@ -15,7 +15,7 @@
             <div class="appTitle">{{app.name}}</div>
           </div>
           <div class="appPhoneBox">
-            <div class="appPhoneFrame sc-br4" :style="`background-image:url('${app.screenImage}')`"></div>
+            <div class="appPhoneFrame sc-br1" :style="`background-image:url('${app.screenImage}')`"></div>
           </div>
         </div>
       </div>

@@ -5,8 +5,18 @@
         <div class="title titleFont">{{this.title}}</div>
         <p class="slogan">{{this.description}}</p>
       </div>
-      <PhoneElement :style="phone1Style" id="appsPageHeaderPhone" :width="'15rem'"></PhoneElement>
-      <PhoneElement :style="phone2Style" id="appsPageHeaderPhone2" :width="'18rem'"></PhoneElement>
+      <PhoneElement
+        :style="phone1Style"
+        id="appsPageHeaderPhone"
+        :imagePath="'/images/screenshots/idle.jpg'"
+        :width="'15rem'"
+      ></PhoneElement>
+      <PhoneElement
+        :style="phone2Style"
+        id="appsPageHeaderPhone2"
+        :imagePath="'/images/screenshots/idle.jpg'"
+        :width="'18rem'"
+      ></PhoneElement>
     </div>
   </div>
 </template>

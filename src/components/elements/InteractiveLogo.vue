@@ -103,7 +103,7 @@ export default {
   border-radius: 100vw;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  /* z-index: -1; */
+  z-index: -1;
   background-image: linear-gradient(180deg, #2a9fd6, #2a9fd633, #00000000);
 }
 </style>

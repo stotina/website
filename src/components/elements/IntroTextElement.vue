@@ -23,12 +23,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .introWrapper {
-  padding-top: 100px;
+  padding-top: 20px;
 }
 .intro {
   padding: 2rem;
   margin: auto;
-  width: 75%;
+  width: 80%;
 }
 .title {
   font-size: 3rem;

@@ -4,6 +4,7 @@
       <div class="row">
         <div class="col-lg-6">
           <IntroTextElement></IntroTextElement>
+          <InteractiveLogo style="max-width:200px; margin:auto; padding:1rem;"></InteractiveLogo>
         </div>
         <div class="col-lg-6">
           <SubscribeElement></SubscribeElement>
@@ -15,6 +16,7 @@
 
 <script>
 import IntroTextElement from "./elements/IntroTextElement";
+import InteractiveLogo from "./elements/InteractiveLogo";
 import SubscribeElement from "./elements/SubscribeElement";
 export default {
   name: "HomePage",
@@ -22,7 +24,7 @@ export default {
     return {};
   },
   props: {},
-  components: { IntroTextElement, SubscribeElement }
+  components: { IntroTextElement, InteractiveLogo, SubscribeElement }
 };
 </script>
 
