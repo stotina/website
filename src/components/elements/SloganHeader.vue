@@ -78,7 +78,6 @@ export default {
 }
 
 #appsPageHeaderContent {
-  transition: 1s ease-in-out;
   display: inline-block;
   /* width: 20%; */
   /* min-width: 20rem; */
@@ -98,11 +97,11 @@ export default {
 }
 
 #appsPageHeaderPhone {
-  transition: 1s ease-in-out;
+  transition: 0.5s ease-in-out;
   z-index: 1;
 }
 #appsPageHeaderPhone2 {
-  transition: 1s ease-in-out;
+  transition: 0.5s ease-in-out;
   z-index: 1;
 }
 </style>

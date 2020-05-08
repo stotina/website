@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="/styles/colorScheme.css" />
     <HeaderElement></HeaderElement>
     <SloganHeader
+      id="sloganHeader"
       v-if="this.shouldDisplaySloganHeader"
       :title="this.sloganTitle"
       :description="this.sloganDescription"
@@ -10,7 +11,6 @@
       :phone2PositionLeftPercent="this.phone2PositionLeftPercent"
       :phone1Rotate="this.phone1Rotate"
       :phone2Rotate="this.phone2Rotate"
-      :contentLeft="this.sloganContentLeft"
     ></SloganHeader>
 
     <div class="bellow-slogan sc-bg2">
@@ -24,54 +24,44 @@
 import HeaderElement from "./components/elements/HeaderElement";
 import FooterElement from "./components/elements/FooterElement";
 import SloganHeader from "./components/elements/SloganHeader";
+import sloganData from "./assets/sloganHeaderAnimationData.json";
+
 export default {
   name: "App",
   data() {
     return {
+      path: "",
       shouldDisplaySloganHeader: true,
       sloganTitle: "",
       sloganDescription: "",
-      phone1PositionLeftPercent: 70,
-      phone2PositionLeftPercent: 75,
-      phone1Rotate: 40,
-      phone2Rotate: 50,
-      sloganContentLeft: true
+      phone1PositionLeftPercent: 0,
+      phone2PositionLeftPercent: 0,
+      phone1Rotate: 0,
+      phone2Rotate: 0
     };
   },
+  computed: {},
   components: { HeaderElement, FooterElement, SloganHeader },
   methods: {
-    updateSloganHeader(skipAnimate) {
+    updateSloganHeader() {
       var path = window.location.hash.substr(1);
+
+      if (this.path.toString() === path) return;
+
+      this.path = path;
       this.shouldDisplaySloganHeader = path === "/" || path === "/apps";
-
-      if (skipAnimate) return;
-
-      switch (path) {
-        case "/":
-          this.sloganTitle = "STOTINA";
-          this.sloganDescription = "Make the amazing simple.";
-          this.phone1PositionLeftPercent = 60;
-          this.phone2PositionLeftPercent = 75;
-          this.phone1Rotate = 40;
-          this.phone2Rotate = 50;
-          this.sloganContentLeft = true;
-          break;
-        case "/apps":
-          this.sloganTitle = "APPS";
-          this.sloganDescription = "Our applications so far:";
-          this.phone1PositionLeftPercent = 55;
-          this.phone2PositionLeftPercent = 45;
-          this.phone1Rotate = 50;
-          this.phone2Rotate = 30;
-          this.sloganContentLeft = true;
-          break;
-        default:
-          break;
-      }
+      this.sloganTitle = sloganData.texts[this.path].title;
+      this.sloganDescription = sloganData.texts[this.path].slogan;
+      this.phone1PositionLeftPercent =
+        sloganData.movement.positions[this.path][0];
+      this.phone2PositionLeftPercent =
+        sloganData.movement.positions[this.path][1];
+      this.phone1Rotate = sloganData.movement.rotations[this.path][0];
+      this.phone2Rotate = sloganData.movement.rotations[this.path][1];
     }
   },
   created() {
-    this.updateSloganHeader(true);
+    this.updateSloganHeader();
     setInterval(this.updateSloganHeader, 200);
   }
 };

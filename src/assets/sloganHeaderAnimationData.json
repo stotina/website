@@ -1,0 +1,33 @@
+{
+    "texts": {
+        "": {
+            "title": "STOTINA",
+            "slogan": "Make the amazing simple."
+        },
+        "/": {
+            "title": "STOTINA",
+            "slogan": "Make the amazing simple."
+        },
+        "/apps": {
+            "title": "APPS",
+            "slogan": "We aim for quality in all our applications"
+        }
+    },
+    "movement": {
+        "positions": {
+            "": [70, 75],
+            "/": [60, 75],
+            "/apps": [55, 45]
+        },
+        "rotations": {
+            "": [40, 50],
+            "/": [40, 50],
+            "/apps": [25, 30]
+        },
+        "background": {
+            "": {},
+            "/": {},
+            "/apps": {}
+        }
+    }
+}
