@@ -68,15 +68,14 @@ export default {
       return [
         `background-image:url('${this.background}')`,
         `background-size: ${this.backgroundWidth} auto`,
-        `background-position: top ${this.backgroundLeft ? "left" : "right"}`,
-        `transition: 0.5s ease`
+        `background-position: top ${this.backgroundLeft ? "left" : "right"}`
       ].join(";");
     },
     phone1Style() {
       return (
         [
           `transform: rotate(${this.phone1Rotate}deg)`,
-          `position: fixed`,
+          `position: absolute`,
           `left: ${this.phone1PositionLeftPercent}%`,
           `top: ${this.phone1PositionTopPercent}%`
         ].join("; ") + ";"
@@ -86,7 +85,7 @@ export default {
       return (
         [
           `transform: rotate(${this.phone2Rotate}deg)`,
-          `position: fixed`,
+          `position: absolute`,
           `left: ${this.phone2PositionLeftPercent}%`,
           `top: ${this.phone2PositionTopPercent}%`
         ].join("; ") + ";"
@@ -108,6 +107,7 @@ export default {
   height: 500px;
   max-height: 70vw;
   overflow: hidden;
+  transition: 1s ease;
 }
 
 #appsPageHeaderContent {
@@ -129,11 +129,11 @@ export default {
 }
 
 #appsPageHeaderPhone {
-  transition: 0.5s ease-in-out;
+  transition: 1s ease-in-out;
   z-index: 1;
 }
 #appsPageHeaderPhone2 {
-  transition: 0.5s ease-in-out;
+  transition: 1s ease-in-out;
   z-index: 1;
 }
 @media only screen and (max-width: 700px) {
