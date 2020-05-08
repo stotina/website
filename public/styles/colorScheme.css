@@ -1,22 +1,22 @@
 /** COLOR sc */
 
 :root {
-    --bg-color1: #272727;
-    --bg-color2: #011436;
-    --bg-color3: #08255a;
-    --bg-color4: #c3dac4;
-    --color1: #c6eeee;
-    --color2: #75d3ff;
-    --color3: #f1b82d;
-    --color4: #000000;
-    --hover-color1: #ffffff;
-    --hover-color2: #cef0ff;
-    --hover-color3: #f3d17a;
-    --hover-color4: #303030;
-    --border-color1: #002d7f;
-    --border-color2: #f1b82d;
-    --border-color3: #5988ff;
-    --border-color4: #1f1f1f;
+    --bg-color1: #0B0F11;
+    --bg-color2: #1A2D32;
+    --bg-color3: #294045;
+    --bg-color4: #6AC3D4;
+    --color1: #6AC3D4;
+    --color2: #58CDCD;
+    --color3: #5CC8FF;
+    --color4: #ffffff;
+    --hover-color1: #6AC3D455;
+    --hover-color2: #58CDCD55;
+    --hover-color3: #5CC8FF55;
+    --hover-color4: #ffffff55;
+    --border-color1: #6AC3D4;
+    --border-color2: #58CDCD;
+    --border-color3: #5CC8FF;
+    --border-color4: #000000;
 }
 
 

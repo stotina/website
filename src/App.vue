@@ -51,7 +51,10 @@ export default {
       if (this.path.toString() === path) return;
 
       this.path = path;
-      this.shouldDisplaySloganHeader = path === "/" || path === "/apps";
+      this.shouldDisplaySloganHeader = sloganData.texts[this.path] != undefined;
+
+      if (!this.shouldDisplaySloganHeader) return;
+
       this.sloganTitle = sloganData.texts[this.path].title;
       this.sloganDescription = sloganData.texts[this.path].slogan;
       this.phone1PositionLeftPercent =

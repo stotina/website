@@ -4,7 +4,7 @@
     <div class="appListBox row">
       <div v-for="app in apps" v-bind:key="app.id" class="col-lg-4 col-md-6">
         <div
-          class="appListItem sc-bg"
+          class="appListItem sc-br1"
           :class="app.path?'pointer animate':'empty'"
           v-on:click="onAppClick(app)"
         >
@@ -65,10 +65,13 @@ export default {
 .appListItem {
   margin-top: 20px;
   margin-bottom: 20px;
+  border-width: 4px;
+  border-style: solid;
+  border-radius: 1rem;
 }
 
 .appTitleArea {
-  padding-top: 10px;
+  padding-top: 20px;
   text-align: center;
 }
 .appTitleIconBox {
