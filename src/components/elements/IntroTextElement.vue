@@ -1,7 +1,7 @@
 <template>
   <div class="introWrapper">
     <div class="intro">
-      <h1>Simplicity is Key</h1>
+      <div class="title">Simplicity is Key</div>
       <div class="description">
         <div>Amazing technology is only trully amazing when it is simple to use. The world moves faster than ever. Simplicity is the key to keeping up with it.</div>
       </div>
@@ -29,6 +29,10 @@ export default {
   padding: 2rem;
   margin: auto;
   width: 75%;
+}
+.title {
+  font-size: 3rem;
+  margin: 1rem 0;
 }
 .description {
   font-size: 1.1rem;

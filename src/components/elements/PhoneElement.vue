@@ -1,5 +1,5 @@
 <template>
-  <div class="phone" :style="inlineStyleValue">
+  <div class="phone sc-bg4 sc-c4" :style="inlineStyleValue">
     <div v-if="!imagePath">
       <InteractiveLogo :widthPercent="60"></InteractiveLogo>
       <div class="appPageHeaderPhoneTitle">STOTINA</div>
@@ -23,7 +23,7 @@ export default {
     },
     borderColor: {
       type: String,
-      default: "black"
+      default: "var(--border-color4)"
     },
     imagePath: {
       type: String,
@@ -59,9 +59,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .phone {
-  background-color: #a5a5a5;
   text-align: center;
-  color: black;
   font-weight: bold;
 }
 .phone img {

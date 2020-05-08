@@ -8,15 +8,15 @@
     </div>
     <div class="footer-group">
       <div class="footer-group-title">Links</div>
-      <div class="footer-link pointer" v-on:click="navigate('/faq')">FAQ</div>
-      <div class="footer-link pointer" v-on:click="navigate('/terms')">Terms</div>
-      <div class="footer-link pointer" v-on:click="navigate('/privacy')">Privacy</div>
+      <div class="footer-link sc-c2 sc-c-hover pointer" v-on:click="navigate('/faq')">FAQ</div>
+      <div class="footer-link sc-c2 sc-c-hover pointer" v-on:click="navigate('/terms')">Terms</div>
+      <div class="footer-link sc-c2 sc-c-hover pointer" v-on:click="navigate('/privacy')">Privacy</div>
     </div>
     <div class="footer-group">
       <div class="footer-group-title">Stotina</div>
-      <div class="footer-link pointer" v-on:click="navigate('/contact')">Contact Us</div>
-      <div class="footer-link pointer" v-on:click="navigate('/about')">About Us</div>
-      <div class="footer-link pointer" v-on:click="navigate('/blog')">News Blog</div>
+      <div class="footer-link sc-c2 sc-c-hover pointer" v-on:click="navigate('/contact')">Contact Us</div>
+      <div class="footer-link sc-c2 sc-c-hover pointer" v-on:click="navigate('/about')">About Us</div>
+      <div class="footer-link sc-c2 sc-c-hover pointer" v-on:click="navigate('/blog')">News Blog</div>
     </div>
   </div>
 </template>
@@ -65,11 +65,5 @@ export default {
   font-weight: bold;
   border-bottom: 1px solid white;
   margin-bottom: 0.5rem;
-}
-.footer-link {
-  color: #2a9fd6;
-}
-.footer-link:hover {
-  color: inherit;
 }
 </style>

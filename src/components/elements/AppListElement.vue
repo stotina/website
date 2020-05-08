@@ -4,19 +4,18 @@
     <div class="appListBox row">
       <div v-for="app in apps" v-bind:key="app.id" class="col-lg-4 col-md-6">
         <div
-          class="appListItem"
+          class="appListItem sc-bg3 sc-c"
           :class="app.path?'pointer animate':'empty'"
           v-on:click="onAppClick(app)"
-          :style="'background-color:'+ app.background + '; color:'+ app.textColor"
         >
           <div class="appTitleArea">
-            <div class="appTitleIconBox" :style="'background-color:'+ app.iconBackground">
+            <div class="appTitleIconBox sc-bg4">
               <img v-if="app.icon" v-bind:src="app.icon" :alt="app.name" />
             </div>
             <div class="appTitle">{{app.name}}</div>
           </div>
           <div class="appPhoneBox">
-            <div class="appPhoneFrame" :style="`background-image:url('${app.screenImage}')`"></div>
+            <div class="appPhoneFrame sc-br4" :style="`background-image:url('${app.screenImage}')`"></div>
           </div>
         </div>
       </div>
@@ -34,20 +33,14 @@ export default {
           id: 1,
           path: "",
           name: "[work in progress...]",
-          iconBackground: "#1b3a8d",
           icon: "",
-          background: "#2a9fd6",
-          textColor: "black",
           screenImage: ""
         }
         // {
         //   id: 1,
         //   path: "/apps/news",
         //   name: "Stotina News",
-        //   iconBackground: "#1b3a8d",
         //   icon: "/images/logo-news2.png",
-        //   background: "#2a9fd6",
-        //   textColor: "black",
         //   screenImage: "/images/screenshots/news.png"
         // }
       ]
@@ -68,10 +61,10 @@ export default {
 .appListBox {
   width: 80%;
   margin: auto;
-  color: #1b3a8d;
 }
 .appListItem {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .appTitleArea {
@@ -104,8 +97,9 @@ export default {
   width: 200px;
   height: 400px;
   background-size: 100% 100%;
-  border: 10px solid black;
-  border-top: 30px solid black;
+  border-width: 10px;
+  border-top-width: 30px;
+  border-style: solid;
   border-radius: 1em;
   margin: auto;
   margin-top: 20px;
@@ -118,8 +112,8 @@ export default {
   transition: transform 0.3s ease-in-out;
 }
 .appListItem.empty:hover .appPhoneFrame {
-  border: 10px solid #00000044;
-  border-top: 30px solid #00000044;
+  border: 10px solid #ffffff44;
+  border-top: 30px solid #ffffff44;
   transition: 0.5s ease-in-out;
 }
 </style>

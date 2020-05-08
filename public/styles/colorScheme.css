@@ -1,46 +1,93 @@
 /** COLOR sc */
 
+:root {
+    --bg-color1: #494949;
+    --bg-color2: #1b3057;
+    --bg-color3: #1b2435;
+    --bg-color4: #c3dac4;
+    --color1: #c3dac4;
+    --color2: #93b2ff;
+    --color3: #f1b82d;
+    --color4: #000000;
+    --hover-color1: #ffffff;
+    --hover-color2: #cfdcfc;
+    --hover-color3: #f3d17a;
+    --hover-color4: #303030;
+    --border-color1: #002d7f;
+    --border-color2: #f1b82d;
+    --border-color3: #5988ff;
+    --border-color4: #000000;
+}
+
 
 /** BACKGROUND **/
 
 .sc-bg {
-    background-color: #000000;
+    background-color: var(--bg-color1) !important;
 }
 
 .sc-bg2 {
-    background-color: #001130;
+    background-color: var(--bg-color2) !important;
 }
 
 .sc-bg3 {
-    background-color: #1b2435;
+    background-color: var(--bg-color3) !important;
+}
+
+.sc-bg4 {
+    background-color: var(--bg-color4) !important;
 }
 
 
 /** TEXT **/
 
 .sc-c {
-    color: #72757d;
+    color: var(--color1) !important;
 }
 
 .sc-c2 {
-    color: #2d66f1;
+    color: var(--color2) !important;
 }
 
 .sc-c3 {
-    color: #f1b82d;
+    color: var(--color3) !important;
+}
+
+.sc-c4 {
+    color: var(--color4) !important;
+}
+
+.sc-c.sc-c-hover:hover {
+    color: var(--hover-color1) !important;
+}
+
+.sc-c2.sc-c-hover:hover {
+    color: var(--hover-color2) !important;
+}
+
+.sc-c3.sc-c-hover:hover {
+    color: var(--hover-color3) !important;
+}
+
+.sc-c3.sc-c-hover:hover {
+    color: var(--hover-color4) !important;
 }
 
 
 /** BORDERS **/
 
 .sc-br {
-    border-color: #002d7f;
+    border-color: var(--border-color1) !important;
 }
 
 .sc-br2 {
-    border-color: #f1b82d;
+    border-color: var(--border-color2) !important;
 }
 
 .sc-br3 {
-    background-color: #000000;
+    border-color: var(--border-color3) !important;
+}
+
+.sc-br4 {
+    border-color: var(--border-color4) !important;
 }

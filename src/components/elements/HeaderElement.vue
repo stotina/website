@@ -9,12 +9,12 @@
       </a>
 
       <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item">
+        <li class="nav-item sc-c2 sc-c-hover">
           <a class="nav-link pointer" v-on:click="navigate('/')">
             <i class="fas fa-home"></i> Home
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item sc-c2 sc-c-hover">
           <a class="nav-link pointer" v-on:click="navigate('/apps')">Applications</a>
         </li>
       </ul>
@@ -53,7 +53,6 @@ export default {
   text-decoration: underline;
 }
 .nav-link {
-  color: #2a9fd6;
 }
 .site-title {
   font-size: 2rem;

@@ -1,8 +1,8 @@
 <template>
   <div>
     <div id="appsPageHeader">
-      <div id="appsPageHeaderContent" :style="this.contentStyle">
-        <h3 class="titleFont">{{this.title}}</h3>
+      <div id="appsPageHeaderContent" class="sc-bg3" :style="this.contentStyle">
+        <div class="title titleFont">{{this.title}}</div>
         <p class="slogan">{{this.description}}</p>
       </div>
       <PhoneElement :style="phone1Style" id="appsPageHeaderPhone" :width="'250px'"></PhoneElement>
@@ -73,7 +73,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #appsPageHeader {
-  background-color: #ffffff11;
   height: 400px;
   overflow: hidden;
 }
@@ -85,11 +84,14 @@ export default {
   /* min-width: 20rem; */
   z-index: 2;
   padding: 40px 25px;
-  background-color: #0e3e53;
   border-radius: 50px;
   font-weight: bold;
 }
 
+#appsPageHeaderContent .title {
+  font-weight: bold;
+  font-size: 2.4rem;
+}
 #appsPageHeaderContent .slogan {
   font-weight: bold;
   font-size: 1.2rem;
