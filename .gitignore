@@ -3,7 +3,7 @@ node_modules
 /dist
 
 # To prevent accidental release
-# docs
+docs
 
 # local env files
 .env.local
