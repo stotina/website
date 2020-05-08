@@ -11,6 +11,7 @@
       :phone2PositionLeftPercent="this.phone2PositionLeftPercent"
       :phone1Rotate="this.phone1Rotate"
       :phone2Rotate="this.phone2Rotate"
+      :backgroundLeft="this.backgroundLeft"
     ></SloganHeader>
 
     <div class="bellow-slogan sc-bg2">
@@ -32,6 +33,7 @@ export default {
     return {
       path: "",
       shouldDisplaySloganHeader: true,
+      backgroundLeft: false,
       sloganTitle: "",
       sloganDescription: "",
       phone1PositionLeftPercent: 0,
@@ -58,6 +60,7 @@ export default {
         sloganData.movement.positions[this.path][1];
       this.phone1Rotate = sloganData.movement.rotations[this.path][0];
       this.phone2Rotate = sloganData.movement.rotations[this.path][1];
+      this.backgroundLeft = sloganData.movement.backgroundLeft[this.path];
     }
   },
   created() {

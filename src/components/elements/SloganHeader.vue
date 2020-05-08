@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="appsPageHeader">
+    <div id="appsPageHeader" :title="this.backgroundAttribution" :style="this.backgroundStyle">
       <div id="appsPageHeaderContent" class="sc-bg3" :style="this.contentStyle">
         <div class="title titleFont">{{this.title}}</div>
         <p class="slogan">{{this.description}}</p>
@@ -34,12 +34,34 @@ export default {
     phone1PositionTopPercent: { type: Number, default: 5 },
     phone2Rotate: { type: Number, default: 50 },
     phone2PositionLeftPercent: { type: Number, default: 75 },
-    phone2PositionTopPercent: { type: Number, default: 5 }
+    phone2PositionTopPercent: { type: Number, default: 5 },
+
+    backgroundLeft: { type: Boolean, default: true },
+    background: {
+      type: String,
+      default: "/images/matt-cannon-0r6gDVlIr4A-unsplash.jpg"
+    },
+    backgroundAttribution: {
+      type: String,
+      default: "Photo by Matt Cannon on Unsplash"
+    },
+    backgroundWidth: {
+      type: String,
+      default: "160%"
+    }
   },
   components: {
     PhoneElement
   },
   computed: {
+    backgroundStyle() {
+      return [
+        `background-image:url('${this.background}')`,
+        `background-size: ${this.backgroundWidth} auto`,
+        `background-position: top ${this.backgroundLeft ? "left" : "right"}`,
+        `transition: 0.5s ease`
+      ].join(";");
+    },
     phone1Style() {
       return (
         [
@@ -73,14 +95,14 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #appsPageHeader {
-  height: 400px;
+  height: 500px;
+  max-height: 70vw;
   overflow: hidden;
 }
 
 #appsPageHeaderContent {
   display: inline-block;
-  /* width: 20%; */
-  /* min-width: 20rem; */
+  max-width: calc(100vw - 100px);
   z-index: 2;
   padding: 40px 25px;
   border-radius: 50px;
@@ -103,5 +125,11 @@ export default {
 #appsPageHeaderPhone2 {
   transition: 0.5s ease-in-out;
   z-index: 1;
+}
+@media only screen and (max-width: 700px) {
+  #appsPageHeaderPhone,
+  #appsPageHeaderPhone2 {
+    display: none;
+  }
 }
 </style>
