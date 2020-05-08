@@ -65,6 +65,7 @@ export default {
 .footer-group-title {
   font-weight: bold;
   border-bottom: 1px solid white;
+  margin-bottom: 0.5rem;
 }
 .footer-link {
   color: #2a9fd6;
