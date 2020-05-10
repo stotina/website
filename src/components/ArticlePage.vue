@@ -1,19 +1,17 @@
 <template>
   <div>
     <div class="blog">
-      <div class="title">{{feed.title}}</div>
+      <div class="title">{{article.title}}</div>
 
-      <div>
-        <div
-          class="article sc-br pointer"
-          v-on:click="openArticle(i.id)"
-          v-for="i in (feed.items || [])"
-          :key="i.id"
-        >
-          <div class="article-title">{{i.title}}</div>
-          <div class="article-date">{{i.date}}</div>
-          <div class="article-author">{{i.author}}</div>
-          <div class="article-description" v-html="i.description"></div>
+      <div v-if="!article" class="not-found">Article not found.</div>
+      <div class="center">
+        <div class="article-date">{{article.date}}</div>
+        <div class="article-author">{{article.author}}</div>
+      </div>
+
+      <div v-if="!!article">
+        <div class="article sc-br">
+          <div class="article-description" v-html="article.content"></div>
         </div>
       </div>
     </div>
@@ -26,36 +24,49 @@ const h = window.location.hash;
 const i = h.indexOf("?");
 const q = h.substr(i < 0 ? h.length : i + 1).split("--");
 const feedName = q[0] || "main-feed";
+const articleId = q.length > 1 ? q[1] : "";
 
 const feedDefinitions = require("../assets/feedDefinitions.json");
 const feedNames = feedDefinitions.map(i => i.feedName);
+const feed = feedDefinitions[feedNames.indexOf(feedName)];
+const article = feed.items.filter(
+  i => i.id.toString() === articleId.toString()
+)[0];
 
 export default {
-  name: "BlogPage",
+  name: "ArticlePage",
   data() {
     return {
+      articleId: articleId,
       feedName: feedName,
-      feed: feedDefinitions[feedNames.indexOf(feedName)]
+      article: article,
+      feed: feed
     };
   },
   props: {},
   components: {},
-  methods: {
-    openArticle(id) {
-      var url = `/article?${feedName}--${id}`;
-      console.log(url);
-      this.$router.push(url);
-      window.location.reload();
-    }
-  }
+  methods: {}
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.not-found {
+  text-align: center;
+  opacity: 0.7;
+}
 .title {
+  display: block;
+  margin: auto;
   text-align: center;
   font-size: 3rem;
+  width: 90%;
+  max-width: 700px;
+}
+.center {
+  display: block;
+  margin: auto;
+  text-align: center;
 }
 .article {
   border-width: 1px;

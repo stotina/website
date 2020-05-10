@@ -46,7 +46,9 @@ export default {
   components: { HeaderElement, FooterElement, SloganHeader },
   methods: {
     updateSloganHeader() {
-      var path = window.location.hash.substr(1);
+      var h = window.location.hash;
+      var i = h.indexOf("?");
+      var path = h.substr(1, i >= 0 ? i : h.length);
 
       if (this.path.toString() === path) return;
 

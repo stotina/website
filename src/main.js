@@ -7,6 +7,7 @@ import AppsPage from "./components/AppsPage.vue";
 import HomePage from "./components/HomePage.vue";
 
 import AboutPage from "./components/AboutPage.vue";
+import ArticlePage from "./components/ArticlePage.vue";
 import BlogPage from "./components/BlogPage.vue";
 import ContactPage from "./components/ContactPage.vue";
 import FaqPage from "./components/FaqPage.vue";
@@ -30,6 +31,7 @@ const router = new VueRouter({
         { path: '/apps/news', component: AppNewsPage },
 
         { path: '/about', component: AboutPage },
+        { path: '/article', component: ArticlePage },
         { path: '/blog', component: BlogPage },
         { path: '/contact', component: ContactPage },
         { path: '/faq', component: FaqPage },

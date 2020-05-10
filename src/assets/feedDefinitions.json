@@ -1,0 +1,37 @@
+[{
+    "title": "Stotina Blog",
+    "path": "/feed.xml",
+    "feedName": "main-feed",
+
+    "items": [{
+        "title": "Our first article",
+        "description": "This is our first article.",
+        "id": "2",
+        "categories": ["first", "content"],
+        "author": "Aleksandar Dinkov",
+        "date": "May 10, 2020",
+        "content": "This is our first article. We are testing the functionality of our blog."
+    }, {
+        "title": "Wellcome to Stotina",
+        "description": "Stotina is a startup aiming to provide solutions that...",
+        "id": "1",
+        "categories": ["wellcome", "stotina"],
+        "author": "Aleksandar Dinkov",
+        "date": "May 10, 2020",
+        "content": "Stotina is a startup aiming to provide solutions that simplify common tasks and help people use technology without requiring any technical expertese.<br> Simplicity is key."
+    }]
+}, {
+    "title": "Stotina News App Blog",
+    "path": "/appData/news/feed.xml",
+    "feedName": "news-app-feed",
+
+    "items": [{
+        "title": "Stotina News is being developed",
+        "description": "Nothing to see here. Move along.",
+        "id": "1",
+        "categories": ["news", "app"],
+        "author": "Aleksandar Dinkov",
+        "date": "May 10, 2020",
+        "content": "Nothing to see here.<br> Move along.<br> Stotina News is still under development.<br> Come back later."
+    }]
+}]
