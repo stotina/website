@@ -1,0 +1,27 @@
+[{
+        "id": "coingeek",
+        "name": "CoinGeek",
+        "rssLink": "http://coingeek.com/feed",
+        "tags": [
+            "bitcoin",
+            "cryptocurrency"
+        ],
+        "category": "bitcoin",
+        "featured": true,
+        "enabled": true,
+        "image": "./static/sourceIcons/coingeek-icon.png"
+    },
+    {
+        "id": "csw",
+        "name": "CraigWright.net",
+        "rssLink": "https://craigwright.net/feed",
+        "tags": [
+            "bitcoin",
+            "cryptocurrency"
+        ],
+        "category": "bitcoin",
+        "featured": false,
+        "enabled": false,
+        "image": "./static/sourceIcons/csw-icon.png"
+    }
+]
