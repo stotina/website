@@ -16,7 +16,7 @@
         "category": "bitcoin",
         "featured": false,
         "enabled": false,
-        "image": "./static/sourceIcons/coingeek-icon.png"
+        "image": "https://stotina.com/appData/news/sourceIcons/coingeek-icon.png"
     },
     {
         "id": "csw",
@@ -26,6 +26,6 @@
         "category": "bitcoin",
         "featured": false,
         "enabled": false,
-        "image": "./static/sourceIcons/csw-icon.png"
+        "image": "https://stotina.com/appData/news/sourceIcons/csw-icon.png"
     }
 ]
