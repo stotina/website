@@ -1,4 +1,16 @@
-[{
+[
+    {
+        "id": "stotina-news",
+        "name": "Stotina News Updates",
+        "rssLink": "https://stotina.com/appData/news/feed",
+        "tags": [
+            "updates"
+        ],
+        "category": "updates",
+        "featured": true,
+        "enabled": true,
+        "image": "https://stotina.com/images/logo-small.png"
+    },{
         "id": "coingeek",
         "name": "CoinGeek",
         "rssLink": "http://coingeek.com/feed",
@@ -7,8 +19,8 @@
             "cryptocurrency"
         ],
         "category": "bitcoin",
-        "featured": true,
-        "enabled": true,
+        "featured": false,
+        "enabled": false,
         "image": "./static/sourceIcons/coingeek-icon.png"
     },
     {
