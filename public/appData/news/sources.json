@@ -1,23 +1,18 @@
-[
-    {
+[{
         "id": "stotina-news",
         "name": "Stotina News Updates",
         "rssLink": "https://stotina.com/appData/news/feed",
-        "tags": [
-            "updates"
-        ],
+        "tags": ["updates"],
         "category": "updates",
         "featured": true,
         "enabled": true,
         "image": "https://stotina.com/images/logo-small.png"
-    },{
+    },
+    {
         "id": "coingeek",
         "name": "CoinGeek",
         "rssLink": "http://coingeek.com/feed",
-        "tags": [
-            "bitcoin",
-            "cryptocurrency"
-        ],
+        "tags": ["bitcoin", "cryptocurrency"],
         "category": "bitcoin",
         "featured": false,
         "enabled": false,
@@ -27,10 +22,7 @@
         "id": "csw",
         "name": "CraigWright.net",
         "rssLink": "https://craigwright.net/feed",
-        "tags": [
-            "bitcoin",
-            "cryptocurrency"
-        ],
+        "tags": ["bitcoin", "cryptocurrency"],
         "category": "bitcoin",
         "featured": false,
         "enabled": false,
