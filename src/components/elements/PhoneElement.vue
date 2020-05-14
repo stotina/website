@@ -1,5 +1,8 @@
 <template>
-  <div class="phone sc-bg4 sc-c4" :style="inlineStyleValue">
+  <div
+    class="phone theme-bg-mainFont theme-c-passiveFont"
+    :style="inlineStyleValue"
+  >
     <div v-if="!imagePath">
       <InteractiveLogo :widthPercent="60"></InteractiveLogo>
       <div class="appPageHeaderPhoneTitle">STOTINA</div>
@@ -19,16 +22,16 @@ export default {
   props: {
     width: {
       type: String,
-      default: "300px"
+      default: "300px",
     },
     borderColor: {
       type: String,
-      default: "var(--border-color4)"
+      default: "var(--border-color-phones)",
     },
     imagePath: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   computed: {
     inlineStyleValue() {
@@ -43,18 +46,18 @@ export default {
           `border-bottom-width: calc(${this.width} / 10)`,
           `border-radius: calc(${this.width} / 30)`,
           `font-size: calc(${this.width} / 10)`,
-          this.imagePath ? "" : `padding-top: calc(${this.width} / 2.5)`
+          this.imagePath ? "" : `padding-top: calc(${this.width} / 2.5)`,
         ]
-          .map(i => i + ";")
+          .map((i) => i + ";")
           .join(" ") + ";";
 
       return css;
-    }
+    },
   },
   methods: {},
   components: {
-    InteractiveLogo
-  }
+    InteractiveLogo,
+  },
 };
 </script>
 

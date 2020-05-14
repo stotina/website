@@ -1,16 +1,16 @@
 <template>
   <div>
     <div class="blog">
-      <div class="title">{{article.title}}</div>
+      <div class="title">{{ article.title }}</div>
 
       <div v-if="!article" class="not-found">Article not found.</div>
       <div class="center">
-        <div class="article-date">{{article.date}}</div>
-        <div class="article-author">{{article.author}}</div>
+        <div class="article-date">{{ article.date }}</div>
+        <div class="article-author">{{ article.author }}</div>
       </div>
 
       <div v-if="!!article">
-        <div class="article sc-br">
+        <div class="article theme-br-mainFont">
           <div class="article-description" v-html="article.content"></div>
         </div>
       </div>
@@ -27,10 +27,10 @@ const feedName = q[0] || "main-feed";
 const articleId = q.length > 1 ? q[1] : "";
 
 const feedDefinitions = require("../assets/feedDefinitions.json");
-const feedNames = feedDefinitions.map(i => i.feedName);
+const feedNames = feedDefinitions.map((i) => i.feedName);
 const feed = feedDefinitions[feedNames.indexOf(feedName)];
 const article = feed.items.filter(
-  i => i.id.toString() === articleId.toString()
+  (i) => i.id.toString() === articleId.toString()
 )[0];
 
 export default {
@@ -40,12 +40,12 @@ export default {
       articleId: articleId,
       feedName: feedName,
       article: article,
-      feed: feed
+      feed: feed,
     };
   },
   props: {},
   components: {},
-  methods: {}
+  methods: {},
 };
 </script>
 

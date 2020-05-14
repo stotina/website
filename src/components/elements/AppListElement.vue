@@ -1,21 +1,23 @@
-
 <template>
   <div>
     <div class="appListBox row">
       <div v-for="app in apps" v-bind:key="app.id" class="col-lg-4 col-md-6">
         <div
-          class="appListItem sc-br1"
-          :class="app.path?'pointer animate':'empty'"
+          class="appListItem theme-br-mainFont"
+          :class="app.path ? 'pointer animate' : 'empty'"
           v-on:click="onAppClick(app)"
         >
           <div class="appTitleArea">
-            <div class="appTitleIconBox sc-bg4">
+            <div class="appTitleIconBox theme-bg-mainFont">
               <img v-if="app.icon" v-bind:src="app.icon" :alt="app.name" />
             </div>
-            <div class="appTitle">{{app.name}}</div>
+            <div class="appTitle">{{ app.name }}</div>
           </div>
           <div class="appPhoneBox">
-            <div class="appPhoneFrame sc-br1" :style="`background-image:url('${app.screenImage}')`"></div>
+            <div
+              class="appPhoneFrame theme-br-mainFont"
+              :style="`background-image:url('${app.screenImage}')`"
+            ></div>
           </div>
         </div>
       </div>
@@ -34,8 +36,8 @@ export default {
           path: "",
           name: "[work in progress...]",
           icon: "",
-          screenImage: ""
-        }
+          screenImage: "",
+        },
         // {
         //   id: 1,
         //   path: "/apps/news",
@@ -43,7 +45,7 @@ export default {
         //   icon: "/images/logo-news2.png",
         //   screenImage: "/images/screenshots/news.png"
         // }
-      ]
+      ],
     };
   },
   props: {},
@@ -51,8 +53,8 @@ export default {
   methods: {
     onAppClick(app) {
       if (app.path) this.$router.push(app.path);
-    }
-  }
+    },
+  },
 };
 </script>
 

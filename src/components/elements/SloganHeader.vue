@@ -1,9 +1,17 @@
 <template>
   <div>
-    <div id="appsPageHeader" :title="this.backgroundAttribution" :style="this.backgroundStyle">
-      <div id="appsPageHeaderContent" class="sc-bg3" :style="this.contentStyle">
-        <div class="title titleFont">{{this.title}}</div>
-        <p class="slogan">{{this.description}}</p>
+    <div
+      id="appsPageHeader"
+      :title="this.backgroundAttribution"
+      :style="this.backgroundStyle"
+    >
+      <div
+        id="appsPageHeaderContent"
+        class="theme-bg-nav"
+        :style="this.contentStyle"
+      >
+        <div class="title titleFont">{{ this.title }}</div>
+        <p class="slogan">{{ this.description }}</p>
       </div>
       <PhoneElement
         :style="phone1Style"
@@ -32,11 +40,11 @@ export default {
   props: {
     title: {
       type: String,
-      default: "STOTINA"
+      default: "STOTINA",
     },
     description: {
       type: String,
-      default: "Make the amazing simple."
+      default: "Make the amazing simple.",
     },
     contentLeft: { type: Boolean, default: true },
     phone1Rotate: { type: Number, default: 40 },
@@ -49,26 +57,26 @@ export default {
     backgroundLeft: { type: Boolean, default: true },
     background: {
       type: String,
-      default: "/images/matt-cannon-0r6gDVlIr4A-unsplash.jpg"
+      default: "/images/matt-cannon-0r6gDVlIr4A-unsplash.jpg",
     },
     backgroundAttribution: {
       type: String,
-      default: "Photo by Matt Cannon on Unsplash"
+      default: "Photo by Matt Cannon on Unsplash",
     },
     backgroundWidth: {
       type: String,
-      default: "160%"
-    }
+      default: "160%",
+    },
   },
   components: {
-    PhoneElement
+    PhoneElement,
   },
   computed: {
     backgroundStyle() {
       return [
         `background-image:url('${this.background}')`,
         `background-size: ${this.backgroundWidth} auto`,
-        `background-position: top ${this.backgroundLeft ? "left" : "right"}`
+        `background-position: top ${this.backgroundLeft ? "left" : "right"}`,
       ].join(";");
     },
     phone1Style() {
@@ -77,7 +85,7 @@ export default {
           `transform: rotate(${this.phone1Rotate}deg)`,
           `position: absolute`,
           `left: ${this.phone1PositionLeftPercent}%`,
-          `top: ${this.phone1PositionTopPercent}%`
+          `top: ${this.phone1PositionTopPercent}%`,
         ].join("; ") + ";"
       );
     },
@@ -87,7 +95,7 @@ export default {
           `transform: rotate(${this.phone2Rotate}deg)`,
           `position: absolute`,
           `left: ${this.phone2PositionLeftPercent}%`,
-          `top: ${this.phone2PositionTopPercent}%`
+          `top: ${this.phone2PositionTopPercent}%`,
         ].join("; ") + ";"
       );
     },
@@ -96,8 +104,8 @@ export default {
         "position: relative; top: 10%;" +
         (this.contentLeft ? "left: 5%" : "left: 65%")
       );
-    }
-  }
+    },
+  },
 };
 </script>
 

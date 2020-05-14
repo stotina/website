@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="sc-bg sc-c sc-br">
+  <div id="app" class="theme-bg-appBase theme-c-mainFont theme-br-mainFont">
     <link rel="stylesheet" href="/styles/colorScheme.css" />
     <HeaderElement></HeaderElement>
     <SloganHeader
@@ -14,7 +14,7 @@
       :backgroundLeft="this.backgroundLeft"
     ></SloganHeader>
 
-    <div class="bellow-slogan sc-bg2">
+    <div class="bellow-slogan theme-bg-main">
       <router-view></router-view>
     </div>
     <FooterElement></FooterElement>
@@ -39,7 +39,7 @@ export default {
       phone1PositionLeftPercent: 0,
       phone2PositionLeftPercent: 0,
       phone1Rotate: 0,
-      phone2Rotate: 0
+      phone2Rotate: 0,
     };
   },
   computed: {},
@@ -66,12 +66,12 @@ export default {
       this.phone1Rotate = sloganData.movement.rotations[this.path][0];
       this.phone2Rotate = sloganData.movement.rotations[this.path][1];
       this.backgroundLeft = sloganData.movement.backgroundLeft[this.path];
-    }
+    },
   },
   created() {
     this.updateSloganHeader();
     setInterval(this.updateSloganHeader, 200);
-  }
+  },
 };
 </script>
 

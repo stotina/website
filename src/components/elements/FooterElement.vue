@@ -1,5 +1,5 @@
 <template>
-  <div class="footer sc-bg3 row">
+  <div class="footer theme-bg-nav row">
     <div class="footer-group col-md-6 col-lg-4" style="text-align:center;">
       <div>
         <img src="/images/logo.png" alt />
@@ -8,15 +8,45 @@
     </div>
     <div class="footer-group col-md-3 col-lg-2">
       <div class="footer-group-title">Links</div>
-      <div class="footer-link sc-c2 sc-c-hover pointer" v-on:click="navigate('/faq')">FAQ</div>
-      <div class="footer-link sc-c2 sc-c-hover pointer" v-on:click="navigate('/terms')">Terms</div>
-      <div class="footer-link sc-c2 sc-c-hover pointer" v-on:click="navigate('/privacy')">Privacy</div>
+      <div
+        class="footer-link theme-c-footerLinks theme-c-hover pointer"
+        v-on:click="navigate('/faq')"
+      >
+        FAQ
+      </div>
+      <div
+        class="footer-link theme-c-footerLinks theme-c-hover pointer"
+        v-on:click="navigate('/terms')"
+      >
+        Terms
+      </div>
+      <div
+        class="footer-link theme-c-footerLinks theme-c-hover pointer"
+        v-on:click="navigate('/privacy')"
+      >
+        Privacy
+      </div>
     </div>
     <div class="footer-group col-md-3 col-lg-2">
       <div class="footer-group-title">Stotina</div>
-      <div class="footer-link sc-c2 sc-c-hover pointer" v-on:click="navigate('/contact')">Contact Us</div>
-      <div class="footer-link sc-c2 sc-c-hover pointer" v-on:click="navigate('/about')">About Us</div>
-      <div class="footer-link sc-c2 sc-c-hover pointer" v-on:click="navigate('/blog')">News Blog</div>
+      <div
+        class="footer-link theme-c-footerLinks theme-c-hover pointer"
+        v-on:click="navigate('/contact')"
+      >
+        Contact Us
+      </div>
+      <div
+        class="footer-link theme-c-footerLinks theme-c-hover pointer"
+        v-on:click="navigate('/about')"
+      >
+        About Us
+      </div>
+      <div
+        class="footer-link theme-c-footerLinks theme-c-hover pointer"
+        v-on:click="navigate('/blog')"
+      >
+        News Blog
+      </div>
     </div>
   </div>
 </template>
@@ -31,13 +61,13 @@ export default {
   computed: {
     currentPage() {
       return this.$router.currentRoute.path;
-    }
+    },
   },
   methods: {
     navigate(path) {
       this.$router.push(path);
-    }
-  }
+    },
+  },
 };
 </script>
 

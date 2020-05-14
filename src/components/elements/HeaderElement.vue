@@ -1,5 +1,5 @@
 <template>
-  <div class="header sc-bg3">
+  <div class="header theme-bg-nav">
     <nav class="navbar navbar-expand navbar-fixed-top">
       <a class="navbar-brand pointer" v-on:click="navigate('/')">
         <span class="site-title titleFont">
@@ -9,13 +9,15 @@
       </a>
 
       <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item sc-c3 sc-c-hover">
+        <li class="nav-item theme-c-headerLinks theme-c-hover">
           <a class="nav-link pointer" v-on:click="navigate('/')">
             <i class="fas fa-home"></i> Home
           </a>
         </li>
-        <li class="nav-item sc-c3 sc-c-hover">
-          <a class="nav-link pointer" v-on:click="navigate('/apps')">Applications</a>
+        <li class="nav-item theme-c-headerLinks theme-c-hover">
+          <a class="nav-link pointer" v-on:click="navigate('/apps')"
+            >Applications</a
+          >
         </li>
       </ul>
     </nav>
@@ -32,13 +34,13 @@ export default {
   computed: {
     currentPage() {
       return this.$router.currentRoute.path;
-    }
+    },
   },
   methods: {
     navigate(path) {
       this.$router.push(path);
-    }
-  }
+    },
+  },
 };
 </script>
 

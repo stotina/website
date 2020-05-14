@@ -1,18 +1,18 @@
 <template>
   <div>
     <div class="blog">
-      <div class="title">{{feed.title}}</div>
+      <div class="title">{{ feed.title }}</div>
 
       <div>
         <div
-          class="article sc-br pointer"
+          class="article theme-br-mainFont pointer"
           v-on:click="openArticle(i.id)"
-          v-for="i in (feed.items || [])"
+          v-for="i in feed.items || []"
           :key="i.id"
         >
-          <div class="article-title">{{i.title}}</div>
-          <div class="article-date">{{i.date}}</div>
-          <div class="article-author">{{i.author}}</div>
+          <div class="article-title">{{ i.title }}</div>
+          <div class="article-date">{{ i.date }}</div>
+          <div class="article-author">{{ i.author }}</div>
           <div class="article-description" v-html="i.description"></div>
         </div>
       </div>
@@ -28,14 +28,14 @@ const q = h.substr(i < 0 ? h.length : i + 1).split("--");
 const feedName = q[0] || "main-feed";
 
 const feedDefinitions = require("../assets/feedDefinitions.json");
-const feedNames = feedDefinitions.map(i => i.feedName);
+const feedNames = feedDefinitions.map((i) => i.feedName);
 
 export default {
   name: "BlogPage",
   data() {
     return {
       feedName: feedName,
-      feed: feedDefinitions[feedNames.indexOf(feedName)]
+      feed: feedDefinitions[feedNames.indexOf(feedName)],
     };
   },
   props: {},
@@ -46,8 +46,8 @@ export default {
       console.log(url);
       this.$router.push(url);
       window.location.reload();
-    }
-  }
+    },
+  },
 };
 </script>
 
