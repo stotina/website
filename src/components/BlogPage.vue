@@ -5,7 +5,7 @@
 
       <div>
         <div
-          class="article theme-br-mainFont pointer"
+          class="article theme-br-blog pointer"
           v-on:click="openArticle(i.id)"
           v-for="i in feed.items || []"
           :key="i.id"

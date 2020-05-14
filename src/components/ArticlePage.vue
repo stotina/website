@@ -10,7 +10,7 @@
       </div>
 
       <div v-if="!!article">
-        <div class="article theme-br-mainFont">
+        <div class="article theme-br-blog">
           <div class="article-description" v-html="article.content"></div>
         </div>
       </div>

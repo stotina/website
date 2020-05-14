@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="theme-bg-appBase theme-c-mainFont theme-br-mainFont">
+  <div id="app" class="theme-bg-appBase theme-c-mainFont">
     <link rel="stylesheet" href="/styles/colorScheme.css" />
     <HeaderElement></HeaderElement>
     <SloganHeader

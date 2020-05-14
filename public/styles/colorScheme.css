@@ -1,19 +1,20 @@
 /** COLOR sc */
 
 :root {
-    --bg-color-appBase: pink;
-    --bg-color-main: #1a2d32;
-    --bg-color-nav: #294045;
-    --bg-color-mainFont: #6ac3d4;
-    --font-mainFont: #6ac3d4;
-    --font-footerLinks: #58cdcd;
-    --font-headerLinks: #5cc8ff;
-    --font-passiveFont: #ffffff;
-    --hover-font-mainFont: #6ac3d455;
-    --hover-font-footerLinks: #58cdcd55;
-    --hover-font-headerLinks: #5cc8ff55;
-    --hover-font-passiveFont: #ffffff55;
-    --border-color-blog: #6ac3d4;
+    --bg-color-appBase: #202020;
+    --bg-color-main: #2e2e2e;
+    --bg-color-nav: #202020;
+    --bg-color-mainFont: #ffffff;
+    --font-mainFont: #ffffff;
+    --font-footerLinks: #f0b90b;
+    --font-headerLinks: #f0b90b;
+    --font-passiveFont: #888888;
+    --hover-font-mainFont: #ffffff99;
+    --hover-font-footerLinks: #f0b90b99;
+    --hover-font-headerLinks: #f0b90b99;
+    --hover-font-passiveFont: #88888899;
+    --border-color-blog: #ffffff55;
+    --border-color-mainFont: #ffffff;
     --border-color-phones: black;
 }
 
@@ -32,7 +33,7 @@
     background-color: var(--bg-color-nav) !important;
 }
 
-{
+.theme-bg-mainFont {
     background-color: var(--bg-color-mainFont) !important;
 }
 
@@ -74,6 +75,14 @@
 
 /** BORDERS **/
 
-.theme-br-mainFont {
+.theme-br-blog {
     border-color: var(--border-color-blog) !important;
+}
+
+.theme-br-mainFont {
+    border-color: var(--border-color-mainFont) !important;
+}
+
+.theme-br-phones {
+    border-color: var(--border-color-phones) !important;
 }
