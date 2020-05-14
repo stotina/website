@@ -8,7 +8,7 @@
         "build": "vue-cli-service build",
         "build:release": "vue-cli-service build --dest docs",
         "lint": "vue-cli-service lint",
-        "generateRSS": "node src/rss.js"
+        "rss": "node src/rss.js"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.13.0",

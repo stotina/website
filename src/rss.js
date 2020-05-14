@@ -1,6 +1,6 @@
-const fs = require('fs');
-const RSS = require('rss');
-const feedDefinitions = require('./assets/feedDefinitions.json');
+const fs = require("fs");
+const RSS = require("rss");
+const feedDefinitions = require("./assets/feedDefinitions.json");
 
 function initFeed(feedDefinition) {
     var mainUrl = "https://stotina.com";
@@ -14,11 +14,11 @@ function initFeed(feedDefinition) {
         webMaster: "Aleksandar Dinkov",
     });
 
-    feedDefinition.items.forEach(item => {
+    feedDefinition.items.forEach((item) => {
         feed.item({
             title: item.title,
             description: item.description,
-            url: mainUrl + `/#/blog?${feedDefinition.feedName}--${item.id}`,
+            url: mainUrl + `/#/article?${feedDefinition.feedName}--${item.id}`,
             categories: item.categories,
             author: item.author,
             date: item.date,
@@ -30,8 +30,7 @@ function initFeed(feedDefinition) {
 
     console.log("Generating " + fileName);
 
-    if (!fs.existsSync(fileDir))
-        fs.mkdirSync(fileDir);
+    if (!fs.existsSync(fileDir)) fs.mkdirSync(fileDir);
 
     var xml = feed.xml();
     fs.writeFileSync(fileName, xml);
@@ -43,4 +42,4 @@ function initAll() {
 
 initAll();
 
-module.exports = { initAll }
+module.exports = { initAll };
