@@ -68,7 +68,7 @@
     color: var(--hover-font-headerLinks) !important;
 }
 
-.theme-c-headerLinks.theme-c-hover:hover {
+.theme-c-passiveFont.theme-c-hover:hover {
     color: var(--hover-font-passiveFont) !important;
 }
 

@@ -9,15 +9,21 @@
       </a>
 
       <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item theme-c-headerLinks theme-c-hover">
-          <a class="nav-link pointer" v-on:click="navigate('/')">
-            <i class="fas fa-home"></i> Home
-          </a>
-        </li>
-        <li class="nav-item theme-c-headerLinks theme-c-hover">
-          <a class="nav-link pointer" v-on:click="navigate('/apps')"
-            >Applications</a
+        <li class="nav-item">
+          <div
+            class="nav-link theme-c-headerLinks theme-c-hover pointer"
+            v-on:click="navigate('/')"
           >
+            <i class="fas fa-home"></i> Home
+          </div>
+        </li>
+        <li class="nav-item">
+          <div
+            class="nav-link theme-c-headerLinks theme-c-hover pointer"
+            v-on:click="navigate('/apps')"
+          >
+            Applications
+          </div>
         </li>
       </ul>
     </nav>
