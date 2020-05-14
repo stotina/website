@@ -117,8 +117,8 @@ export default {
   transition: transform 0.3s ease-in-out;
 }
 .appListItem.empty:hover .appPhoneFrame {
-  border: 10px solid #ffffff44;
-  border-top: 30px solid #ffffff44;
+  border: 10px solid #ffffff44 !important;
+  border-top: 30px solid #ffffff44 !important;
   transition: 0.5s ease-in-out;
 }
 </style>
