@@ -76,7 +76,6 @@ export default {
   flex-direction: row-reverse;
 }
 .appPage > * {
-  border: 2px solid pink;
   width: 49vw;
   display: block;
   margin: auto;
