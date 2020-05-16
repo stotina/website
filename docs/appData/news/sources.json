@@ -11,7 +11,7 @@
     {
         "id": "coingeek",
         "name": "CoinGeek",
-        "rssLink": "http://coingeek.com/feed",
+        "rssLink": "https://coingeek.com/feed",
         "tags": ["bitcoin", "cryptocurrency"],
         "category": "bitcoin",
         "featured": false,
