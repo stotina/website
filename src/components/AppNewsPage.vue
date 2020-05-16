@@ -1,15 +1,22 @@
 <template>
   <div class="appPage">
-    <div class="phone">
-      <Phone3DElement
-        :frameColor="'#535353'"
+    <div class="phones">
+      <DoublePhone3DElement
+        class="phonesElement"
         :showControls="false"
         :imagePath="this.screenshot"
         :width="'300px'"
-        :y="-15"
-        :x="10"
-        :s="1.1"
-      ></Phone3DElement>
+        :distanceBetweenPhones="150 - 300 * this.x + 'px'"
+        :y1="-30 + 60 * this.x"
+        :x1="20"
+        :s1="1.1"
+        :frameColor1="'#535353'"
+        :y2="-30 + 60 * this.x"
+        :x2="20"
+        :s2="0.95"
+        :frameColor2="'#cccccc'"
+      ></DoublePhone3DElement>
+      <input type="range" name="x" v-model="x" min="0" max="1" step="0.001" />
     </div>
 
     <div class="content">
@@ -35,12 +42,13 @@
 </template>
 
 <script>
-import Phone3DElement from "./elements/Phone3DElement";
+import DoublePhone3DElement from "./elements/DoublePhone3DElement";
 
 export default {
   name: "AppNewsPage",
   data() {
     return {
+      x: 0.1,
       screenshot: "/images/screenshots/idle.jpg",
     };
   },
@@ -48,7 +56,7 @@ export default {
   created() {},
   methods: {},
   components: {
-    Phone3DElement,
+    DoublePhone3DElement,
   },
   props: {},
 };
@@ -85,14 +93,17 @@ export default {
   max-width: 70%;
 }
 
-.phone {
+.phones {
   padding: 5em 0;
-  height: min(800px, 140vw);
+  min-height: 800px;
 }
-.phone > * {
+.phones > * {
   display: block;
   width: 300px;
   margin: auto;
+}
+.phonesElement {
+  min-height: 700px;
 }
 
 @media only screen and (max-width: 700px) {
