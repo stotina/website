@@ -3,7 +3,7 @@
   <div class="wrapper">
     <div class="controlsWrapper">
       <div class="controls controls1" v-if="this.showControls">
-        <div style="font-size:2em;">Controls for 3D element</div>
+        <div style="font-size:2em;">Controls for Phone 1</div>
         <span>X:</span>
         <input type="range" min="-180" max="180" step="0.1" v-model="x1" /> -
         <input type="number" min="-180" max="180" step="0.1" v-model="x1" />
@@ -16,13 +16,12 @@
         <input type="range" min="-180" max="180" step="0.1" v-model="z1" /> -
         <input type="number" min="-180" max="180" step="0.1" v-model="z1" />
         <br />
-        <br />
         <span>S:</span>
         <input type="range" min="0" max="3" step="0.01" v-model="s1" /> -
         <input type="number" min="0" max="3" step="0.01" v-model="s1" />
       </div>
       <div class="controls controls2" v-if="this.showControls">
-        <div style="font-size:2em;">Controls for 3D element</div>
+        <div style="font-size:2em;">Controls for Phone 2</div>
         <span>X:</span>
         <input type="range" min="-180" max="180" step="0.1" v-model="x2" /> -
         <input type="number" min="-180" max="180" step="0.1" v-model="x2" />
@@ -35,10 +34,20 @@
         <input type="range" min="-180" max="180" step="0.1" v-model="z2" /> -
         <input type="number" min="-180" max="180" step="0.1" v-model="z2" />
         <br />
-        <br />
         <span>S:</span>
         <input type="range" min="0" max="3" step="0.01" v-model="s2" /> -
         <input type="number" min="0" max="3" step="0.01" v-model="s2" />
+      </div>
+      <div class="controls controls2" v-if="this.showControls">
+        <div style="font-size:2em;">Other Controls</div>
+        <span>Distance:</span>
+        <input type="text" v-model="distanceBetweenPhones" />
+        <br />
+        <span>Frame 1:</span>
+        <input type="color" v-model="frameColor1" />
+        <br />
+        <span>Frame 2:</span>
+        <input type="color" v-model="frameColor2" />
       </div>
     </div>
     <div class="phoneWrapper">
@@ -162,6 +171,7 @@ export default {
 .controlsWrapper {
   display: flex;
   position: fixed;
+  text-align: left;
   top: 0;
   left: 0;
   background-color: rgba(63, 7, 10, 0.521);

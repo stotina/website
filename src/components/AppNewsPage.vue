@@ -3,20 +3,26 @@
     <div class="phones">
       <DoublePhone3DElement
         class="phonesElement"
-        :showControls="false"
+        :showControls="this.showControls"
         :imagePath="this.screenshot"
         :width="'300px'"
-        :distanceBetweenPhones="150 - 300 * this.x + 'px'"
+        :distanceBetweenPhones="(150 - 300 * this.x).toFixed(1) + 'px'"
         :y1="-30 + 60 * this.x"
         :x1="20"
         :s1="1.1"
-        :frameColor1="'#535353'"
+        :frameColor1="'#444444'"
         :y2="-30 + 60 * this.x"
         :x2="20"
         :s2="0.95"
-        :frameColor2="'#cccccc'"
+        :frameColor2="'#aaaaaa'"
       ></DoublePhone3DElement>
       <input type="range" name="x" v-model="x" min="0" max="1" step="0.001" />
+      <div>
+        <label for="showControlsId">
+          <input type="checkbox" v-model="showControls" id="showControlsId" />
+          - show controls (debug)
+        </label>
+      </div>
     </div>
 
     <div class="content">
@@ -49,6 +55,7 @@ export default {
   data() {
     return {
       x: 0.1,
+      showControls: false,
       screenshot: "/images/screenshots/idle.jpg",
     };
   },
@@ -101,6 +108,7 @@ export default {
   display: block;
   width: 300px;
   margin: auto;
+  text-align: center;
 }
 .phonesElement {
   min-height: 700px;
