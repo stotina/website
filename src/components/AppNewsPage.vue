@@ -1,26 +1,15 @@
 <template>
   <div class="appPage">
-    <div class="phones">
-      <div class="phone phone1">
-        <Phone3DElement
-          :frameColor="'#535353'"
-          :showControls="true"
-          :imagePath="this.screenshot"
-          :y="-15"
-          :x="10"
-          :s="1.1"
-        ></Phone3DElement>
-      </div>
-      <div class="phone phone2">
-        <Phone3DElement
-          :frameColor="'white'"
-          :showControls="true"
-          :imagePath="this.screenshot"
-          :y="-15"
-          :x="10"
-          :s="1"
-        ></Phone3DElement>
-      </div>
+    <div class="phone">
+      <Phone3DElement
+        :frameColor="'#535353'"
+        :showControls="false"
+        :imagePath="this.screenshot"
+        :width="'300px'"
+        :y="-15"
+        :x="10"
+        :s="1.1"
+      ></Phone3DElement>
     </div>
 
     <div class="content">
@@ -80,8 +69,6 @@ export default {
 
 .content {
   padding-bottom: 120px;
-  width: 50%;
-  min-height: max(800px, 60vw);
   padding: 5rem;
   font-size: 1.1rem;
 }
@@ -94,8 +81,18 @@ export default {
 .content img {
   display: block;
   margin: auto;
-  width: 300px;
+  width: 250px;
   max-width: 70%;
+}
+
+.phone {
+  padding: 5em 0;
+  height: min(800px, 140vw);
+}
+.phone > * {
+  display: block;
+  width: 300px;
+  margin: auto;
 }
 
 @media only screen and (max-width: 700px) {

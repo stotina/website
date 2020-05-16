@@ -19,22 +19,12 @@
       <span>S:</span>
       <input type="range" min="0" max="3" step="0.01" v-model="s" /> -
       <input type="number" min="0" max="3" step="0.01" v-model="s" />
-      <br />
-      <br />
-      <span>top :</span>
-      <input type="range" min="0" max="500" step="10" v-model="positionTop" /> -
-      <input type="number" min="0" max="500" step="10" v-model="positionTop" />
-      <br />
-      <span>side:</span>
-      <input type="range" min="0" max="500" step="10" v-model="positionSide" />
-      -
-      <input type="number" min="0" max="500" step="10" v-model="positionSide" />
     </div>
 
     <div class="phoneWrapper">
       <PhoneElement
         class="phone"
-        :width="'300px'"
+        :width="this.width"
         :borderColor="this.frameColor"
         :imagePath="this.imagePath"
         :style="this.getRotationsCSS()"
@@ -63,6 +53,10 @@ export default {
     showControls: {
       type: Boolean,
       default: false,
+    },
+    width: {
+      type: String,
+      default: "300px",
     },
     x: {
       type: Number,
@@ -103,6 +97,8 @@ export default {
   width: 100%;
   display: inline-block;
   width: auto;
+  display: inline-block;
+  width: inherit;
 }
 .phoneWrapper {
   width: 20vw;
