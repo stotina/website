@@ -582,8 +582,8 @@
         "category": "News",
         "name": "Reuters World",
         "rssLink": "http://feeds.reuters.com/Reuters/WorldNews",
-        "enabled": false,
-        "featured": false,
+        "enabled": true,
+        "featured": true,
         "id": "Reuters World",
         "tags": ["Reuters"],
         "image": "https://stotina.com/appData/news/sourceIcons/reuters.png"
