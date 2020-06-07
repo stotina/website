@@ -9,23 +9,763 @@
         "image": "https://stotina.com/images/logo-small.png"
     },
     {
-        "id": "coingeek",
+        "category": "Education",
+        "name": "ASCD SmartBrief",
+        "rssLink": "https://www.smartbrief.com/servlet/rss?b=ASCD",
+        "enabled": false,
+        "featured": false,
+        "id": "ASCD SmartBrief",
+        "tags": ["ASCD", "Education"],
+        "image": "https://stotina.com/appData/news/sourceIcons/ASCD SmartBrief.gif"
+    },
+    {
+        "category": "News",
+        "name": "BBC News",
+        "rssLink": "https://feeds.bbci.co.uk/news/rss.xml",
+        "enabled": false,
+        "featured": false,
+        "id": "BBC News",
+        "tags": ["News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/BBC.png"
+    },
+    {
+        "category": "Business",
+        "name": "BBC News - Business",
+        "rssLink": "https://feeds.bbci.co.uk/news/business/rss.xml",
+        "enabled": false,
+        "featured": false,
+        "id": "BBC News - Business",
+        "tags": ["BBC", "Business", "News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/BBC.png"
+    },
+    {
+        "category": "Sport",
+        "name": "BBC News - Sports",
+        "rssLink": "https://feeds.bbci.co.uk/sport/rss.xml?edition=int#",
+        "enabled": false,
+        "featured": false,
+        "id": "BBC News - Sports",
+        "tags": ["Sport"],
+        "image": "https://stotina.com/appData/news/sourceIcons/BBC.png"
+    },
+    {
+        "category": "Technology",
+        "name": "BBC News - Technology",
+        "rssLink": "https://feeds.bbci.co.uk/news/technology/rss.xml",
+        "enabled": false,
+        "featured": false,
+        "id": "BBC News - Technology",
+        "tags": ["Technology", "News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/BBC.png"
+    },
+    {
+        "category": "News",
+        "name": "BBC News - World",
+        "rssLink": "https://feeds.bbci.co.uk/news/world/rss.xml",
+        "enabled": false,
+        "featured": false,
+        "id": "BBC News - World",
+        "tags": ["News", "World"],
+        "image": "https://stotina.com/appData/news/sourceIcons/BBC.png"
+    },
+    {
+        "category": "Business",
+        "name": "Business Insider",
+        "rssLink": "https://www.businessinsider.com/rss",
+        "enabled": false,
+        "featured": false,
+        "id": "Business Insider",
+        "tags": ["Business", "Insider"],
+        "image": "https://stotina.com/appData/news/sourceIcons/businessinsider.png"
+    },
+    {
+        "category": "News",
+        "name": "CBN US news",
+        "rssLink": "https://www.cbn.com/cbnnews/us/feed/",
+        "enabled": false,
+        "featured": false,
+        "id": "CBN US news",
+        "tags": ["USA", "News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/cbn.png"
+    },
+    {
+        "category": "News",
+        "name": "CBN World news",
+        "rssLink": "https://www.cbn.com/cbnnews/world/feed/",
+        "enabled": false,
+        "featured": false,
+        "id": "CBN World news",
+        "tags": ["News", "World"],
+        "image": "https://stotina.com/appData/news/sourceIcons/cbn.png"
+    },
+    {
+        "category": "Sport",
+        "name": "CBS Sports",
+        "rssLink": "https://rss.cbssports.com/rss/headlines/",
+        "enabled": false,
+        "featured": false,
+        "id": "CBS Sports",
+        "tags": ["Sport"],
+        "image": "https://stotina.com/appData/news/sourceIcons/cbs.png"
+    },
+    {
+        "category": "Technology",
+        "name": "CNet.com",
+        "rssLink": "https://www.cnet.com/rss/news",
+        "enabled": false,
+        "featured": false,
+        "id": "CNet.com",
+        "tags": ["Technology", "CNet.com"],
+        "image": "https://stotina.com/appData/news/sourceIcons/CNET.gif"
+    },
+    {
+        "category": "Politics",
+        "name": "CNN Politics",
+        "rssLink": "http://rss.cnn.com/rss/cnn_allpolitics.rss",
+        "enabled": false,
+        "featured": false,
+        "id": "CNN Politics",
+        "tags": ["News", "Politcs"],
+        "image": "https://stotina.com/appData/news/sourceIcons/cnn.jpg"
+    },
+    {
+        "category": "Sport",
+        "name": "CNN Sport",
+        "rssLink": "http://rss.cnn.com/rss/edition_sport.rss",
+        "enabled": false,
+        "featured": false,
+        "id": "CNN Sport",
+        "tags": ["Sport"],
+        "image": "https://stotina.com/appData/news/sourceIcons/cnn.jpg"
+    },
+    {
+        "category": "News",
+        "name": "CNN Top Stories",
+        "rssLink": "http://rss.cnn.com/rss/cnn_topstories.rss",
+        "enabled": false,
+        "featured": false,
+        "id": "CNN Top Stories",
+        "tags": ["News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/cnn.jpg"
+    },
+    {
+        "category": "News",
+        "name": "CNN World News",
+        "rssLink": "http://rss.cnn.com/rss/cnn_world.rss",
+        "enabled": false,
+        "featured": false,
+        "id": "CNN World News",
+        "tags": ["News", "World"],
+        "image": "https://stotina.com/appData/news/sourceIcons/cnn.jpg"
+    },
+    {
+        "category": "Bitcoin",
+        "name": "CoinDesk",
+        "rssLink": "https://www.coindesk.com/feed",
+        "enabled": false,
+        "featured": false,
+        "id": "CoinDesk",
+        "tags": ["CoinDesk", "Cryptocurrency"],
+        "image": "https://stotina.com/appData/news/sourceIcons/coindesk.png"
+    },
+    {
+        "category": "Bitcoin",
         "name": "CoinGeek",
         "rssLink": "https://coingeek.com/feed",
-        "tags": ["bitcoin", "cryptocurrency"],
-        "category": "bitcoin",
-        "featured": false,
         "enabled": false,
+        "featured": false,
+        "id": "CoinGeek",
+        "tags": ["Bitcoin", "Cryptocurrency", "News"],
         "image": "https://stotina.com/appData/news/sourceIcons/coingeek-icon.png"
     },
     {
-        "id": "csw",
-        "name": "CraigWright.net",
-        "rssLink": "https://craigwright.net/feed",
-        "tags": ["bitcoin", "cryptocurrency"],
-        "category": "bitcoin",
-        "featured": false,
+        "category": "Technology",
+        "name": "Computer World",
+        "rssLink": "https://www.computerworld.com/index.rss",
         "enabled": false,
+        "featured": false,
+        "id": "Computer World",
+        "tags": ["Technology", "Computer", "World"],
+        "image": "https://stotina.com/appData/news/sourceIcons/computerwor.png"
+    },
+    {
+        "category": "Bitcoin",
+        "name": "Craig Wright",
+        "rssLink": "https://craigwright.net/feed",
+        "enabled": false,
+        "featured": false,
+        "id": "Craig Wright",
+        "tags": ["Craig Wright", "CSW", "Bitcoin"],
         "image": "https://stotina.com/appData/news/sourceIcons/csw-icon.png"
+    },
+    {
+        "category": "News",
+        "name": "Daily Mail",
+        "rssLink": "https://www.dailymail.co.uk/articles.rss",
+        "enabled": false,
+        "featured": false,
+        "id": "Daily Mail",
+        "tags": ["News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/mail online.png"
+    },
+    {
+        "category": "Politics",
+        "name": "Daily Signal",
+        "rssLink": "https://dailysignal.com//feed/",
+        "enabled": false,
+        "featured": false,
+        "id": "Daily Signal",
+        "tags": ["News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/DailySignal.jpg"
+    },
+    {
+        "category": "Business",
+        "name": "The Economist",
+        "rssLink": "https://www.economist.com/rss/the_world_this_week_rss.xml",
+        "enabled": false,
+        "featured": false,
+        "id": "The Economist",
+        "tags": ["Economics"],
+        "image": "https://stotina.com/appData/news/sourceIcons/The_Economist.png"
+    },
+    {
+        "category": "Technology",
+        "name": "Engadget.com",
+        "rssLink": "https://www.engadget.com/rss-full.xml",
+        "enabled": false,
+        "featured": false,
+        "id": "Engadget.com",
+        "tags": ["Technology", "Engadget"],
+        "image": "https://stotina.com/appData/news/sourceIcons/Engadget.png"
+    },
+    {
+        "category": "Business",
+        "name": "Entrepeneur.com",
+        "rssLink": "https://feeds.feedburner.com/entrepreneur/latest",
+        "enabled": false,
+        "featured": false,
+        "id": "Entrepeneur.com",
+        "tags": ["Entrepeneur", "Business"],
+        "image": "https://stotina.com/appData/news/sourceIcons/entrepreneur.jpg"
+    },
+    {
+        "category": "Sport",
+        "name": "ESPN",
+        "rssLink": "https://www.espn.com/espn/rss/news",
+        "enabled": false,
+        "featured": false,
+        "id": "ESPN",
+        "tags": ["Sport"],
+        "image": "https://stotina.com/appData/news/sourceIcons/espn_dotcom_black.gif"
+    },
+    {
+        "category": "Business",
+        "name": "Fortune",
+        "rssLink": "https://fortune.com/feed/",
+        "enabled": false,
+        "featured": false,
+        "id": "Fortune",
+        "tags": ["Fortune", "Business"],
+        "image": "https://stotina.com/appData/news/sourceIcons/freakonomics.png"
+    },
+    {
+        "category": "Business",
+        "name": "Freakonomics",
+        "rssLink": "https://freakonomics.com/feed/",
+        "enabled": false,
+        "featured": false,
+        "id": "Freakonomics",
+        "tags": ["Ekonomics"],
+        "image": "https://stotina.com/appData/news/sourceIcons/Engadget.png"
+    },
+    {
+        "category": "Gaming",
+        "name": "Game Informer",
+        "rssLink": "https://www.gameinformer.com/news.xml",
+        "enabled": false,
+        "featured": false,
+        "id": "Game Informer",
+        "tags": ["Games"],
+        "image": "https://stotina.com/appData/news/sourceIcons/gameinformer.png"
+    },
+    {
+        "category": "Gaming",
+        "name": "Gamespot",
+        "rssLink": "https://www.gamespot.com/feeds/mashup/",
+        "enabled": false,
+        "featured": false,
+        "id": "Gamespot",
+        "tags": ["Games"],
+        "image": "https://stotina.com/appData/news/sourceIcons/gamespot.png"
+    },
+    {
+        "category": "Technology",
+        "name": "Gizmodo",
+        "rssLink": "https://gizmodo.com/rss",
+        "enabled": false,
+        "featured": false,
+        "id": "Gizmodo",
+        "tags": ["Technology"],
+        "image": "https://stotina.com/appData/news/sourceIcons/gizmodo.jpg"
+    },
+    {
+        "category": "Technology",
+        "name": "HowToGeek",
+        "rssLink": "https://feeds.howtogeek.com/HowToGeek",
+        "enabled": false,
+        "featured": false,
+        "id": "HowToGeek",
+        "tags": ["Technology", "HowToGeek"],
+        "image": "https://stotina.com/appData/news/sourceIcons/HowToGeek.png"
+    },
+    {
+        "category": "Technology",
+        "name": "IEEE Spectrum",
+        "rssLink": "https://spectrum.ieee.org/rss/blog/tech-talk/fulltext",
+        "enabled": false,
+        "featured": false,
+        "id": "IEEE Spectrum",
+        "tags": ["Technology", "IEEE", "Spectrum"],
+        "image": "https://stotina.com/appData/news/sourceIcons/IEEE.png"
+    },
+    {
+        "category": "Gaming",
+        "name": "Indiegames.com",
+        "rssLink": "https://www.indiegames.com/atom.xml",
+        "enabled": false,
+        "featured": false,
+        "id": "Indiegames.com",
+        "tags": ["Indie", "Games"],
+        "image": "https://stotina.com/appData/news/sourceIcons/indiegames.jpg"
+    },
+    {
+        "category": "Entertainment",
+        "name": "InStyle",
+        "rssLink": "https://www.instyle.com/feeds/all/ins.rss",
+        "enabled": false,
+        "featured": false,
+        "id": "InStyle",
+        "tags": ["Style", "Entertainment"],
+        "image": "https://stotina.com/appData/news/sourceIcons/instyle.jpeg"
+    },
+    {
+        "category": "Gaming",
+        "name": "Kotaku",
+        "rssLink": "https://kotaku.com/rss",
+        "enabled": false,
+        "featured": false,
+        "id": "Kotaku",
+        "tags": ["Gaming"],
+        "image": "https://stotina.com/appData/news/sourceIcons/Kotaku.png"
+    },
+    {
+        "category": "Technology",
+        "name": "LifeHacker",
+        "rssLink": "https://lifehacker.com/rss",
+        "enabled": false,
+        "featured": false,
+        "id": "LifeHacker",
+        "tags": ["Technology", "LifeHacker"],
+        "image": "https://stotina.com/appData/news/sourceIcons/LifeHacker.png"
+    },
+    {
+        "category": "Technology",
+        "name": "Macworld",
+        "rssLink": "https://rss.macworld.com/macworld/feeds/main",
+        "enabled": false,
+        "featured": false,
+        "id": "Macworld",
+        "tags": ["Technology", "Macworld"],
+        "image": "https://stotina.com/appData/news/sourceIcons/macworld.png"
+    },
+    {
+        "category": "News",
+        "name": "Market Watch",
+        "rssLink": "https://www.marketwatch.com/rss/topstories/",
+        "enabled": false,
+        "featured": false,
+        "id": "Market Watch",
+        "tags": ["News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/marketwatch-logo.jpg"
+    },
+    {
+        "category": "Business",
+        "name": "McKinsey",
+        "rssLink": "https://www.mckinsey.com/insights/rss.aspx",
+        "enabled": false,
+        "featured": false,
+        "id": "McKinsey",
+        "tags": ["Business"],
+        "image": "https://stotina.com/appData/news/sourceIcons/McKinsey.png"
+    },
+    {
+        "category": "Politics",
+        "name": "MSNBC",
+        "rssLink": "https://www.msnbc.com/feeds/latest",
+        "enabled": false,
+        "featured": false,
+        "id": "MSNBC",
+        "tags": ["News", "Politcs"],
+        "image": "https://stotina.com/appData/news/sourceIcons/MSNBC.png"
+    },
+    {
+        "category": "Gaming",
+        "name": "My Nintendo News",
+        "rssLink": "https://mynintendonews.com/feed",
+        "enabled": false,
+        "featured": false,
+        "id": "My Nintendo News",
+        "tags": ["Games", "News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/my_nintendo.jpg"
+    },
+    {
+        "category": "News",
+        "name": "New York Post",
+        "rssLink": "https://nypost.com/feed/",
+        "enabled": false,
+        "featured": false,
+        "id": "New York Post",
+        "tags": ["News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/New York Post.png"
+    },
+    {
+        "category": "Sport",
+        "name": "New York Times - Sports",
+        "rssLink": "https://feeds1.nytimes.com/nyt/rss/Sports",
+        "enabled": false,
+        "featured": false,
+        "id": "New York Times - Sports",
+        "tags": ["Sport"],
+        "image": "https://stotina.com/appData/news/sourceIcons/NYT.png"
+    },
+    {
+        "category": "Technology",
+        "name": "New York Times - Technology",
+        "rssLink": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+        "enabled": false,
+        "featured": false,
+        "id": "New York Times - Technology",
+        "tags": ["Technology", "NYT"],
+        "image": "https://stotina.com/appData/news/sourceIcons/NYT.png"
+    },
+    {
+        "category": "News",
+        "name": "New Yorker",
+        "rssLink": "https://www.newyorker.com/services/rss/feeds/everything.xml",
+        "enabled": false,
+        "featured": false,
+        "id": "New Yorker",
+        "tags": ["News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/newyorker.png"
+    },
+    {
+        "category": "Entertainment",
+        "name": "New Yorker Humor",
+        "rssLink": "https://www.newyorker.com/feed/humor",
+        "enabled": false,
+        "featured": false,
+        "id": "New Yorker Humor",
+        "tags": ["Humor", "Entertainment"],
+        "image": "https://stotina.com/appData/news/sourceIcons/newyorker.png"
+    },
+    {
+        "category": "Entertainment",
+        "name": "NPR Arts & Culture",
+        "rssLink": "https://www.npr.org/rss/rss.php?id=1008",
+        "enabled": false,
+        "featured": false,
+        "id": "NPR Arts & Culture",
+        "tags": ["Arts", "Culture", "Entertainment"],
+        "image": "https://stotina.com/appData/news/sourceIcons/npr_generic_image_300.jpg"
+    },
+    {
+        "category": "Education",
+        "name": "NPR Education",
+        "rssLink": "https://www.npr.org/rss/rss.php?id=1013",
+        "enabled": false,
+        "featured": false,
+        "id": "NPR Education",
+        "tags": ["NPR", "Education"],
+        "image": "https://stotina.com/appData/news/sourceIcons/npr_generic_image_300.jpg"
+    },
+    {
+        "category": "Entertainment",
+        "name": "NPR Movies",
+        "rssLink": "https://www.npr.org/rss/rss.php?id=1045",
+        "enabled": false,
+        "featured": false,
+        "id": "NPR Movies",
+        "tags": ["Movies"],
+        "image": "https://stotina.com/appData/news/sourceIcons/npr_generic_image_300.jpg"
+    },
+    {
+        "category": "News",
+        "name": "NPR News",
+        "rssLink": "https://www.npr.org/rss/rss.php?id=1001",
+        "enabled": false,
+        "featured": false,
+        "id": "NPR News",
+        "tags": ["News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/npr_generic_image_300.jpg"
+    },
+    {
+        "category": "Technology",
+        "name": "NPR Technology",
+        "rssLink": "https://www.npr.org/rss/rss.php?id=1019",
+        "enabled": false,
+        "featured": false,
+        "id": "NPR Technology",
+        "tags": ["Technology", "NPR"],
+        "image": "https://stotina.com/appData/news/sourceIcons/npr_generic_image_300.jpg"
+    },
+    {
+        "category": "Sport",
+        "name": "Operation Sports",
+        "rssLink": "https://www.operationsports.com/rss",
+        "enabled": false,
+        "featured": false,
+        "id": "Operation Sports",
+        "tags": ["Sports"],
+        "image": "https://stotina.com/appData/news/sourceIcons/operationsports.jpg"
+    },
+    {
+        "category": "Technology",
+        "name": "PC World Magazine",
+        "rssLink": "https://feeds.pcworld.com/pcworld/latestnews",
+        "enabled": false,
+        "featured": false,
+        "id": "PC World Magazine",
+        "tags": ["Technology", "PC World", "Magazine"],
+        "image": "https://stotina.com/appData/news/sourceIcons/pcworld.png"
+    },
+    {
+        "category": "Gaming",
+        "name": "Polygon",
+        "rssLink": "https://www.polygon.com/rss/index.xml",
+        "enabled": false,
+        "featured": false,
+        "id": "Polygon",
+        "tags": ["Gaming"],
+        "image": "https://stotina.com/appData/news/sourceIcons/polygon.png"
+    },
+    {
+        "category": "Gaming",
+        "name": "Pushsquare",
+        "rssLink": "https://www.pushsquare.com/feeds/latest",
+        "enabled": false,
+        "featured": false,
+        "id": "Pushsquare",
+        "tags": ["Games"],
+        "image": "https://stotina.com/appData/news/sourceIcons/pushsquare.png"
+    },
+    {
+        "category": "Entertainment",
+        "name": "Reuters Entertainment",
+        "rssLink": "http://feeds.reuters.com/reuters/entertainment",
+        "enabled": false,
+        "featured": false,
+        "id": "Reuters Entertainment",
+        "tags": ["Fun", "Entertainment"],
+        "image": "https://stotina.com/appData/news/sourceIcons/reuters.png"
+    },
+    {
+        "category": "Politics",
+        "name": "Reuters Politcs",
+        "rssLink": "http://feeds.reuters.com/Reuters/PoliticsNews",
+        "enabled": false,
+        "featured": false,
+        "id": "Reuters Politcs",
+        "tags": ["News", "Politcs"],
+        "image": "https://stotina.com/appData/news/sourceIcons/reuters.png"
+    },
+    {
+        "category": "News",
+        "name": "Reuters World",
+        "rssLink": "http://feeds.reuters.com/Reuters/WorldNews",
+        "enabled": false,
+        "featured": false,
+        "id": "Reuters World",
+        "tags": ["Reuters"],
+        "image": "https://stotina.com/appData/news/sourceIcons/reuters.png"
+    },
+    {
+        "category": "Gaming",
+        "name": "Rock Paper Shotgun",
+        "rssLink": "https://www.rockpapershotgun.com/feed",
+        "enabled": false,
+        "featured": false,
+        "id": "Rock Paper Shotgun",
+        "tags": ["Games"],
+        "image": "https://stotina.com/appData/news/sourceIcons/rockpapershotgun.png"
+    },
+    {
+        "category": "News",
+        "name": "Salon.com",
+        "rssLink": "https://www.salon.com/feed/",
+        "enabled": false,
+        "featured": false,
+        "id": "Salon.com",
+        "tags": ["News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/Salon.png"
+    },
+    {
+        "category": "Sport",
+        "name": "TalkSport",
+        "rssLink": "https://talksport.com/rss/sports-news/all/feed",
+        "enabled": false,
+        "featured": false,
+        "id": "TalkSport",
+        "tags": ["Sport"],
+        "image": "https://stotina.com/appData/news/sourceIcons/talksport.jpg"
+    },
+    {
+        "category": "Technology",
+        "name": "Technology Review",
+        "rssLink": "https://www.technologyreview.com/topnews.rss",
+        "enabled": false,
+        "featured": false,
+        "id": "Technology Review",
+        "tags": ["Technology", "Review"],
+        "image": "https://stotina.com/appData/news/sourceIcons/technologyreview.png"
+    },
+    {
+        "category": "News",
+        "name": "The Guardian",
+        "rssLink": "https://www.theguardian.com/uk/rss",
+        "enabled": false,
+        "featured": false,
+        "id": "The Guardian",
+        "tags": ["News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/guardian.png"
+    },
+    {
+        "category": "Politics",
+        "name": "The Nation",
+        "rssLink": "https://www.thenation.com/feed/?post_type=article",
+        "enabled": false,
+        "featured": false,
+        "id": "The Nation",
+        "tags": ["News", "Politcs"],
+        "image": "https://stotina.com/appData/news/sourceIcons/thenation.png"
+    },
+    {
+        "category": "News",
+        "name": "Time Magazine",
+        "rssLink": "https://time.com/feed",
+        "enabled": false,
+        "featured": false,
+        "id": "Time Magazine",
+        "tags": ["News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/time.png"
+    },
+    {
+        "category": "Gaming",
+        "name": "Touch Arcade",
+        "rssLink": "https://toucharcade.com/feed/",
+        "enabled": false,
+        "featured": false,
+        "id": "Touch Arcade",
+        "tags": ["Gaming"],
+        "image": "https://stotina.com/appData/news/sourceIcons/toucharcade.png"
+    },
+    {
+        "category": "Education",
+        "name": "U.S. Department of Education",
+        "rssLink": "https://www.ed.gov/feed",
+        "enabled": false,
+        "featured": false,
+        "id": "U.S. Department of Education",
+        "tags": ["US", "Department", "Education"],
+        "image": "https://stotina.com/appData/news/sourceIcons/usa_ed_gov.jpg"
+    },
+    {
+        "category": "News",
+        "name": "USA Today",
+        "rssLink": "https://rssfeeds.usatoday.com/usatoday-NewsTopStories",
+        "enabled": false,
+        "featured": false,
+        "id": "USA Today",
+        "tags": ["USA", "News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/USA Today.png"
+    },
+    {
+        "category": "Politics",
+        "name": "USA Today - Politics",
+        "rssLink": "https://rssfeeds.usatoday.com/TP-OnPolitics",
+        "enabled": false,
+        "featured": false,
+        "id": "USA Today - Politics",
+        "tags": ["USA", "Politcs"],
+        "image": "https://stotina.com/appData/news/sourceIcons/USA Today.png"
+    },
+    {
+        "category": "Business",
+        "name": "Venture Beat",
+        "rssLink": "https://venturebeat.com/feed",
+        "enabled": false,
+        "featured": false,
+        "id": "Venture Beat",
+        "tags": ["Venture", "Business"],
+        "image": "https://stotina.com/appData/news/sourceIcons/Venture Beat.png"
+    },
+    {
+        "category": "Gaming",
+        "name": "Videogamer.com",
+        "rssLink": "https://feeds.videogamer.com/rss/allupdates.xml",
+        "enabled": false,
+        "featured": false,
+        "id": "Videogamer.com",
+        "tags": ["Games"],
+        "image": "https://stotina.com/appData/news/sourceIcons/videogamer.png"
+    },
+    {
+        "category": "News",
+        "name": "Vox",
+        "rssLink": "https://www.vox.com/rss/index.xml",
+        "enabled": false,
+        "featured": false,
+        "id": "Vox",
+        "tags": ["News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/vox.jpg"
+    },
+    {
+        "category": "Business",
+        "name": "Wallstreet Journal - Markets",
+        "rssLink": "https://feeds.a.dj.com/rss/RSSMarketsMain.xml",
+        "enabled": false,
+        "featured": false,
+        "id": "Wallstreet Journal - Markets",
+        "tags": ["Wallstreet Journal", "Markets", "News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/Wallstreet Journal.png"
+    },
+    {
+        "category": "News",
+        "name": "Wallstreet Journal - World",
+        "rssLink": "https://feeds.a.dj.com/rss/RSSWorldNews.xml",
+        "enabled": false,
+        "featured": false,
+        "id": "Wallstreet Journal - World",
+        "tags": ["News", "World"],
+        "image": "https://stotina.com/appData/news/sourceIcons/Wallstreet Journal.png"
+    },
+    {
+        "category": "Technology",
+        "name": "Wired",
+        "rssLink": "https://www.wired.com/feed",
+        "enabled": false,
+        "featured": false,
+        "id": "Wired",
+        "tags": ["Technology", "Wired"],
+        "image": "https://stotina.com/appData/news/sourceIcons/wired.jpeg"
+    },
+    {
+        "category": "Gaming",
+        "name": "Xbox.com",
+        "rssLink": "https://news.xbox.com/feed",
+        "enabled": false,
+        "featured": false,
+        "id": "Xbox.com",
+        "tags": ["Games", "News"],
+        "image": "https://stotina.com/appData/news/sourceIcons/xbox.png"
     }
 ]
