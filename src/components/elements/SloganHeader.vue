@@ -16,13 +16,13 @@
       <PhoneElement
         :style="phone1Style"
         id="appsPageHeaderPhone"
-        :imagePath="'/images/screenshots/idle.jpg'"
+        :imagePath="'/images/screenshots/news-light_2.jpg'"
         :width="'15rem'"
       ></PhoneElement>
       <PhoneElement
         :style="phone2Style"
         id="appsPageHeaderPhone2"
-        :imagePath="'/images/screenshots/idle.jpg'"
+        :imagePath="'/images/screenshots/news-dark_2.jpg'"
         :width="'18rem'"
       ></PhoneElement>
     </div>

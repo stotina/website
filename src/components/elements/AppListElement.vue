@@ -33,18 +33,11 @@ export default {
       apps: [
         {
           id: 1,
-          path: "",
-          name: "[work in progress...]",
-          icon: "",
-          screenImage: "",
+          path: "/apps/news",
+          name: "Stotina News",
+          icon: "/images/logo-news2.png",
+          screenImage: "/images/screenshots/news-dark_1.jpg",
         },
-        // {
-        //   id: 1,
-        //   path: "/apps/news",
-        //   name: "Stotina News",
-        //   icon: "/images/logo-news2.png",
-        //   screenImage: "/images/screenshots/news.png"
-        // }
       ],
     };
   },

@@ -56,7 +56,7 @@ export default {
     return {
       x: 0.1,
       showControls: false,
-      screenshot: "/images/screenshots/idle.jpg",
+      screenshot: "/images/screenshots/news-dark-animated.gif",
     };
   },
   computed: {},
