@@ -4,7 +4,9 @@
       <div class="row">
         <div class="col-lg-6">
           <IntroTextElement></IntroTextElement>
-          <InteractiveLogo style="max-width:200px; margin:auto; padding:1rem;"></InteractiveLogo>
+          <InteractiveLogo
+            style="max-width:200px; margin:auto; padding:1rem;"
+          ></InteractiveLogo>
         </div>
         <div class="col-lg-6">
           <SubscribeElement></SubscribeElement>
@@ -24,10 +26,9 @@ export default {
     return {};
   },
   props: {},
-  components: { IntroTextElement, InteractiveLogo, SubscribeElement }
+  components: { IntroTextElement, InteractiveLogo, SubscribeElement },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-</style>
+<style scoped></style>
