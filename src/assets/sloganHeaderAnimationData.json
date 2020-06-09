@@ -8,6 +8,10 @@
             "title": "STOTINA",
             "slogan": "Make the amazing simple."
         },
+        "/about": {
+            "title": "ABOUT",
+            "slogan": "Learn about Stotina"
+        },
         "/apps": {
             "title": "APPS",
             "slogan": "We aim for quality in all our applications"
@@ -17,17 +21,20 @@
         "positions": {
             "": [55, 45],
             "/": [55, 45],
+            "/about": [62, 60],
             "/apps": [70, 75]
         },
         "rotations": {
             "": [25, 30],
-            "/apps": [40, 50],
-            "/": [25, 30]
+            "/": [25, 30],
+            "/about": [33, 40],
+            "/apps": [40, 50]
         },
-        "backgroundLeft": {
-            "": true,
-            "/": true,
-            "/apps": false
+        "backgroundHorizontal": {
+            "": "left",
+            "/": "left",
+            "/about": "center",
+            "/apps": "right"
         }
     }
 }

@@ -20,6 +20,14 @@
         <li class="nav-item">
           <div
             class="nav-link theme-c-headerLinks theme-c-hover pointer"
+            v-on:click="navigate('/about')"
+          >
+            About
+          </div>
+        </li>
+        <li class="nav-item">
+          <div
+            class="nav-link theme-c-headerLinks theme-c-hover pointer"
             v-on:click="navigate('/apps')"
           >
             Applications

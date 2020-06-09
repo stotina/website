@@ -56,7 +56,7 @@ export default {
     phone2PositionLeftPercent: { type: Number, default: 75 },
     phone2PositionTopPercent: { type: Number, default: 5 },
 
-    backgroundLeft: { type: Boolean, default: true },
+    backgroundHorizontal: { type: Boolean, default: String },
     background: {
       type: String,
       default: "/images/john-adams-1xIN4FMR78A-unsplash.jpg",
@@ -77,8 +77,8 @@ export default {
     backgroundStyle() {
       return [
         `background-image:url('${this.background}')`,
-        `background-size: ${this.backgroundWidth} 100%`,
-        `background-position: top ${this.backgroundLeft ? "left" : "right"}`,
+        `background-size: 200% 100%`,
+        `background-position: top ${this.backgroundHorizontal};`,
       ].join(";");
     },
     phone1Style() {
