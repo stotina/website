@@ -11,12 +11,12 @@
         :width="this.phoneWidth + 'px'"
         :distanceBetweenPhones="(150 - 300 * this.x).toFixed(1) + 'px'"
         :y1="-10 + 20 * this.x"
-        :x1="20"
-        :s1="0.9 - 0.1 * this.x"
+        :x1="10"
+        :s1="0.9"
         :frameColor1="'#444444'"
         :y2="-10 + 20 * this.x"
-        :x2="20"
-        :s2="0.8 + 0.1 * this.x"
+        :x2="10"
+        :s2="0.8"
         :frameColor2="'#aaaaaa'"
       ></DoublePhone3DElement>
       <div v-bind:style="`width: ${this.phoneWidth}px`">

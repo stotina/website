@@ -78,13 +78,13 @@ export default {
     getRotationsCSS_1() {
       return (
         `transform: scale(${this.s1}) skewY(${this.y1}deg);` +
-        `box-shadow: ${-this.y1}px ${1 * -this.x1}px 5px 0px rgba(0,0,0,0.75);`
+        `box-shadow: ${3 * -this.y1}px ${-this.x1}px 5px 0px rgba(0,0,0,0.75);`
       );
     },
     getRotationsCSS_2() {
       return (
         `transform: scale(${this.s2}) skewY(${this.y2}deg);` +
-        `box-shadow: ${-this.y2}px ${1 * -this.x2}px 5px 0px rgba(0,0,0,0.75);`
+        `box-shadow: ${3 * -this.y2}px ${-this.x2}px 5px 0px rgba(0,0,0,0.75);`
       );
     },
     getDistanceCSS_1() {
