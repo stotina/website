@@ -12,10 +12,6 @@
         <input type="range" min="-180" max="180" step="0.1" v-model="y1" /> -
         <input type="number" min="-180" max="180" step="0.1" v-model="y1" />
         <br />
-        <span>Z:</span>
-        <input type="range" min="-180" max="180" step="0.1" v-model="z1" /> -
-        <input type="number" min="-180" max="180" step="0.1" v-model="z1" />
-        <br />
         <span>S:</span>
         <input type="range" min="0" max="3" step="0.01" v-model="s1" /> -
         <input type="number" min="0" max="3" step="0.01" v-model="s1" />
@@ -29,10 +25,6 @@
         <span>Y:</span>
         <input type="range" min="-180" max="180" step="0.1" v-model="y2" /> -
         <input type="number" min="-180" max="180" step="0.1" v-model="y2" />
-        <br />
-        <span>Z:</span>
-        <input type="range" min="-180" max="180" step="0.1" v-model="z2" /> -
-        <input type="number" min="-180" max="180" step="0.1" v-model="z2" />
         <br />
         <span>S:</span>
         <input type="range" min="0" max="3" step="0.01" v-model="s2" /> -
@@ -85,16 +77,14 @@ export default {
   methods: {
     getRotationsCSS_1() {
       return (
-        `transform: scale(${this.s1}) rotateX(${this.x1}deg) rotateY(${this.y1}deg) rotateZ(${this.z1}deg);` +
-        `box-shadow: ${1 * -this.y1}px ${1 *
-          -this.x1}px 5px 0px rgba(0,0,0,0.75);`
+        `transform: scale(${this.s1}) skewY(${this.y1}deg);` +
+        `box-shadow: ${-this.y1}px ${1 * -this.x1}px 5px 0px rgba(0,0,0,0.75);`
       );
     },
     getRotationsCSS_2() {
       return (
-        `transform: scale(${this.s2}) rotateX(${this.x2}deg) rotateY(${this.y2}deg) rotateZ(${this.z2}deg);` +
-        `box-shadow: ${1 * -this.y2}px ${1 *
-          -this.x2}px 5px 0px rgba(0,0,0,0.75);`
+        `transform: scale(${this.s2}) skewY(${this.y2}deg);` +
+        `box-shadow: ${-this.y2}px ${1 * -this.x2}px 5px 0px rgba(0,0,0,0.75);`
       );
     },
     getDistanceCSS_1() {
@@ -130,10 +120,6 @@ export default {
       type: Number,
       default: -20,
     },
-    z1: {
-      type: Number,
-      default: 0,
-    },
     s1: {
       type: Number,
       default: 1.1,
@@ -149,10 +135,6 @@ export default {
     y2: {
       type: Number,
       default: -20,
-    },
-    z2: {
-      type: Number,
-      default: 0,
     },
     s2: {
       type: Number,
@@ -175,7 +157,6 @@ export default {
   top: 0;
   left: 0;
   background-color: rgba(63, 7, 10, 0.521);
-  z-index: 9999;
 }
 .controls {
   padding: 1rem;
@@ -189,8 +170,6 @@ export default {
 .phoneWrapper {
   width: 20vw;
   height: 40vw;
-  perspective: 500px;
-  transform-style: preserve-3d;
 }
 
 .phone1 {

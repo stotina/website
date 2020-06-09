@@ -3,25 +3,30 @@
     <div class="phones">
       <DoublePhone3DElement
         class="phonesElement"
+        v-bind:style="
+          `width: ${this.phoneWidth}px; height: ${this.phoneWidth * 2 + 50}px;`
+        "
         :showControls="this.showControls"
         :imagePath="this.screenshot"
-        :width="'300px'"
+        :width="this.phoneWidth + 'px'"
         :distanceBetweenPhones="(150 - 300 * this.x).toFixed(1) + 'px'"
-        :y1="-30 + 60 * this.x"
+        :y1="-10 + 20 * this.x"
         :x1="20"
-        :s1="1.1"
+        :s1="0.9 - 0.1 * this.x"
         :frameColor1="'#444444'"
-        :y2="-30 + 60 * this.x"
+        :y2="-10 + 20 * this.x"
         :x2="20"
-        :s2="0.95"
+        :s2="0.8 + 0.1 * this.x"
         :frameColor2="'#aaaaaa'"
       ></DoublePhone3DElement>
-      <input type="range" name="x" v-model="x" min="0" max="1" step="0.001" />
-      <div>
-        <label for="showControlsId">
-          <input type="checkbox" v-model="showControls" id="showControlsId" />
-          - show controls (debug)
-        </label>
+      <div v-bind:style="`width: ${this.phoneWidth}px`">
+        <input type="range" name="x" v-model="x" min="0" max="1" step="0.001" />
+        <!-- <div>
+          <label for="showControlsId">
+            <input type="checkbox" v-model="showControls" id="showControlsId" />
+            - show controls (debug)
+          </label>
+        </div> -->
       </div>
     </div>
 
@@ -43,6 +48,15 @@
       </p>
 
       <img src="/appData/news/logo-news2.png" alt="News App Logo" />
+
+      <div class="centerText">
+        <a href="/appData/news/privacy.html" target="_blank">Privacy Policy</a>
+      </div>
+      <div class="centerText">
+        <a href="/appData/news/terms.html" target="_blank"
+          >Terms and Conditions</a
+        >
+      </div>
     </div>
   </div>
 </template>
@@ -55,13 +69,31 @@ export default {
   data() {
     return {
       x: 0.1,
+      w: document.body.clientWidth,
       showControls: false,
       screenshot: "/images/screenshots/news-dark-animated.gif",
     };
   },
-  computed: {},
-  created() {},
-  methods: {},
+  computed: {
+    phoneWidth() {
+      return this.w > 700 ? 400 : 200;
+    },
+    phonesStyle() {
+      return `padding: ${this.phoneWidth / 10}px 0;`;
+    },
+  },
+  created() {
+    document.addEventListener("mousemove", this.onMouseUpdate, false);
+    setInterval(this.updateWidth, 300);
+  },
+  methods: {
+    updateWidth() {
+      this.w = document.body.clientWidth;
+    },
+    onMouseUpdate(e) {
+      this.x = e.pageX / this.w;
+    },
+  },
   components: {
     DoublePhone3DElement,
   },
@@ -91,6 +123,9 @@ export default {
   text-align: center;
   margin: 3rem 0;
 }
+.centerText {
+  text-align: center;
+}
 
 .content img {
   display: block;
@@ -99,18 +134,11 @@ export default {
   max-width: 70%;
 }
 
-.phones {
-  padding: 5em 0;
-  min-height: 800px;
-}
 .phones > * {
   display: block;
-  width: 300px;
+  max-width: 90%;
   margin: auto;
   text-align: center;
-}
-.phonesElement {
-  min-height: 700px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -118,7 +146,10 @@ export default {
     display: block;
   }
   .appPage > * {
-    width: 99vw;
+    width: 100%;
+  }
+  .content {
+    padding: 2rem;
   }
 }
 </style>
