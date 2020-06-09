@@ -57,11 +57,11 @@ export default {
     backgroundLeft: { type: Boolean, default: true },
     background: {
       type: String,
-      default: "/images/matt-cannon-0r6gDVlIr4A-unsplash.jpg",
+      default: "/images/john-adams-1xIN4FMR78A-unsplash.jpg",
     },
     backgroundAttribution: {
       type: String,
-      default: "Photo by Matt Cannon on Unsplash",
+      default: "Photo by John Adams on Unsplash",
     },
     backgroundWidth: {
       type: String,
@@ -75,7 +75,7 @@ export default {
     backgroundStyle() {
       return [
         `background-image:url('${this.background}')`,
-        `background-size: ${this.backgroundWidth} auto`,
+        `background-size: ${this.backgroundWidth} 100%`,
         `background-position: top ${this.backgroundLeft ? "left" : "right"}`,
       ].join(";");
     },
