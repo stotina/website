@@ -16,12 +16,14 @@
       <PhoneElement
         :style="phone1Style"
         id="appsPageHeaderPhone"
+        :borderColor="'#555555'"
         :imagePath="'/images/screenshots/news-light_2.jpg'"
         :width="'15rem'"
       ></PhoneElement>
       <PhoneElement
         :style="phone2Style"
         id="appsPageHeaderPhone2"
+        :borderColor="'#555555'"
         :imagePath="'/images/screenshots/news-dark_2.jpg'"
         :width="'18rem'"
       ></PhoneElement>

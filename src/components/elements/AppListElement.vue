@@ -36,7 +36,7 @@ export default {
           path: "/apps/news",
           name: "Stotina News",
           icon: "/images/logo-news2.png",
-          screenImage: "/images/screenshots/news-dark_1.jpg",
+          screenImage: "/images/screenshots/news-dark_2.jpg",
         },
       ],
     };

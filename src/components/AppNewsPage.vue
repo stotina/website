@@ -121,7 +121,7 @@ export default {
 .contentTitle {
   font-size: 3rem;
   text-align: center;
-  margin: 3rem 0;
+  margin-bottom: 3rem;
 }
 .centerText {
   text-align: center;
