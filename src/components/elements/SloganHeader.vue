@@ -1,12 +1,12 @@
 <template>
   <div>
     <div
-      id="appsPageHeader"
+      id="sloganHeader"
       :title="this.backgroundAttribution"
       :style="this.backgroundStyle"
     >
       <div
-        id="appsPageHeaderContent"
+        id="sloganHeaderContent"
         class="theme-bg-nav"
         :style="this.contentStyle"
       >
@@ -15,17 +15,17 @@
       </div>
       <PhoneElement
         :style="phone1Style"
-        id="appsPageHeaderPhone"
+        id="sloganHeaderPhone"
         :borderColor="'#555555'"
         :imagePath="'/images/screenshots/news-light_2.jpg'"
-        :width="'15rem'"
+        :width="'17rem'"
       ></PhoneElement>
       <PhoneElement
         :style="phone2Style"
-        id="appsPageHeaderPhone2"
+        id="sloganHeaderPhone2"
         :borderColor="'#555555'"
         :imagePath="'/images/screenshots/news-dark_2.jpg'"
-        :width="'18rem'"
+        :width="'17rem'"
       ></PhoneElement>
     </div>
   </div>
@@ -51,10 +51,10 @@ export default {
     contentLeft: { type: Boolean, default: true },
     phone1Rotate: { type: Number, default: 40 },
     phone1PositionLeftPercent: { type: Number, default: 65 },
-    phone1PositionTopPercent: { type: Number, default: 5 },
+    phone1PositionTopPercent: { type: Number, default: -20 },
     phone2Rotate: { type: Number, default: 50 },
     phone2PositionLeftPercent: { type: Number, default: 75 },
-    phone2PositionTopPercent: { type: Number, default: 5 },
+    phone2PositionTopPercent: { type: Number, default: -120 },
 
     backgroundHorizontal: { type: Boolean, default: String },
     background: {
@@ -85,7 +85,7 @@ export default {
       return (
         [
           `transform: rotate(${this.phone1Rotate}deg)`,
-          `position: absolute`,
+          `position: relative`,
           `left: ${this.phone1PositionLeftPercent}%`,
           `top: ${this.phone1PositionTopPercent}%`,
         ].join("; ") + ";"
@@ -95,7 +95,7 @@ export default {
       return (
         [
           `transform: rotate(${this.phone2Rotate}deg)`,
-          `position: absolute`,
+          `position: relative`,
           `left: ${this.phone2PositionLeftPercent}%`,
           `top: ${this.phone2PositionTopPercent}%`,
         ].join("; ") + ";"
@@ -113,14 +113,16 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#appsPageHeader {
+#sloganHeader {
+  width: 100% !important;
+  overflow: hidden !important;
   height: 500px;
   max-height: 70vw;
   overflow: hidden;
   transition: 1s ease;
 }
 
-#appsPageHeaderContent {
+#sloganHeaderContent {
   display: inline-block;
   max-width: calc(100vw - 100px);
   z-index: 2;
@@ -129,26 +131,26 @@ export default {
   font-weight: bold;
 }
 
-#appsPageHeaderContent .title {
+#sloganHeaderContent .title {
   font-weight: bold;
   font-size: 2.4rem;
 }
-#appsPageHeaderContent .slogan {
+#sloganHeaderContent .slogan {
   font-weight: bold;
   font-size: 1.2rem;
 }
 
-#appsPageHeaderPhone {
+#sloganHeaderPhone {
   transition: 1s ease-in-out;
   z-index: 1;
 }
-#appsPageHeaderPhone2 {
+#sloganHeaderPhone2 {
   transition: 1s ease-in-out;
   z-index: 1;
 }
 @media only screen and (max-width: 700px) {
-  #appsPageHeaderPhone,
-  #appsPageHeaderPhone2 {
+  #sloganHeaderPhone,
+  #sloganHeaderPhone2 {
     display: none;
   }
 }
