@@ -26,19 +26,13 @@
 </template>
 
 <script>
+import apps from "../../assets/apps.json";
+
 export default {
   name: "AppListElement",
   data() {
     return {
-      apps: [
-        {
-          id: 1,
-          path: "/apps/news",
-          name: "Stotina News",
-          icon: "/images/logo-news2.png",
-          screenImage: "/images/screenshots/news-dark_2.jpg",
-        },
-      ],
+      apps: apps,
     };
   },
   props: {},

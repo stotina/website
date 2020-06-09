@@ -13,10 +13,13 @@ export default {
     return {};
   },
   props: {},
-  components: {}
+  components: {},
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.about {
+  padding: 3rem;
+}
 </style>

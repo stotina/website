@@ -1,12 +1,13 @@
 <template>
   <div class="footer theme-bg-nav row">
-    <div class="footer-group col-md-6 col-lg-4" style="text-align:center;">
+    <div class="footer-group col-md-4 col-lg-2" style="text-align:center;">
       <div>
         <img src="/images/logo.png" alt />
       </div>
       <div>Copyright © 2020 Stotina</div>
     </div>
-    <div class="footer-group col-md-3 col-lg-2">
+
+    <div class="footer-group col-md-4 col-lg-2">
       <div class="footer-group-title">Links</div>
       <div
         class="footer-link theme-c-footerLinks theme-c-hover pointer"
@@ -27,14 +28,9 @@
         Privacy
       </div>
     </div>
-    <div class="footer-group col-md-3 col-lg-2">
+
+    <div class="footer-group col-md-4 col-lg-2">
       <div class="footer-group-title">Stotina</div>
-      <div
-        class="footer-link theme-c-footerLinks theme-c-hover pointer"
-        v-on:click="navigate('/contact')"
-      >
-        Contact Us
-      </div>
       <div
         class="footer-link theme-c-footerLinks theme-c-hover pointer"
         v-on:click="navigate('/about')"
@@ -48,14 +44,30 @@
         News Blog
       </div>
     </div>
+
+    <div class="footer-group col-md-12 col-lg-6">
+      <div class="footer-group-title">Apps</div>
+      <div style="display:flex; flex-wrap:wrap;">
+        <div
+          v-for="app in this.apps"
+          :key="app.id"
+          class="footer-link theme-c-footerLinks theme-c-hover pointer col-md-4 center"
+          v-on:click="navigate(app.path)"
+        >
+          {{ app.name }}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import apps from "../../assets/apps.json";
+
 export default {
   name: "FooterElement",
   data() {
-    return {};
+    return { apps: apps };
   },
   props: {},
   computed: {
