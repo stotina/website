@@ -35,6 +35,9 @@
         Stotina
         <span class="theme-c-important titleFont">News</span>
       </div>
+      <a href="https://play.google.com/store/apps/details?id=io.stotina.news">
+        <img src="/images/get_on_google_play.png" alt="Get App on Google Play"
+      /></a>
       <p>
         The Stotina News app will generate a newsfeed by gathering data from
         leading news agencies and providers. It displays recent local and
