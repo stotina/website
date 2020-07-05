@@ -27,8 +27,8 @@ export default {
         currency: "USD",
         editable: true,
         clientIdentifier: "bf79160e04f17de53093c87b5d4976d5",
-        buttonId: "1234567890",
-        buttonData: `{ "foo": "bar" }`,
+        buttonId: "stotina-donation-button",
+        buttonData: `{ "reason": "donation" }`,
         type: "tip",
         onPayment: function(arg) {
           console.log("onPayment", arg);
