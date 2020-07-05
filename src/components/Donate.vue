@@ -26,7 +26,7 @@ export default {
         amount: "1",
         currency: "USD",
         editable: true,
-        clientIdentifier: "stotina",
+        clientIdentifier: "bf79160e04f17de53093c87b5d4976d5",
         buttonId: "1234567890",
         buttonData: `{ "foo": "bar" }`,
         type: "tip",
