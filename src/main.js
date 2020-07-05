@@ -12,6 +12,7 @@ import BlogPage from "./components/BlogPage.vue";
 import FaqPage from "./components/FaqPage.vue";
 import PrivacyPage from "./components/PrivacyPage.vue";
 import TermsPage from "./components/TermsPage.vue";
+import Donate from "./components/Donate.vue";
 
 require("jquery");
 require("bootstrap");
@@ -35,6 +36,7 @@ const router = new VueRouter({
         { path: "/faq", component: FaqPage },
         { path: "/privacy", component: PrivacyPage },
         { path: "/terms", component: TermsPage },
+        { path: "/donate", component: Donate }
     ],
 });
 
