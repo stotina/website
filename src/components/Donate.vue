@@ -26,8 +26,8 @@ export default {
         amount: "1",
         currency: "USD",
         editable: true,
-        clientIdentifier: "stotina.com",
-        buttonId: "",
+        clientIdentifier: "stotina",
+        buttonId: "1234567890",
         buttonData: `{ "foo": "bar" }`,
         type: "tip",
         onPayment: function(arg) {
