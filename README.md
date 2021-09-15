@@ -1,4 +1,4 @@
-# STOTINA.COM Website
+# STOTINA.COM Website (backup)
 
 Whatever is in the ```/docs``` folder is the currently published static website.
 
