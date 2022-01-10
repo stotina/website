@@ -92,7 +92,7 @@
       <h2>Cookies and Web Beacons</h2>
 
       <p>
-        Like any other website, Stotina uses 'cookies'. These cookies are used
+        Like any other website, Stotina may use 'cookies'. These cookies are used
         to store information including visitors' preferences, and the pages on
         the website that the visitor accessed or visited. The information is
         used to optimize the users' experience by customizing our web page

@@ -45,7 +45,7 @@
       <h3><strong>Cookies</strong></h3>
 
       <p>
-        We employ the use of cookies. By accessing Stotina, you agreed to use
+        We may employ the use of cookies. By accessing Stotina, you agreed to use
         cookies in agreement with the Stotina.com's Privacy Policy.
       </p>
 
