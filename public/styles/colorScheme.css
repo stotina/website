@@ -1,0 +1,98 @@
+/** COLOR sc */
+
+:root {
+    --bg-color-appBase: #202020;
+    --bg-color-main: #2e2e2e;
+    --bg-color-nav: #202020;
+    --bg-color-mainFont: #ffffff;
+    --font-mainFont: #ffffff;
+    --font-footerLinks: #f0b90b;
+    --font-headerLinks: #f0b90b;
+    --font-important: #f0b90b;
+    --font-passiveFont: #888888;
+    --hover-font-mainFont: #ffffff99;
+    --hover-font-footerLinks: #f0b90b99;
+    --hover-font-headerLinks: #f0b90b99;
+    --hover-font-important: #f0b90b99;
+    --hover-font-passiveFont: #88888899;
+    --border-color-blog: #ffffff55;
+    --border-color-mainFont: #ffffff;
+    --border-color-phones: black;
+}
+
+
+/** BACKGROUND **/
+
+.theme-bg-appBase {
+    background-color: var(--bg-color-appBase) !important;
+}
+
+.theme-bg-main {
+    background-color: var(--bg-color-main) !important;
+}
+
+.theme-bg-nav {
+    background-color: var(--bg-color-nav) !important;
+}
+
+.theme-bg-mainFont {
+    background-color: var(--bg-color-mainFont) !important;
+}
+
+
+/** TEXT **/
+
+.theme-c-mainFont {
+    color: var(--font-mainFont) !important;
+}
+
+.theme-c-footerLinks {
+    color: var(--font-footerLinks) !important;
+}
+
+.theme-c-headerLinks {
+    color: var(--font-headerLinks) !important;
+}
+
+.theme-c-important {
+    color: var(--font-important) !important;
+}
+
+.theme-c-passiveFont {
+    color: var(--font-passiveFont) !important;
+}
+
+.theme-c-mainFont.theme-c-hover:hover {
+    color: var(--hover-font-mainFont) !important;
+}
+
+.theme-c-footerLinks.theme-c-hover:hover {
+    color: var(--hover-font-footerLinks) !important;
+}
+
+.theme-c-headerLinks.theme-c-hover:hover {
+    color: var(--hover-font-headerLinks) !important;
+}
+
+.theme-c-important.theme-c-hover:hover {
+    color: var(--hover-font-important) !important;
+}
+
+.theme-c-passiveFont.theme-c-hover:hover {
+    color: var(--hover-font-passiveFont) !important;
+}
+
+
+/** BORDERS **/
+
+.theme-br-blog {
+    border-color: var(--border-color-blog) !important;
+}
+
+.theme-br-mainFont {
+    border-color: var(--border-color-mainFont) !important;
+}
+
+.theme-br-phones {
+    border-color: var(--border-color-phones) !important;
+}
