@@ -88,7 +88,8 @@ export default {
 .appPhoneBox .appPhoneFrame {
   width: 200px;
   height: 400px;
-  background-size: 100% 100%;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
   border-width: 10px;
   border-top-width: 30px;
   border-style: solid;

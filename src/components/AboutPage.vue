@@ -7,10 +7,12 @@
             style="max-width:200px; margin:auto; padding:1rem;"
           ></InteractiveLogo>
 
-          <h5>About Stotina:</h5>
-          <div>
-            Stotina is a Software Development company based in Bulgaria. The
-            company focuses on smartphone applications for Android and iOS.
+          <div class="text-center">
+            <h5>About Stotina:</h5>
+            <div>
+              Stotina is a Software Consultancy & Development company based in
+              Bulgaria.
+            </div>
           </div>
           <br />
         </div>
@@ -37,7 +39,7 @@
             </li>
             <li class="list-group-item">
               <i class="fab fa-twitter"></i> :
-              <a href="https://twitter.com/stotina1">Stotina1</a>
+              <a href="https://twitter.com/BitcoinSofia">@BitcoinSofia</a>
             </li>
           </ul>
           <br />

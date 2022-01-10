@@ -1,7 +1,7 @@
 [{
     "id": 1,
-    "path": "/apps/news",
-    "name": "Stotina News",
-    "icon": "/images/logo-news2.png",
-    "screenImage": "/images/screenshots/news-dark_2.jpg"
+    "path": "/",
+    "name": "No Applications yet",
+    "icon": "/images/logo.png",
+    "screenImage": "/images/logo.png"
 }]

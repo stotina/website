@@ -2,7 +2,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import App from "./App.vue";
 
-import AppNewsPage from "./components/AppNewsPage.vue";
 import AppsPage from "./components/AppsPage.vue";
 import HomePage from "./components/HomePage.vue";
 
@@ -28,7 +27,6 @@ const router = new VueRouter({
     routes: [
         { path: "/", component: HomePage },
         { path: "/apps", component: AppsPage },
-        { path: "/apps/news", component: AppNewsPage },
 
         { path: "/about", component: AboutPage },
         { path: "/article", component: ArticlePage },

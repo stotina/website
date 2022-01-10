@@ -1,10 +1,16 @@
 <template>
-  <div class="introWrapper">
+  <div class="introWrapper text-center">
     <div class="intro">
-      <div class="title">Simplicity is Key</div>
+      <div class="title">BITCOIN FOR BUSINESS</div>
       <div class="description">
-        <div>Amazing technology is only trully amazing when it is simple to use. The world moves faster than ever. Simplicity is the key to keeping up with it.</div>
+        <div>Helping your business get an edge.<br>
+          Focused on practicality, not on trends.<br>
+          Do more with less.
+        </div>
       </div>
+      <button class="call-to-action" v-on:click="onLetsTalkClick()">
+        Lets Talk!
+      </button>
     </div>
   </div>
 </template>
@@ -16,7 +22,12 @@ export default {
     return {};
   },
   props: {},
-  components: {}
+  components: {},
+  methods: {
+    onLetsTalkClick() {
+      this.$router.push("/about");
+    },
+  },
 };
 </script>
 
@@ -31,10 +42,30 @@ export default {
   width: 80%;
 }
 .title {
-  font-size: 3rem;
+  font-size: 2rem;
   margin: 1rem 0;
 }
 .description {
   font-size: 1.1rem;
+}
+
+.call-to-action {
+  display: inline-block;
+  margin: auto;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  background: #2a9fd6;
+  border: 4px solid transparent;
+  border-radius: 25px;
+  color: black;
+  margin: 30px 0;
+}
+
+.call-to-action:hover {
+  border: 4px ridge #0e3649;
+  text-decoration: underline;
 }
 </style>

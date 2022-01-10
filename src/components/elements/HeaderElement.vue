@@ -30,7 +30,7 @@
             class="nav-link theme-c-headerLinks theme-c-hover pointer"
             v-on:click="navigate('/apps')"
           >
-            Applications
+            Apps
           </div>
         </li>
       </ul>
