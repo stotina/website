@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import App from "./App.vue";
 
 import AppsPage from "./components/AppsPage.vue";
+import ToolsPage from "./components/ToolsPage.vue";
 import HomePage from "./components/HomePage.vue";
 
 import AboutPage from "./components/AboutPage.vue";
@@ -26,6 +27,9 @@ Vue.use(VueRouter);
 const router = new VueRouter({
     routes: [
         { path: "/", component: HomePage },
+
+        { path: "/tools", component: ToolsPage },
+        
         { path: "/apps", component: AppsPage },
 
         { path: "/about", component: AboutPage },

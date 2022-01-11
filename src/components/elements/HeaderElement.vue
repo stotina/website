@@ -28,6 +28,14 @@
         <li class="nav-item">
           <div
             class="nav-link theme-c-headerLinks theme-c-hover pointer"
+            v-on:click="navigate('/tools')"
+          >
+            Tools
+          </div>
+        </li>
+        <li class="nav-item">
+          <div
+            class="nav-link theme-c-headerLinks theme-c-hover pointer"
             v-on:click="navigate('/apps')"
           >
             Apps

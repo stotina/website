@@ -64,9 +64,10 @@
               Bitcoin actually is. When this confusion is combined with the
               euphoria birthed from sudden increases of cryptocurrency prices,
               some truly absurd ideas get see the light of day.
-            <br />
+              <br />
               As a consultant, my task is not only to guide you to the good ways
               to use Bitcoin but also to help you stay clear of the bad ones.
+              <br />
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@
           v-on:click="onAppClick(app)"
         >
           <div class="appTitleArea">
-            <div class="appTitleIconBox theme-bg-mainFont">
+            <div class="appTitleIconBox">
               <img v-if="app.icon" v-bind:src="app.icon" :alt="app.name" />
             </div>
             <div class="appTitle">{{ app.name }}</div>
@@ -68,6 +68,7 @@ export default {
   width: 90px;
   height: 80px;
   border-radius: 10px;
+  background-color: var(--bg-color-mainFont) !important;
 }
 .appTitleIconBox img {
   width: 90%;
@@ -75,7 +76,7 @@ export default {
   margin: 5% 5%;
 }
 .appTitle {
-  font-size: 20px;
+  font-size: 1.7em;
   font-weight: bold;
 }
 
@@ -108,5 +109,16 @@ export default {
   border: 10px solid #ffffff44 !important;
   border-top: 30px solid #ffffff44 !important;
   transition: 0.5s ease-in-out;
+}
+
+.appListItem:hover .appTitleArea {
+  transition: color 0.5s;
+  color: var(--font-footerLinks) !important;
+  transform: scale(1.05);
+}
+
+.appListItem:hover .appTitleArea .appTitleIconBox {
+  transition: background-color 0.5s;
+  background-color: var(--font-footerLinks) !important;
 }
 </style>

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "path": "/tools/decoderaw",
+    "name": "Decode Raw Transaction",
+    "icon": "/images/logo.png"
+  },
+  {
+    "id": 1,
+    "path": "/tools/parseuri",
+    "name": "Parse Bitcoin URI",
+    "icon": "/images/logo.png"
+  },
+  {
+    "id": 1,
+    "path": "/tools/currencyconverter",
+    "name": "Currency Converter",
+    "icon": "/images/logo.png"
+  },
+  {
+    "id": 1,
+    "path": "/tools/scripteval",
+    "name": "Eval Bitcoin Script",
+    "icon": "/images/logo.png"
+  },
+  {
+    "id": 1,
+    "path": "/tools/generatekey",
+    "name": "Generate Testing Keys",
+    "icon": "/images/logo.png"
+  },
+  {
+    "id": 1,
+    "path": "/tools/convertdata",
+    "name": "Convert Data Formats",
+    "icon": "/images/logo.png"
+  },
+  {
+    "id": 1,
+    "path": "/tools/testnetwallet",
+    "name": "BSV Testnet Wallet",
+    "icon": "/images/logo.png"
+  },
+  {
+    "id": 1,
+    "path": "/tools/debugbsv15",
+    "name": "Console with BSVJS 1.5",
+    "icon": "/images/logo.png"
+  },
+  {
+    "id": 1,
+    "path": "/tools/debugbsv2",
+    "name": "Console with BSVJS 2.0",
+    "icon": "/images/logo.png"
+  },
+  {
+    "id": 1,
+    "path": "/tools/rpcdashboard",
+    "name": "RPC Dashboard",
+    "icon": "/images/logo.png"
+  }
+]
