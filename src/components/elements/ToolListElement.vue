@@ -58,8 +58,8 @@ export default {
 }
 .toolTitleIconBox {
   display: inline-block;
-  width: 90px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 10px;
 }
 .toolTitleIconBox img {
@@ -68,7 +68,7 @@ export default {
   margin: 5% 5%;
 }
 .toolTitle {
-  font-size: 1.7em;
+  font-size: 1.2em;
   font-weight: bold;
 }
 .toolListItem.animate:hover .toolPhoneFrame {

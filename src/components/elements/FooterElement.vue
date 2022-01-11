@@ -1,14 +1,26 @@
 <template>
   <div class="footer theme-bg-nav row">
-    <div class="footer-group col-md-4 col-lg-2" style="text-align:center;">
+    <div class="footer-group col-md-5 col-lg-1" style="text-align:center;">
       <div>
         <img src="/images/logo.png" alt />
       </div>
       <div>Copyright © 2020 Stotina</div>
     </div>
 
-    <div class="footer-group col-md-4 col-lg-2">
-      <div class="footer-group-title">Links</div>
+    <div class="footer-group col-md-7 col-lg-2">
+      <div class="row footer-group-title">Stotina</div>
+      <div
+        class="footer-link theme-c-footerLinks theme-c-hover pointer"
+        v-on:click="navigate('/about')"
+      >
+        About Us
+      </div>
+      <div
+        class="footer-link theme-c-footerLinks theme-c-hover pointer"
+        v-on:click="navigate('/blog')"
+      >
+        News Blog
+      </div>
       <div
         class="footer-link theme-c-footerLinks theme-c-hover pointer"
         v-on:click="navigate('/faq')"
@@ -29,29 +41,27 @@
       </div>
     </div>
 
-    <div class="footer-group col-md-4 col-lg-2">
-      <div class="footer-group-title">Stotina</div>
-      <div
-        class="footer-link theme-c-footerLinks theme-c-hover pointer"
-        v-on:click="navigate('/about')"
-      >
-        About Us
-      </div>
-      <div
-        class="footer-link theme-c-footerLinks theme-c-hover pointer"
-        v-on:click="navigate('/blog')"
-      >
-        News Blog
+    <div class="footer-group col-md-12 col-lg-4">
+      <div class="row footer-group-title">Tools</div>
+      <div class="row">
+        <div
+          v-for="tool in this.tools"
+          :key="tool.id"
+          class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12 col-md-4 col-lg-6"
+          v-on:click="navigate(tool.path)"
+        >
+          {{ tool.name }}
+        </div>
       </div>
     </div>
 
-    <div class="footer-group col-md-12 col-lg-6">
-      <div class="footer-group-title">Apps</div>
-      <div style="display:flex; flex-wrap:wrap;">
+    <div class="footer-group col-md-12 col-lg-4">
+      <div class="row footer-group-title">Apps</div>
+      <div class="row">
         <div
           v-for="app in this.apps"
           :key="app.id"
-          class="footer-link theme-c-footerLinks theme-c-hover pointer col-md-4 center"
+          class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12 col-md-4 col-lg-6"
           v-on:click="navigate(app.path)"
         >
           {{ app.name }}
@@ -63,11 +73,12 @@
 
 <script>
 import apps from "../../assets/apps.json";
+import tools from "../../assets/tools.json";
 
 export default {
   name: "FooterElement",
   data() {
-    return { apps: apps };
+    return { apps: apps, tools: tools };
   },
   props: {},
   computed: {
@@ -96,12 +107,22 @@ export default {
 }
 
 .footer-group {
-  padding: 2rem;
   min-width: 10rem;
 }
+
 .footer-group-title {
   font-weight: bold;
   border-bottom: 1px solid white;
   margin-bottom: 0.5rem;
+  margin-right: 1rem;
+}
+
+.footer-link {
+  padding: 0 0.5em;
+  border: 1px solid transparent;
+}
+
+.footer-link:hover {
+  border: 1px solid var(--hover-font-important) !important;;
 }
 </style>

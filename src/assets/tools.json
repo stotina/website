@@ -6,61 +6,61 @@
     "icon": "/images/logo.png"
   },
   {
-    "id": 1,
+    "id": 2,
     "path": "/tools/parseuri",
     "name": "Parse Bitcoin URI",
     "icon": "/images/logo.png"
   },
   {
-    "id": 1,
+    "id": 3,
     "path": "/tools/currencyconverter",
     "name": "Currency Converter",
     "icon": "/images/logo.png"
   },
   {
-    "id": 1,
+    "id": 4,
     "path": "/tools/scripteval",
     "name": "Eval Bitcoin Script",
     "icon": "/images/logo.png"
   },
   {
-    "id": 1,
+    "id": 5,
     "path": "/tools/generatekey",
     "name": "Generate Testing Keys",
     "icon": "/images/logo.png"
   },
   {
-    "id": 1,
+    "id": 6,
     "path": "/tools/convertdata",
     "name": "Convert Data Formats",
     "icon": "/images/logo.png"
   },
   {
-    "id": 1,
+    "id": 7,
     "path": "/tools/testnetwallet",
     "name": "BSV Testnet Wallet",
     "icon": "/images/logo.png"
   },
   {
-    "id": 1,
+    "id": 8,
     "path": "/tools/debugbsv15",
     "name": "Console with BSVJS 1.5",
     "icon": "/images/logo.png"
   },
   {
-    "id": 1,
+    "id": 9,
     "path": "/tools/debugbsv2",
     "name": "Console with BSVJS 2.0",
     "icon": "/images/logo.png"
   },
   {
-    "id": 1,
+    "id": 10,
     "path": "/tools/rpcdashboard",
     "name": "RPC Dashboard",
     "icon": "/images/logo.png"
   },
   {
-    "id": 1,
+    "id": 11,
     "path": "/tools/mapigui",
     "name": "MAPI User Interface",
     "icon": "/images/logo.png"
