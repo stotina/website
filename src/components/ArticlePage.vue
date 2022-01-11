@@ -1,15 +1,11 @@
 <template>
   <div>
     <div class="blog">
-      <div class="title">{{ article.title }}</div>
-
       <div v-if="!article" class="not-found">Article not found.</div>
-      <div class="center">
+      <div v-else class="center">
+        <div class="title">{{ article.title }}</div>
         <div class="article-date">{{ article.date }}</div>
         <div class="article-author">{{ article.author }}</div>
-      </div>
-
-      <div v-if="!!article">
         <div class="article theme-br-blog">
           <div class="article-description" v-html="article.content"></div>
         </div>
@@ -29,9 +25,12 @@ const articleId = q.length > 1 ? q[1] : "";
 const feedDefinitions = require("../assets/feedDefinitions.json");
 const feedNames = feedDefinitions.map((i) => i.feedName);
 const feed = feedDefinitions[feedNames.indexOf(feedName)];
-const article = feed.items.filter(
-  (i) => i.id.toString() === articleId.toString()
-)[0];
+let article = undefined;
+try {
+  article = require(`../assets/raw-blog/${feed.blogDir}/${articleId}.json`);
+} catch (err) {
+  console.error(err);
+}
 
 export default {
   name: "ArticlePage",

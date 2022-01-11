@@ -7,7 +7,7 @@
         <div
           class="article theme-br-blog pointer"
           v-on:click="openArticle(i.id)"
-          v-for="i in feed.items || []"
+          v-for="i in articles || []"
           :key="i.id"
         >
           <div class="article-title">{{ i.title }}</div>
@@ -30,12 +30,20 @@ const feedName = q[0] || "main-feed";
 const feedDefinitions = require("../assets/feedDefinitions.json");
 const feedNames = feedDefinitions.map((i) => i.feedName);
 
+const feed = feedDefinitions[feedNames.indexOf(feedName)];
+console.log(feed);
+const articles = feed.items.map((id) => {
+  const loadedData = require(`../assets/raw-blog/${feed.blogDir}/${id}.json`);
+  return { ...loadedData, id };
+});
+
 export default {
   name: "BlogPage",
   data() {
     return {
       feedName: feedName,
-      feed: feedDefinitions[feedNames.indexOf(feedName)],
+      feed,
+      articles,
     };
   },
   props: {},

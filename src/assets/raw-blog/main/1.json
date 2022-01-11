@@ -1,0 +1,8 @@
+{
+    "title": "Our first article",
+    "description": "This is our first article.",
+    "categories": ["first", "content"],
+    "author": "Aleksandar Dinkov",
+    "date": "May 10, 2020",
+    "content": "This is our first article. We are testing the functionality of our blog."
+}
