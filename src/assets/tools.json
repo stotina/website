@@ -58,5 +58,11 @@
     "path": "/tools/rpcdashboard",
     "name": "RPC Dashboard",
     "icon": "/images/logo.png"
+  },
+  {
+    "id": 1,
+    "path": "/tools/mapigui",
+    "name": "MAPI User Interface",
+    "icon": "/images/logo.png"
   }
 ]

@@ -46,8 +46,7 @@ export default {
   margin: auto;
 }
 .toolListItem {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 25px 0;
   border-width: 4px;
   border-style: solid;
   border-radius: 1rem;
