@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>ParseBitcoinUri Not Implemented</h1>
+    <!-- // TODO: Implement this tool -->
   </div>
 </template>
 
