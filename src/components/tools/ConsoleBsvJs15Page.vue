@@ -9,15 +9,17 @@
 
 <script>
 import * as htmlConsole from "../../assets/js/html-console";
+import { Buffer } from "../../assets/js/buffer";
 import bsv from "../../assets/js/bsb.1.5.6/bsv.min";
 import bsvMnemonic from "../../assets/js/bsb.1.5.6/bsv-mnemonic.min";
 import bsvMessage from "../../assets/js/bsb.1.5.6/bsv-message.min";
 import bsvEcies from "../../assets/js/bsb.1.5.6/bsv-ecies.min";
 
-window.bsv = bsv
-window.bsvMnemonic = bsvMnemonic
-window.bsvMessage = bsvMessage
-window.bsvEcies = bsvEcies
+window.bsv = bsv;
+window.bsvMnemonic = bsvMnemonic;
+window.bsvMessage = bsvMessage;
+window.bsvEcies = bsvEcies;
+window.Buffer = Buffer;
 
 export default {
   name: "BSVJS-1.5.6",
@@ -30,11 +32,13 @@ export default {
     });
     console.warn(`*** BSV ${bsv.version} loaded as variable 'bsv' ***`);
     console.log("------------");
-    console.info("Some examples:")
-    console.info("bsv.Transaction.fromHex(hexString)")
-    console.info("bsv.PrivateKey.fromRandom().toAddress()")
-    console.info("bsv.Mnemonic.fromRandom().toString()")
-    console.info("bsv.Script.fromHex('76a9145a608ac563f2f15594dcc070c6d9e1fa14db43a988ac')")
+    console.info("Some examples:");
+    console.info("bsv.Transaction.fromHex(hexString)");
+    console.info("bsv.PrivateKey.fromRandom().toAddress()");
+    console.info("bsv.Mnemonic.fromRandom().toString()");
+    console.info(
+      "bsv.Script.fromHex('76a9145a608ac563f2f15594dcc070c6d9e1fa14db43a988ac')"
+    );
   },
   props: {},
   components: {},

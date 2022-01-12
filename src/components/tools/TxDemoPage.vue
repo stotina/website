@@ -10,6 +10,9 @@
 <script>
 import * as bsvDemo from "./txdemo/bsvDemo";
 import * as htmlConsole from "../../assets/js/html-console";
+import { Buffer } from "../../assets/js/buffer";
+
+window.Buffer = Buffer;
 
 export default {
   name: "TX-Demo-Console",

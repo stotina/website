@@ -9,9 +9,11 @@
 
 <script>
 import * as htmlConsole from "../../assets/js/html-console";
-import bsvjs from "../../assets/js/bsv.2.0.10/bsv.bundle"
+import bsvjs from "../../assets/js/bsv.2.0.10/bsv.bundle";
+import { Buffer } from "../../assets/js/buffer";
 
-window.bsvjs = bsvjs
+window.bsvjs = bsvjs;
+window.Buffer = Buffer;
 
 export default {
   name: "BSVJS-2.0.10",
@@ -24,11 +26,13 @@ export default {
     });
     console.warn(`*** BSV ${bsvjs.version} loaded as variable 'bsvjs' ***`);
     console.log("------------");
-    console.info("Some examples:")
-    console.info("bsvjs.Tx.fromHex(hexString)")
-    console.info("bsvjs.Address.fromPrivKey(bsvjs.PrivKey.fromRandom())")
-    console.info("bsvjs.Bip39.fromRandom()")
-    console.info("bsvjs.Script.fromHex('76a9145a608ac563f2f15594dcc070c6d9e1fa14db43a988ac')")
+    console.info("Some examples:");
+    console.info("bsvjs.Tx.fromHex(hexString)");
+    console.info("bsvjs.Address.fromPrivKey(bsvjs.PrivKey.fromRandom())");
+    console.info("bsvjs.Bip39.fromRandom()");
+    console.info(
+      "bsvjs.Script.fromHex('76a9145a608ac563f2f15594dcc070c6d9e1fa14db43a988ac')"
+    );
   },
   props: {},
   components: {},
