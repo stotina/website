@@ -2,61 +2,61 @@
   {
     "path": "/tools/decoderaw",
     "name": "Decode Raw Transaction",
-    "icon": "/images/logo.png"
+    "icon": "/images/icons/decoder.png"
   },
   {
     "path": "/tools/parseuri",
     "name": "Parse Bitcoin URI",
-    "icon": "/images/logo.png"
+    "icon": "/images/icons/qr.png"
   },
   {
     "path": "/tools/currencyconverter",
     "name": "Currency Converter",
-    "icon": "/images/logo.png"
+    "icon": "/images/icons/prices.png"
   },
   {
     "path": "/tools/scripteval",
     "name": "Eval Bitcoin Script",
-    "icon": "/images/logo.png"
+    "icon": "/images/icons/compiler.png"
   },
   {
     "path": "/tools/generatekey",
     "name": "Generate Testing Keys",
-    "icon": "/images/logo.png"
+    "icon": "/images/icons/keys.png"
   },
   {
     "path": "/tools/convertdata",
     "name": "Convert Data Formats",
-    "icon": "/images/logo.png"
+    "icon": "/images/icons/formats.png"
   },
   {
     "path": "/tools/txdemo",
     "name": "Make Transactions Demo",
-    "icon": "/images/logo.png"
+    "icon": "/images/icons/demonstration.png"
   },
   {
     "path": "/tools/testnetwallet",
     "name": "BSV Testnet Wallet",
-    "icon": "/images/logo.png"
+    "icon": "/images/icons/wallet.png"
   },
   {
     "path": "/tools/debugbsv15",
     "name": "Console with BSVJS 1.5",
-    "icon": "/images/logo.png"
+    "icon": "/images/icons/term1.png"
   },
   {
     "path": "/tools/debugbsv2",
     "name": "Console with BSVJS 2.0",
-    "icon": "/images/logo.png"
+    "icon": "/images/icons/term2.png"
   },
   {
     "path": "/tools/rpcdashboard",
     "name": "RPC Dashboard",
-    "icon": "/images/logo.png"
+    "icon": "/images/icons/dashboard.png"
   },
   {
     "path": "/tools/mapigui",
     "name": "MAPI User Interface",
-    "icon": "/images/logo.png"
+    "icon": "/images/icons/broadcast.png"
   }
 ]
