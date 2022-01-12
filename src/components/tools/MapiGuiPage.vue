@@ -8,7 +8,7 @@
 <script>
 
 export default {
-  name: "MAPI GUI",
+  name: "MAPI-GUI",
   data() {
     return {};
   },

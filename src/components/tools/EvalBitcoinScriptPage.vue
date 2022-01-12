@@ -8,7 +8,7 @@
 <script>
 
 export default {
-  name: "Eval Bitcoin Script",
+  name: "Evaluate-Bitcoin-Script",
   data() {
     return {};
   },

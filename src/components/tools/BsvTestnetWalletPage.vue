@@ -8,7 +8,7 @@
 <script>
 
 export default {
-  name: "BSV Testnet Wallet",
+  name: "BSV-Testnet-Wallet",
   data() {
     return {};
   },

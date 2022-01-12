@@ -8,7 +8,7 @@
 <script>
 
 export default {
-  name: "Decode Raw Tx",
+  name: "Decode-Raw-Tx",
   data() {
     return {};
   },

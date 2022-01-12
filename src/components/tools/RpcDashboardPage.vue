@@ -8,7 +8,7 @@
 <script>
 
 export default {
-  name: "RPC Dashboard",
+  name: "RPC-Dashboard",
   data() {
     return {};
   },

@@ -8,7 +8,7 @@
 <script>
 
 export default {
-  name: "Parse URI",
+  name: "Parse-URI",
   data() {
     return {};
   },

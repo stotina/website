@@ -8,7 +8,7 @@
 <script>
 
 export default {
-  name: "Generate Test Keys",
+  name: "Generate-Test-Keys",
   data() {
     return {};
   },

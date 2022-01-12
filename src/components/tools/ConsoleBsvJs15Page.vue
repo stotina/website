@@ -8,7 +8,7 @@
 <script>
 
 export default {
-  name: "BSVJS 1.5.6",
+  name: "BSVJS-1.5.6",
   data() {
     return {};
   },

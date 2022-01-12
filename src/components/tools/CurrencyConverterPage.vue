@@ -8,7 +8,7 @@
 <script>
 
 export default {
-  name: "Currency Converter",
+  name: "Currency-Converter",
   data() {
     return {};
   },

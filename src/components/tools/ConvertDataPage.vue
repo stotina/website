@@ -8,7 +8,7 @@
 <script>
 
 export default {
-  name: "Convert Data",
+  name: "Convert-Data",
   data() {
     return {};
   },
