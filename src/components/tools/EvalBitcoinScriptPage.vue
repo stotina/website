@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>EvalBitcoinScript Not Implemented</h1>
+    <h1 class="text-center">EvalBitcoinScript Not Implemented</h1>
     <!-- // TODO: Implement this tool -->
   </div>
 </template>

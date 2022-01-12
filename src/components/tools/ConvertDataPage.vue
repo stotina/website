@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>ConvertData Not Implemented</h1>
+    <h1 class="text-center">ConvertData Not Implemented</h1>
     <!-- // TODO: Implement this tool -->
   </div>
 </template>

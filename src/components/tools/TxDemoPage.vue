@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>BSV Transaction Demo</h1>
+    <h1 class="text-center">BSV Transaction Demo</h1>
     <div class="console-wrapper">
       <div id="console-area"></div>
     </div>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>ConsoleBsvJs20 Not Implemented</h1>
+    <h1 class="text-center">ConsoleBsvJs20 Not Implemented</h1>
     <!-- // TODO: Implement this tool -->
   </div>
 </template>

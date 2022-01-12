@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>DecodeRawTx Not Implemented</h1>
+    <h1 class="text-center">DecodeRawTx Not Implemented</h1>
     <!-- // TODO: Implement this tool -->
   </div>
 </template>
