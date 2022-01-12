@@ -3,12 +3,7 @@ var defaultDir = console.dir;
 var defaultErr = console.error;
 var defaultWarn = console.warn;
 
-var used = false;
-
 export function create(consoleArea, config = { height: "7em" }) {
-  if (used) throw new Error("htmlConsole.create can only be called once.");
-  used = true;
-
   var _els = createElements(consoleArea, config);
   const _consoleLines = _els._consoleLines;
   const _consoleInput = _els._consoleInput;
@@ -130,7 +125,9 @@ function assignConsoleWritingMethods(appendLine, appendLineElement) {
     appendLine(arguments, "yellow");
   };
   window.onerror = function(msg, url, lineno) {
-    var line = `[ERROR] '${msg}' in <a style='color:pink;' href='${url}'>${url?.substring(url?.lastIndexOf("/"))}</a> : line ${lineno}`;
+    var line = `[ERROR] '${msg}' in <a style='color:pink;' href='${url}'>${url?.substring(
+      url?.lastIndexOf("/")
+    )}</a> : line ${lineno}`;
     var div = document.createElement("div");
     div.innerHTML = line;
     appendLineElement(div, "pink");
