@@ -9,35 +9,37 @@
 
     <div class="footer-group col-md-7 col-lg-2">
       <div class="row footer-group-title">Stotina</div>
-      <div
-        class="footer-link theme-c-footerLinks theme-c-hover pointer"
-        v-on:click="navigate('/about')"
-      >
-        About Us
-      </div>
-      <div
-        class="footer-link theme-c-footerLinks theme-c-hover pointer"
-        v-on:click="navigate('/blog')"
-      >
-        News Blog
-      </div>
-      <div
-        class="footer-link theme-c-footerLinks theme-c-hover pointer"
-        v-on:click="navigate('/faq')"
-      >
-        FAQ
-      </div>
-      <div
-        class="footer-link theme-c-footerLinks theme-c-hover pointer"
-        v-on:click="navigate('/terms')"
-      >
-        Terms
-      </div>
-      <div
-        class="footer-link theme-c-footerLinks theme-c-hover pointer"
-        v-on:click="navigate('/privacy')"
-      >
-        Privacy
+      <div class="row">
+        <div
+          class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
+          v-on:click="navigate('/about')"
+        >
+          About Us
+        </div>
+        <div
+          class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
+          v-on:click="navigate('/blog')"
+        >
+          News Blog
+        </div>
+        <div
+          class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
+          v-on:click="navigate('/faq')"
+        >
+          FAQ
+        </div>
+        <div
+          class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
+          v-on:click="navigate('/terms')"
+        >
+          Terms
+        </div>
+        <div
+          class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
+          v-on:click="navigate('/privacy')"
+        >
+          Privacy
+        </div>
       </div>
     </div>
 
@@ -78,7 +80,10 @@ import tools from "../../assets/tools.json";
 export default {
   name: "FooterElement",
   data() {
-    return { apps: apps, tools: tools };
+    return {
+      apps: apps.map((el, id) => ({ ...el, id })),
+      tools: tools.map((el, id) => ({ ...el, id })),
+    };
   },
   props: {},
   computed: {
@@ -108,21 +113,24 @@ export default {
 
 .footer-group {
   min-width: 10rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 .footer-group-title {
   font-weight: bold;
+  text-align: center;
   border-bottom: 1px solid white;
-  margin-bottom: 0.5rem;
-  margin-right: 1rem;
+  margin-bottom: 0.2rem;
+  margin-left: 0.5rem;
 }
 
 .footer-link {
-  padding: 0 0.5em;
+  padding: 0;
   border: 1px solid transparent;
 }
 
 .footer-link:hover {
-  border: 1px solid var(--hover-font-important) !important;;
+  border: 1px solid var(--hover-font-important) !important;
 }
 </style>

@@ -29,7 +29,7 @@ let article = undefined;
 try {
   article = require(`../assets/raw-blog/${feed.blogDir}/${articleId}.json`);
 } catch (err) {
-  console.error(err);
+  //
 }
 
 export default {

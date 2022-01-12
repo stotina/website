@@ -32,7 +32,7 @@ export default {
   name: "AppListElement",
   data() {
     return {
-      apps: apps,
+      apps: apps.map((el, id)=>({...el, id})),
     };
   },
   props: {},

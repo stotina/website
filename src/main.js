@@ -12,7 +12,6 @@ import BlogPage from "./components/BlogPage.vue";
 import FaqPage from "./components/FaqPage.vue";
 import PrivacyPage from "./components/PrivacyPage.vue";
 import TermsPage from "./components/TermsPage.vue";
-import Donate from "./components/Donate.vue";
 
 import BsvTestnetWalletPage from "./components/tools/BsvTestnetWalletPage.vue"
 import ConsoleBsvJs15Page from "./components/tools/ConsoleBsvJs15Page.vue"
@@ -25,6 +24,7 @@ import GenerateTestKeysPage from "./components/tools/GenerateTestKeysPage.vue"
 import MapiGuiPage from "./components/tools/MapiGuiPage.vue"
 import ParseBitcoinUriPage from "./components/tools/ParseBitcoinUriPage.vue"
 import RpcDashboardPage from "./components/tools/RpcDashboardPage.vue"
+import TxDemoPage from "./components/tools/TxDemoPage.vue"
 
 require("jquery");
 require("bootstrap");
@@ -48,6 +48,7 @@ const router = new VueRouter({
     { path: "/tools/scripteval", component: EvalBitcoinScriptPage },
     { path: "/tools/generatekey", component: GenerateTestKeysPage },
     { path: "/tools/convertdata", component: ConvertDataPage },
+    { path: "/tools/txdemo", component: TxDemoPage },
     { path: "/tools/testnetwallet", component: BsvTestnetWalletPage },
     { path: "/tools/debugbsv15", component: ConsoleBsvJs15Page },
     { path: "/tools/debugbsv2", component: ConsoleBsvJs20Page },
@@ -62,7 +63,6 @@ const router = new VueRouter({
     { path: "/faq", component: FaqPage },
     { path: "/privacy", component: PrivacyPage },
     { path: "/terms", component: TermsPage },
-    { path: "/donate", component: Donate },
   ],
 });
 

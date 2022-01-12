@@ -26,7 +26,7 @@ export default {
   name: "ToolListElement",
   data() {
     return {
-      tools: tools,
+      tools: tools.map((el, id)=>({...el, id})),
     };
   },
   props: {},
