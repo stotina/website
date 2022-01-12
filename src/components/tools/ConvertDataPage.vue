@@ -69,6 +69,7 @@
             placeholder="Awaiting Input..."
             rows="15"
           ></textarea>
+          <div>{{inputValue.length}} characters</div>
         </div>
       </div>
       <div class="form-floating col-sm-12 col-md-6">
@@ -80,6 +81,7 @@
             id="inputArea"
             rows="15"
           ></textarea>
+          <div>{{outputValue.length}} characters</div>
         </div>
       </div>
     </div>
