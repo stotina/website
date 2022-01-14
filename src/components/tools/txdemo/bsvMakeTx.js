@@ -4,6 +4,7 @@ import { broadcastTx } from "./bsvBroadcast.js";
 import bsvjs from "../../../assets/js/bsv.2.0.10/bsv.bundle.js"
 
 window.makeTx = makeTx;
+window.readTx = readTx;
 
 /**
  * Create a transaction with these outputs
@@ -16,7 +17,7 @@ export async function makeTx(
   broadcast = true,
   useAllInputs = false,
   customChangeAddress = undefined
-) {  
+) {
   const txb = new bsvjs.TxBuilder();
 
   for (let i = 0; i < outputDetails.length; i++) {
@@ -66,9 +67,66 @@ export async function makeTx(
 
   txb.signWithKeyPairs([fromKeyPair]);
 
-  if (broadcast) {
+  if (broadcast && network !== "fake") {
     await broadcastTx(txb.tx.toHex());
   }
 
+  logTx(txb.tx, network);
+
   return txb.tx;
+}
+
+export async function readTx(txid, network="main") {
+  const tx = await utxo.getWocTx(txid, network);
+  logTx(tx);
+  return tx;
+}
+
+function logTx(tx) {
+  const formatTxidLink = (txid) => {
+    if (network === "main") {
+      const url = "https://whatsonchain.com/tx/" + txid;
+      return `<a target=”_blank” href="${url}">${txid}</a>`;
+    } else if (network === "test") {
+      const url = "https://test.whatsonchain.com/tx/" + txid;
+      return `<a target=”_blank” href="${url}">${txid}</a>`;
+    } else {
+      return txid;
+    }
+  };
+
+  const network = utxo.getNetwork();
+
+  console.dir("TXID: " + formatTxidLink(tx.id()));
+  console.info("TX: " + tx.toHex());
+
+  console.info("Inputs: ");
+  for (const txIn of tx.txIns) {
+    console.dir(
+      ` - from '${formatTxidLink(
+        txIn.txHashBuf.reverse().toString("hex")
+      )}', output ${txIn.txOutNum}`
+    );
+  }
+  console.info("Outputs: ");
+  for (const txOut of tx.txOuts) {
+    const scriptHex = txOut.script.toHex() + "";
+    const isData = scriptHex.startsWith("006a");
+    const isP2PKH =
+      scriptHex.length === 50 &&
+      scriptHex.startsWith("76a914") &&
+      scriptHex.endsWith("88ac");
+    if (isData) {
+      console.info(` - (${txOut.valueBn.toString()} satoshis) with Data: ${Buffer.from(scriptHex.substring(4), "hex").toString()}`);
+    } else if (isP2PKH) {
+      console.info(
+        ` - (${txOut.valueBn.toString()} satoshis) to Address: ${bsvjs.Address.fromTxOutScript(
+          bsvjs.Script.fromHex(scriptHex)
+        )}`
+      );
+    } else {
+      console.info(` - (${txOut.valueBn.toString()} satoshis) to Script: ${scriptHex}`);
+    }
+  }
+
 }
