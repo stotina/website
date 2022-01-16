@@ -3,8 +3,8 @@
     <h1 class="text-center">Data Converter</h1>
     <!-- // TODO: Implement this tool -->
 
-    <div class="ml-4">
-      <div class="input-group row">
+    <div class="mainContainer px-5">
+      <div class="input-group row mx-auto">
         <select
           class="form-select col-sm-6 col-md-2"
           id="selectFrom"

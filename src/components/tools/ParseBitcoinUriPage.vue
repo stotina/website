@@ -2,25 +2,25 @@
   <div>
     <h1 class="text-center">Bitcoin URI Parser</h1>
 
-    <div class="ml-4">
-      <div class="inputContainer input-group row">
-        <textarea
-          type="text"
-          id="uriInput"
-          class="form-control col-sm-12 col-md-9"
-          v-model="uri"
-        ></textarea>
-        <input
-          type="button"
-          id="uriParseBtn"
-          class="btn btn-primary form-control col-sm-12 col-md-3"
-          value="Parse"
-          @click="onParseBtnClick"
-        />
-      </div>
+    <div class="mainContainer px-5">
+        <div class="inputContainer input-group mx-auto row">
+          <textarea
+            type="text"
+            id="uriInput"
+            class="form-control col-sm-12 col-md-9"
+            v-model="uri"
+          ></textarea>
+          <input
+            type="button"
+            id="uriParseBtn"
+            class="btn btn-primary form-control col-sm-12 col-md-3"
+            value="Parse"
+            @click="onParseBtnClick"
+          />
+        </div>
 
-      <div class="resultsContainer pr-5">
-        <div class="ml-4" v-if="parsed">
+      <div class="resultsContainer">
+        <div v-if="parsed">
           <div class="row">
             <div class="uriSummaryField col-sm-6 col-md-4">
               <span
@@ -35,9 +35,7 @@
             </div>
             <div class="uriSummaryField col-sm-6 col-md-8">
               <span class="text-primary">
-                {{ parsed.mainProtocol.toUpperCase() }} ({{
-                  parsed.type
-                }})
+                {{ parsed.mainProtocol.toUpperCase() }} ({{ parsed.type }})
               </span>
             </div>
           </div>
@@ -91,7 +89,8 @@ export default {
   name: "Parse-URI",
   data() {
     const uri =
-      this.$route.params.uri || "bitcoin:1FMif2XbHJx5L2x6QWYKyWEWPpxJC1ipXw?amount=1";
+      this.$route.params.uri ||
+      "bitcoin:1FMif2XbHJx5L2x6QWYKyWEWPpxJC1ipXw?amount=1";
 
     return {
       uri,
@@ -129,10 +128,7 @@ export default {
   props: {},
   computed: {
     totalOutputSatoshis() {
-      let sum = this.parsed?.outputs?.reduce(
-        (sum, o) => sum + o.satoshis,
-        0
-      );
+      let sum = this.parsed?.outputs?.reduce((sum, o) => sum + o.satoshis, 0);
       if (sum === undefined) sum = 0;
       return sum;
     },

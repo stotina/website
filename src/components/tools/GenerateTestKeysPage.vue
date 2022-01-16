@@ -1,15 +1,17 @@
 <template>
   <div>
-    <h1 class="text-center">Testing Key Generator</h1>
-    <div>
-      <h5 class="text-center">Warning!</h5>
-      <h5 class="text-center">Only for testing!!</h5>
-      <h5 class="text-center">These keys are not secure!!!</h5>
-      <br />
+    <div class="mx-auto">
+      <h1 class="text-center">Testing Key Generator</h1>
+      <div>
+        <h5 class="text-center">Warning!</h5>
+        <h5 class="text-center">Only for testing!!</h5>
+        <h5 class="text-center">These keys are not secure!!!</h5>
+        <br />
+      </div>
     </div>
 
-    <div class="ml-4">
-      <div class="input-group row">
+    <div class="mainContainer px-5">
+      <div class="input-group row mx-auto">
         <span class="input-group-text col-md-4">Network</span>
 
         <div class="input-group-text col-md-4">
@@ -36,7 +38,7 @@
         </div>
       </div>
       <br />
-      <div class="input-group row">
+      <div class="input-group row  mx-auto">
         <label class="input-group-text col-md-3"></label>
         <input
           type="button"
@@ -47,7 +49,7 @@
         <label class="input-group-text col-md-3"></label>
       </div>
       <br />
-      <div class="input-group row">
+      <div class="input-group row mx-auto">
         <label class="input-group-text col-md-3" for="pk">Private Key</label>
         <input
           class="form-control col-md-9"
@@ -57,7 +59,7 @@
         />
       </div>
       <br />
-      <div class="input-group row">
+      <div class="input-group row mx-auto">
         <label class="input-group-text col-md-3" for="pub">Public Key</label>
         <input
           class="form-control col-md-9"
@@ -67,7 +69,7 @@
         />
       </div>
       <br />
-      <div class="input-group row">
+      <div class="input-group row mx-auto">
         <label class="input-group-text col-md-3" for="addr">Address</label>
         <input
           class="form-control col-md-9"
@@ -77,7 +79,7 @@
         />
       </div>
       <br />
-      <div class="input-group row">
+      <div class="input-group row mx-auto">
         <label class="input-group-text col-md-3" for="script">Script</label>
         <input
           class="form-control col-md-9"
@@ -87,7 +89,7 @@
         />
       </div>
       <br />
-      <div class="input-group row">
+      <div class="input-group row mx-auto">
         <label class="input-group-text col-md-3" for="script"
           >Script (ASM)</label
         >
