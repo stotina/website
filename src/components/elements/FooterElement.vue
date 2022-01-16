@@ -10,64 +10,71 @@
     <div class="footer-group col-md-7 col-lg-2">
       <div class="row footer-group-title">Stotina</div>
       <div class="row">
-        <div
+        <a
           class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
           v-on:click="navigate('/about')"
+          href="/#/about"
         >
           About Us
-        </div>
-        <div
+        </a>
+        <a
           class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
           v-on:click="navigate('/blog')"
+          href="/#/blog"
         >
           News Blog
-        </div>
-        <div
+        </a>
+        <a
           class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
           v-on:click="navigate('/faq')"
+          href="/#/faq"
         >
           FAQ
-        </div>
-        <div
+        </a>
+        <a
           class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
           v-on:click="navigate('/terms')"
+          href="/#/terms"
         >
           Terms
-        </div>
-        <div
+        </a>
+        <a
           class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
           v-on:click="navigate('/privacy')"
+          href="/#/privacy"
         >
           Privacy
-        </div>
+        </a>
       </div>
     </div>
 
     <div class="footer-group col-md-12 col-lg-4">
       <div class="row footer-group-title">Tools</div>
       <div class="row">
-        <div
+        <a
           v-for="tool in this.tools"
           :key="tool.id"
           class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12 col-md-4 col-lg-6"
           v-on:click="navigate(tool.path)"
+          v-bind:href="'/#' + tool.path"
         >
           {{ tool.name }}
-        </div>
+        </a>
       </div>
     </div>
 
     <div class="footer-group col-md-12 col-lg-4">
       <div class="row footer-group-title">Apps</div>
       <div class="row">
-        <div
+        <a
           v-for="app in this.apps"
           :key="app.id"
           class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12 col-md-4 col-lg-6"
           v-on:click="navigate(app.path)"
+          v-bind:href="'/#' + app.path"
         >
           {{ app.name }}
-        </div>
+        </a>
       </div>
     </div>
   </div>

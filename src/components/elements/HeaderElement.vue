@@ -10,36 +10,40 @@
 
       <ul class="nav navbar-nav ml-auto">
         <li class="nav-item">
-          <div
+          <a
             class="nav-link theme-c-headerLinks theme-c-hover pointer"
             v-on:click="navigate('/')"
+            href="/#/"
           >
             <i class="fas fa-home"></i> Home
-          </div>
+          </a>
         </li>
         <li class="nav-item">
-          <div
+          <a
             class="nav-link theme-c-headerLinks theme-c-hover pointer"
             v-on:click="navigate('/about')"
+            href="/#/about"
           >
             About
-          </div>
+          </a>
         </li>
         <li class="nav-item">
-          <div
+          <a
             class="nav-link theme-c-headerLinks theme-c-hover pointer"
             v-on:click="navigate('/tools')"
+            href="/#/tools"
           >
             Tools
-          </div>
+          </a>
         </li>
         <li class="nav-item">
-          <div
+          <a
             class="nav-link theme-c-headerLinks theme-c-hover pointer"
             v-on:click="navigate('/apps')"
+            href="/#/apps"
           >
             Apps
-          </div>
+          </a>
         </li>
       </ul>
     </nav>
