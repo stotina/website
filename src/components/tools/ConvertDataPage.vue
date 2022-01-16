@@ -69,7 +69,7 @@
             placeholder="Awaiting Input..."
             rows="15"
           ></textarea>
-          <div>{{inputValue.length}} characters</div>
+          <div>{{ inputValue.length }} characters</div>
         </div>
       </div>
       <div class="form-floating col-sm-12 col-md-6">
@@ -81,7 +81,7 @@
             id="inputArea"
             rows="15"
           ></textarea>
-          <div>{{outputValue.length}} characters</div>
+          <div>{{ outputValue.length }} characters</div>
         </div>
       </div>
     </div>
@@ -101,6 +101,9 @@ const dataTypes = [
   "ucs2",
   "base64",
   "hex",
+  "hex-LE",
+  "binary",
+  "decimal",
   "asm-script",
   "bitcoind-script",
   "base-58",
@@ -111,11 +114,17 @@ export default {
   data() {
     return {
       dataTypes,
-      selectedTypeFrom: "utf8",
-      selectedTypeTo: "hex",
-      inputValue: "",
+      selectedTypeFrom: localStorage.getItem("selectedTypeFrom") || "utf8",
+      selectedTypeTo: localStorage.getItem("selectedTypeTo") || "hex",
+      inputValue: localStorage.getItem("inputValue") || "",
       outputValue: "",
     };
+  },
+  mounted() {
+    this.$nextTick(function() {
+      console.log("mounted");
+      this.onUpdate();
+    });
   },
   methods: {
     swap() {
@@ -128,7 +137,9 @@ export default {
     onUpdate() {
       let inputBuf;
       try {
-        if (this.selectedTypeFrom === "base-58") {
+        if (this.selectedTypeFrom === "decimal") {
+          inputBuf = new bsvjs.Bn(this.inputValue).toBuffer();
+        } else if (this.selectedTypeFrom === "base-58") {
           inputBuf = bsvjs.Base58.decode(this.inputValue);
         } else if (this.selectedTypeFrom === "asm-script") {
           inputBuf = bsvjs.Script.fromAsmString(this.inputValue).toBuffer();
@@ -136,27 +147,67 @@ export default {
           inputBuf = bsvjs.Script.fromBitcoindString(
             this.inputValue
           ).toBuffer();
+        } else if (this.selectedTypeFrom === "hex-LE") {
+          inputBuf = Buffer.from(this.inputValue, "hex").reverse();
+        } else if (this.selectedTypeFrom === "binary") {
+          inputBuf = this.binary2Buf(this.inputValue);
         } else {
           inputBuf = Buffer.from(this.inputValue, this.selectedTypeFrom);
         }
 
-        if (this.selectedTypeTo === "base-58") {
+        if (this.selectedTypeTo === "decimal") {
+          this.outputValue = bsvjs.Bn.fromBuffer(inputBuf).toString();
+        } else if (this.selectedTypeTo === "base-58") {
           this.outputValue = bsvjs.Base58.encode(inputBuf);
         } else if (this.selectedTypeTo === "asm-script") {
-          this.outputValue = bsvjs.Script.fromBuffer(
-            inputBuf
-          ).toAsmString();
+          this.outputValue = bsvjs.Script.fromBuffer(inputBuf).toAsmString();
         } else if (this.selectedTypeTo === "bitcoind-script") {
           this.outputValue = bsvjs.Script.fromBuffer(
             inputBuf
           ).toBitcoindString();
+        } else if (this.selectedTypeTo === "hex-LE") {
+          this.outputValue = inputBuf.reverse().toString("hex");
+        } else if (this.selectedTypeTo === "binary") {
+          this.outputValue = this.buf2Binary(inputBuf);
         } else {
           this.outputValue = inputBuf.toString(this.selectedTypeTo);
         }
+        this.saveState();
       } catch (error) {
         console.debug(inputBuf);
         this.outputValue = error.stack;
       }
+    },
+    saveState() {
+      localStorage.setItem("selectedTypeFrom", this.selectedTypeFrom);
+      localStorage.setItem("selectedTypeTo", this.selectedTypeTo);
+      localStorage.setItem(
+        "inputValue",
+        this.inputValue.toString().substring(0, 5000)
+      );
+    },
+    buf2Binary(buf) {
+      const parts = [];
+      for (let i = 0; i < buf.length; i++) {
+        parts.push(this.dec2Bin(buf[i]));
+      }
+      return parts.join("");
+    },
+    dec2Bin(d) {
+      var b = "";
+      for (var i = 0; i < 8; i++) {
+        b = (d % 2) + b;
+        d = Math.floor(d / 2);
+      }
+      return b;
+    },
+    binary2Buf(binStr) {
+      const chunks = [];
+      for (let i = 0; i < binStr.length; i += 8) {
+        const chunk = binStr.substr(i, 8).padEnd(8, "0");
+        chunks.push(parseInt(chunk, 2));
+      }
+      return Buffer.from(chunks);
     },
   },
   props: {},
