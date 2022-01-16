@@ -1,0 +1,61 @@
+{
+  "_from": "axios-esm@^1.0.0",
+  "_id": "axios-esm@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-uHmDS3+EcyRhWCopt9omxEnZEK1bzjcWsXi+Y1Nyj03iqtZS0Ye1ZrFSm4xyuszsiCTPOAJUmJ9t9Ou0WWvcRw==",
+  "_location": "/axios-esm",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "axios-esm@^1.0.0",
+    "name": "axios-esm",
+    "escapedName": "axios-esm",
+    "rawSpec": "^1.0.0",
+    "saveSpec": null,
+    "fetchSpec": "^1.0.0"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/axios-esm/-/axios-esm-1.0.0.tgz",
+  "_shasum": "2dfd44039ba4dc12203c103d72fc34002c98f8cd",
+  "_spec": "axios-esm@^1.0.0",
+  "_where": "/home/aleks/Projects/stotina.com",
+  "author": {
+    "name": "Abderrahmen Hanafi"
+  },
+  "bugs": {
+    "url": "https://github.com/uranium93/axios-esm/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Bundled axios version as ESModule",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^17.1.0",
+    "axios": "^0.21.1",
+    "rollup": "^2.39.1"
+  },
+  "homepage": "https://github.com/uranium93/axios-esm#readme",
+  "keywords": [
+    "esmodule",
+    "axios",
+    "commonjs"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "axios-esm",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uranium93/axios-esm.git"
+  },
+  "scripts": {
+    "build": "yarn run clean & yarn run commonjsToESM & yarn run stealTypes & yarn run stealChangelog",
+    "clean": "rm ./index.js ./index.d.ts CHANGELOG.md",
+    "commonjsToESM": "rollup -c ./rollup.config.js",
+    "stealChangelog": "cp ./node_modules/axios/CHANGELOG.md CHANGELOG.md",
+    "stealTypes": "cp ./node_modules/axios/index.d.ts ./index.d.ts"
+  },
+  "version": "1.0.0"
+}

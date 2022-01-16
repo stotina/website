@@ -1,0 +1,55 @@
+{
+  "_args": [
+    [
+      "github:synfonaut/txo",
+      "/home/aleks/Projects/unisot-base-node"
+    ]
+  ],
+  "_from": "github:synfonaut/txo",
+  "_id": "txo@github:synfonaut/txo#6ecbd7ffce039a2d133982dff934fc6b294e922f",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/txo",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "github:synfonaut/txo",
+    "rawSpec": "github:synfonaut/txo",
+    "saveSpec": "github:synfonaut/txo",
+    "fetchSpec": null,
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "github:synfonaut/txo#6ecbd7ffce039a2d133982dff934fc6b294e922f",
+  "_spec": "github:synfonaut/txo",
+  "_where": "/home/aleks/Projects/unisot-base-node",
+  "author": "",
+  "bin": {
+    "txo": "index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/interplanaria/txo/issues"
+  },
+  "dependencies": {
+    "bitcoind-rpc": "^0.7.2",
+    "dotenv": "^6.0.0"
+  },
+  "description": "Transaction Object",
+  "devDependencies": {
+    "p-queue": "^5.0.0"
+  },
+  "homepage": "https://github.com/interplanaria/txo#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "txo",
+  "peerDependencies": {
+    "bsv": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/interplanaria/txo.git"
+  },
+  "version": "0.0.16"
+}
