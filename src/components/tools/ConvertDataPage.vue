@@ -122,7 +122,6 @@ export default {
   },
   mounted() {
     this.$nextTick(function() {
-      console.log("mounted");
       this.onUpdate();
     });
   },
