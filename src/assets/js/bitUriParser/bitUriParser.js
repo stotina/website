@@ -425,7 +425,7 @@ function getUriObject(uriString, options) {
   var i2 = uriString.indexOf("?");
   i2 = i2 < 0 ? uriString.length : i2;
 
-  bitcoinUri = {
+  const bitcoinUri = {
     host: uriString.substring(i1 + 1, i2),
     search: uriString.substring(i2),
     protocol: uriString.substring(0, i1 + 1),
@@ -472,7 +472,7 @@ export async function parse(bitcoinUriString, options = defaultOptions) {
     options[key] =
       options[key] !== undefined ? options[key] : defaultOptions[key];
 
-  bitcoinUri = getUriObject(bitcoinUriString, options);
+  const bitcoinUri = getUriObject(bitcoinUriString, options);
 
   var uriType = findUriType(bitcoinUri, options);
 

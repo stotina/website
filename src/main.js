@@ -44,6 +44,7 @@ const router = new VueRouter({
 
     { path: "/tools/decoderaw", component: DecodeRawTxPage },
     { path: "/tools/parseuri", component: ParseBitcoinUriPage },
+    { path: "/tools/parseuri/:uri", component: ParseBitcoinUriPage },
     { path: "/tools/currencyconverter", component: CurrencyConverterPage },
     { path: "/tools/scripteval", component: EvalBitcoinScriptPage },
     { path: "/tools/generatekey", component: GenerateTestKeysPage },
