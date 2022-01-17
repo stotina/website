@@ -2,10 +2,11 @@
   <div>
     <div class="appListBox row">
       <div v-for="app in apps" v-bind:key="app.id" class="col-lg-4 col-md-6">
-        <div
+        <a
           class="appListItem theme-br-mainFont"
           :class="app.path ? 'pointer animate' : 'empty'"
-          v-on:click="onAppClick(app)"
+          v-on:click="$router.push(app.path)"
+          v-bind:href="'/#' + app.path"
         >
           <div class="appTitleArea">
             <div class="appTitleIconBox">
@@ -19,7 +20,7 @@
               :style="`background-image:url('${app.screenImage}')`"
             ></div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
@@ -38,9 +39,6 @@ export default {
   props: {},
   computed: {},
   methods: {
-    onAppClick(app) {
-      if (app.path) this.$router.push(app.path);
-    },
   },
 };
 </script>
@@ -52,6 +50,10 @@ export default {
   margin: auto;
 }
 .appListItem {
+  display: block;
+  color: inherit;
+  text-decoration: inherit;
+
   margin-top: 20px;
   margin-bottom: 20px;
   border-width: 4px;

@@ -2,10 +2,11 @@
   <div>
     <div class="toolListBox row">
       <div v-for="tool in tools" v-bind:key="tool.id" class="col-lg-3 col-md-4">
-        <div
+        <a
           class="toolListItem theme-br-mainFont"
           :class="tool.path ? 'pointer animate' : 'empty'"
-          v-on:click="onToolClick(tool)"
+          v-on:click="$router.push(tool.path)"
+          v-bind:href="'/#' + tool.path"
         >
           <div class="toolTitleArea">
             <div class="toolTitleIconBox theme-bg-mainFont">
@@ -13,7 +14,7 @@
             </div>
             <div class="toolTitle">{{ tool.name }}</div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
@@ -26,16 +27,12 @@ export default {
   name: "ToolListElement",
   data() {
     return {
-      tools: tools.map((el, id)=>({...el, id})),
+      tools: tools.map((el, id) => ({ ...el, id })),
     };
   },
   props: {},
   computed: {},
-  methods: {
-    onToolClick(tool) {
-      if (tool.path) this.$router.push(tool.path);
-    },
-  },
+  methods: {},
 };
 </script>
 
@@ -46,6 +43,10 @@ export default {
   margin: auto;
 }
 .toolListItem {
+  display: block;
+  color: inherit;
+  text-decoration: inherit;
+
   margin: 25px 0;
   border-width: 4px;
   border-style: solid;
