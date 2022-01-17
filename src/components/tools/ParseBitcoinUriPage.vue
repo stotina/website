@@ -3,23 +3,24 @@
     <h1 class="text-center">Bitcoin URI Parser</h1>
 
     <div class="mainContainer px-5">
-        <div class="inputContainer input-group mx-auto row">
-          <textarea
-            type="text"
-            id="uriInput"
-            class="form-control col-sm-12 col-md-9"
-            v-model="uri"
-          ></textarea>
-          <input
-            type="button"
-            id="uriParseBtn"
-            class="btn btn-primary form-control col-sm-12 col-md-3"
-            value="Parse"
-            @click="onParseBtnClick"
-          />
-        </div>
+      <div class="inputContainer input-group mx-auto row">
+        <textarea
+          type="text"
+          id="uriInput"
+          class="form-control col-sm-12 col-md-9"
+          v-model="uri"
+        ></textarea>
+        <input
+          type="button"
+          id="uriParseBtn"
+          class="btn btn-primary form-control col-sm-12 col-md-3"
+          value="Parse"
+          @click="onParseBtnClick"
+        />
+      </div>
 
       <div class="resultsContainer">
+        <div v-if="!parsed" class="text-center">Failed to parse URL</div>
         <div v-if="parsed">
           <div class="row">
             <div class="uriSummaryField col-sm-6 col-md-4">
@@ -50,15 +51,12 @@
           <div class="row">
             <div
               class="uriSummaryField col-sm-6 col-md-4"
-              v-if="totalOutputSatoshis - totalInputSatoshis >= 0"
-            >
-              TO PAY:
-            </div>
-            <div
-              class="uriSummaryField col-sm-6 col-md-4"
               v-if="totalOutputSatoshis - totalInputSatoshis < 0"
             >
               TO RECIEVE:
+            </div>
+            <div class="uriSummaryField col-sm-6 col-md-4" v-else>
+              TO PAY:
             </div>
             <div class="uriSummaryField col-sm-6 col-md-8">
               <span class="text-warning">
@@ -110,7 +108,9 @@ export default {
   methods: {
     async onParseBtnClick() {
       if (this.$route.params.uri !== this.uri) {
-        this.$router.push("/tools/parseuri/" + encodeURIComponent(this.uri));
+        this.$router.push(
+          "/tools/parseuri/" + encodeURIComponent(this.uri || "")
+        );
       }
 
       this.parseFromRouteParam();
