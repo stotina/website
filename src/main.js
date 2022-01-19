@@ -28,7 +28,8 @@ import TxDemoPage from "./components/tools/TxDemoPage.vue"
 
 require("jquery");
 require("bootstrap");
-require("./assets/bootstrap-cyborg.min.css");
+require("./assets/css/bootstrap-cyborg.min.css");
+require("./assets/css/tooltip.css");
 require("@fortawesome/fontawesome-free");
 require("@fortawesome/fontawesome-free/css/all.min.css");
 
