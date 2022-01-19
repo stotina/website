@@ -8,10 +8,19 @@
         >
           <div
             class="scriptLineNumber"
-            v-for="ctx in contextsByLine"
-            :key="ctx.i"
+            v-for="i in scriptLines.keys()"
+            :key="i"
           >
-            {{ ctx.i }}
+            <span
+              v-bind:class="{
+                lineNum: true,
+                scriptInterruptedHere:
+                  (contextsByLine[i] || {}).interrupted &&
+                  !(contextsByLine[i] || {}).endedWithOpReturn,
+              }"
+            >
+              {{ i }}
+            </span>
           </div>
         </div>
 
@@ -148,8 +157,7 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.rawScript =
-        this.$route.params.rawscript || "";
+      this.rawScript = this.$route.params.rawscript || "";
       this.onScriptEditorInput();
     });
   },
@@ -193,6 +201,10 @@ export default {
       this.parsedAsmLines = this.selectedParsingData.lines.map(
         (i) => i?.toAsmString() || `undefined`
       );
+
+      this.contextsByLine = [];
+      // TODO: parse until error or end (don't fail arr if error is on line 100)
+      // TODO: show error in the line numbers
       this.contextsByLine = this.evaluate(
         this.parsedAsmLines,
         this.scriptLines,
@@ -273,8 +285,18 @@ export default {
           break;
         }
 
-        prevCtx = bitcoinScriptEval(line, "asm", prevCtx);
-        contexts.push({ ...prevCtx, i });
+        try {
+          prevCtx = bitcoinScriptEval(line, "asm", prevCtx);
+          contexts.push({ ...prevCtx, i });
+        } catch (error) {
+          contexts.push({
+            i,
+            ended: true,
+            interrupted: true,
+            endMessage: error.toString(),
+          });
+          break;
+        }
       }
       return contexts;
     },
@@ -308,8 +330,16 @@ export default {
 .lineNumContainer {
   overflow: hidden;
   background-color: white;
-  color: red;
+  color: #8f8f8f;
   border-right: 1px solid rgb(177, 177, 177);
+}
+.lineNumContainer .lineNum {
+  padding: 0 5px;
+  border-radius: 1em;
+}
+.lineNumContainer .lineNum.scriptInterruptedHere {
+  background-color: #fd3636;
+  color: black;
 }
 .contextsContainer {
   color: #25c1dd;
