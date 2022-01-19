@@ -17,9 +17,11 @@
 
         <textarea
           type="text"
+          wrap="off"
           class="scriptInput text-left form-control col-sm-6 col-md-7"
           v-model="rawScript"
           v-on:scroll="onScriptEditorScroll"
+          v-on:input="onScriptEditorInput"
         ></textarea>
 
         <div class="contextsContainer col">
@@ -30,7 +32,10 @@
           >
             <div class="row">
               <div class="ctxProp col col-sm-2">
-                <div class="lineParsed customTooltip">
+                <div
+                  v-if="parsedAsmLines[ctx.i] !== 'undefined'"
+                  class="lineParsed customTooltip"
+                >
                   Hex
                   <div class="customTooltipBottom">
                     {{ parsedAsmLines[ctx.i] }} parsed from
@@ -38,6 +43,7 @@
                     <i></i>
                   </div>
                 </div>
+                <div v-else class="elseEl">Hex</div>
               </div>
               <div class="ctxProp col col-sm-2">
                 <div
@@ -102,7 +108,7 @@
                       v-for="i in ctx.opReturn.keys()"
                       :key="i"
                     >
-                      {{ ctx.opReturn[i] + "" }}
+                      {{ opReturnItemToString(ctx.opReturn[i]) }}
                     </div>
                     <i></i>
                   </div>
@@ -118,6 +124,7 @@
 </template>
 
 <script>
+import { Buffer } from "../../assets/js/buffer";
 import bsvjs from "../../assets/js/bsv.2.0.10/bsv.bundle";
 import { bitcoinScriptEval } from "../../assets/js/bitcoin-script-eval/index";
 import $ from "jquery";
@@ -126,30 +133,73 @@ export default {
   name: "Evaluate-Bitcoin-Script",
   data() {
     return {
-      rawScript:
-        "bb\nOP_TOALTSTACK\nbb\naa\naa\nOP_EQUALVERIFY\nOP_EQUALVERIFY\n",
-      detectedScriptType: -1,
+      rawScript: "",
+      scriptLines: [],
+      mostMatchedLines: 0,
+      asmParsedData: {},
+      bitdParsedData: {},
+      hexParsedData: {},
+      selectedParsingData: {},
+      parsedScriptType: "unknown",
+      parsedAsmLines: [],
+      contextsByLine: [],
       sigsAlwaysPass: true,
     };
   },
   mounted() {
     this.$nextTick(() => {
-      //
+      this.rawScript =
+        this.$route.params.rawscript || "";
+      this.onScriptEditorInput();
     });
   },
   methods: {
-    onScriptEditorScroll(event) {
-      $(".lineNumContainer")[0].scrollTop = event.target.scrollTop;
-      $(".contextsContainer")[0].scrollTop = event.target.scrollTop;
+    opReturnItemToString(opReturnItem) {
+      return Buffer.from(opReturnItem).toString();
     },
-  },
-  props: {},
-  components: {},
-  computed: {
-    scriptLines() {
-      return (this.rawScript + "").split("\n");
+    onScriptEditorScroll() {
+      const scrollTop = $(".scriptInput")[0].scrollTop;
+      $(".lineNumContainer")[0].scrollTop = scrollTop;
+      $(".contextsContainer")[0].scrollTop = scrollTop;
     },
-    parsed() {
+    setUrlPathParameter() {
+      if (this.$route.params.rawscript !== this.rawScript) {
+        this.$router.push(
+          "/tools/scripteval/" + encodeURIComponent(this.rawScript || "")
+        );
+      }
+    },
+    onScriptEditorInput() {
+      this.onScriptEditorScroll();
+      this.setUrlPathParameter();
+      this.scriptLines = (this.rawScript + "").split("\n");
+      this.lineCount = this.scriptLines.length;
+
+      const {
+        options: [asmParsedData, bitdParsedData, hexParsedData],
+        mostMatchedLines,
+        detectedScriptIndex,
+      } = this.parse(this.scriptLines);
+
+      this.mostMatchedLines = mostMatchedLines;
+      this.asmParsedData = asmParsedData;
+      this.bitdParsedData = bitdParsedData;
+      this.hexParsedData = hexParsedData;
+
+      this.selectedParsingData = [asmParsedData, bitdParsedData, hexParsedData][
+        detectedScriptIndex
+      ];
+      this.parsedScriptType = this.selectedParsingData.type;
+      this.parsedAsmLines = this.selectedParsingData.lines.map(
+        (i) => i?.toAsmString() || `undefined`
+      );
+      this.contextsByLine = this.evaluate(
+        this.parsedAsmLines,
+        this.scriptLines,
+        this.sigsAlwaysPass
+      );
+    },
+    parse(scriptLines) {
       const tryGet = (action) => {
         try {
           return action();
@@ -158,17 +208,17 @@ export default {
         }
       };
 
-      const asmLines = this.scriptLines.map((line) => {
+      const asmLines = scriptLines.map((line) => {
         return tryGet(() =>
           bsvjs.Script.fromAsmString(line || "invalid script")
         );
       });
-      const bitdLines = this.scriptLines.map((line) => {
+      const bitdLines = scriptLines.map((line) => {
         return tryGet(() =>
           bsvjs.Script.fromBitcoindString(line || "invalid script")
         );
       });
-      const hexLines = this.scriptLines.map((line) => {
+      const hexLines = scriptLines.map((line) => {
         return tryGet(() => bsvjs.Script.fromHex(line || "invalid script"));
       });
 
@@ -196,29 +246,17 @@ export default {
 
       return {
         options,
-        lineCount: this.scriptLines.length,
         mostMatchedLines,
         detectedScriptIndex,
       };
     },
-    selectedParsing() {
-      const parsed = this.parsed;
-      const selectedOption = parsed.options[parsed.detectedScriptIndex];
-      return selectedOption;
-    },
-    parsedScriptType() {
-      return this.selectedParsing.type;
-    },
-    parsedAsmLines() {
-      return this.selectedParsing.lines.map((i) => i?.toAsmString() || `undefined`);
-    },
-    contextsByLine() {
+    evaluate(asmLines, rawLines, sigsAlwaysPass) {
       const contexts = [];
 
-      let prevCtx = { sigsAlwaysPass: this.sigsAlwaysPass };
-      for (let i = 0; i < this.parsedAsmLines.length; i++) {
-        const line = this.parsedAsmLines[i];
-        const rawLine = this.scriptLines[i];
+      let prevCtx = { sigsAlwaysPass: sigsAlwaysPass };
+      for (let i = 0; i < asmLines.length; i++) {
+        const line = asmLines[i];
+        const rawLine = rawLines[i];
 
         if (!rawLine) {
           contexts.push({ i });
@@ -237,14 +275,13 @@ export default {
 
         prevCtx = bitcoinScriptEval(line, "asm", prevCtx);
         contexts.push({ ...prevCtx, i });
-
-        if(prevCtx.opReturn) {
-          console.log(prevCtx)
-        }
       }
       return contexts;
     },
   },
+  props: {},
+  components: {},
+  computed: {},
 };
 </script>
 
@@ -266,6 +303,7 @@ export default {
 
 .scriptInput {
   border-radius: 0;
+  overflow-x: scroll;
 }
 .lineNumContainer {
   overflow: hidden;

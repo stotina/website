@@ -49,6 +49,7 @@ const router = new VueRouter({
     { path: "/tools/parseuri/:uri", component: ParseBitcoinUriPage },
     { path: "/tools/currencyconverter", component: CurrencyConverterPage },
     { path: "/tools/scripteval", component: EvalBitcoinScriptPage },
+    { path: "/tools/scripteval/:rawscript", component: EvalBitcoinScriptPage },
     { path: "/tools/generatekey", component: GenerateTestKeysPage },
     { path: "/tools/convertdata", component: ConvertDataPage },
     { path: "/tools/txdemo", component: TxDemoPage },

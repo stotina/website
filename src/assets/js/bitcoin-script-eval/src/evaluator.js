@@ -51,7 +51,7 @@ async function evaluateOpCode(step, context) {
 }
 
 function getOpReturn(context, fromStep) {
-  const restOfScript = context.script.chunks.slice(fromStep + 1);
+  const restOfScript = context.script.chunks.slice(fromStep);
   const results = [];
   for (let i = 0; i < restOfScript.length; i++) {
     const step = restOfScript[i];
