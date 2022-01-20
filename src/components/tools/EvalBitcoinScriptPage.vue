@@ -2,6 +2,44 @@
   <div>
     <h1 class="text-center">Evaluate Bitcoin Script</h1>
     <div class="mainContainer px-3 pt-3">
+      <div class="inputContainer input-group mx-auto row m-3">
+        <div class="row col-md-12 col-lg-6">
+          <label class="input-group-text col-md-4" for="selectScriptTypeFrom"
+            >Format</label
+          >
+          <select
+            class="form-select col-md-8"
+            id="selectScriptTypeFrom"
+            v-model="expectedScriptType"
+            v-on:change="onExpectedTypeChange()"
+          >
+            <option
+              v-for="type in possibleScriptTypes"
+              v-bind:key="type"
+              :value="type"
+              >{{ type }}</option
+            >
+          </select>
+        </div>
+        <div
+          class="row col-md-12 col-lg-6"
+          v-if="
+            expectedScriptType !== parsedScriptType &&
+              mostMatchedLines !== selectedParsingData.matchCount
+          "
+        >
+          <div class="input-group-text col-md-6">
+            But looks like {{ parsedScriptType }}
+          </div>
+          <input
+            type="button"
+            class="btn btn-primary form-control col-md-6"
+            v-bind:value="`Use ${parsedScriptType}`"
+            v-on:click="expectedScriptType = parsedScriptType"
+          />
+        </div>
+      </div>
+
       <div class="mx-auto row">
         <div
           class="lineNumContainer text-right d-none d-sm-block col-sm-1 col-md-auto"
@@ -33,7 +71,7 @@
           v-on:input="onScriptEditorInput"
         ></textarea>
 
-        <div class="contextsContainer col">
+        <div class="contextsContainer col px-3">
           <div
             class="scriptLineContext"
             v-for="ctx in contextsByLine"
@@ -45,14 +83,14 @@
                   v-if="parsedAsmLines[ctx.i] !== 'undefined'"
                   class="lineParsed customTooltip"
                 >
-                  Hex
+                  code
                   <div class="customTooltipBottom">
                     {{ parsedAsmLines[ctx.i] }} parsed from
                     {{ parsedScriptType }}
                     <i></i>
                   </div>
                 </div>
-                <div v-else class="elseEl">Hex</div>
+                <div v-else class="elseEl">code</div>
               </div>
               <div class="ctxProp col col-sm-2">
                 <div
@@ -128,6 +166,47 @@
           </div>
         </div>
       </div>
+
+      <div class="row col-md-12 col-lg-6 m-4 mx-auto">
+        <label class="input-group-text col px-3" for="selectConvertFrom"
+          >Convert from</label
+        >
+        <select
+          class="form-select col px-3"
+          id="selectConvertFrom"
+          v-model="convertFromSelectType"
+          v-on:change="onConvertFromSelectTypeChange"
+        >
+          <option
+            v-for="type in possibleScriptTypes"
+            v-bind:key="type"
+            :value="type"
+            >{{ type }}</option
+          >
+        </select>
+        <label class="input-group-text col px-3" for="selectConvertTo"
+          >to</label
+        >
+        <select
+          class="form-select col px-3"
+          id="selectConvertTo"
+          v-model="convertToSelectType"
+        >
+          <option
+            v-for="type in possibleScriptTypes"
+            v-bind:key="type"
+            v-bind:disabled="type === convertFromSelectType"
+            :value="type"
+            >{{ type }}</option
+          >
+        </select>
+        <input
+          type="button"
+          class="btn btn-danger form-control col px-3"
+          v-bind:value="`Convert`"
+          v-on:click="convertScript(convertFromSelectType, convertToSelectType)"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -138,10 +217,14 @@ import bsvjs from "../../assets/js/bsv.2.0.10/bsv.bundle";
 import { bitcoinScriptEval } from "../../assets/js/bitcoin-script-eval/index";
 import $ from "jquery";
 
+const possibleScriptTypes = ["ASM", "BITD", "HEX"];
+
 export default {
   name: "Evaluate-Bitcoin-Script",
   data() {
     return {
+      possibleScriptTypes,
+      expectedScriptType: possibleScriptTypes[0],
       rawScript: "",
       scriptLines: [],
       mostMatchedLines: 0,
@@ -149,55 +232,79 @@ export default {
       bitdParsedData: {},
       hexParsedData: {},
       selectedParsingData: {},
-      parsedScriptType: "unknown",
+      parsedScriptType: possibleScriptTypes[0],
       parsedAsmLines: [],
       contextsByLine: [],
       sigsAlwaysPass: true,
+      convertFromSelectType: possibleScriptTypes[0],
+      convertToSelectType: possibleScriptTypes[1],
     };
   },
   mounted() {
     this.$nextTick(() => {
       this.rawScript = this.$route.params.rawscript || "";
+      this.expectedScriptType = this.$route.query.type || possibleScriptTypes[0]
       this.onScriptEditorInput();
     });
   },
   methods: {
+    onExpectedTypeChange() {
+      if (this.convertFromSelectType !== this.expectedScriptType) {
+        this.convertFromSelectType = this.expectedScriptType;
+        this.onConvertFromSelectTypeChange();
+      }
+      this.onScriptEditorInput();
+    },
+    onConvertFromSelectTypeChange() {
+      if (this.convertFromSelectType === this.convertToSelectType) {
+        this.convertToSelectType = this.possibleScriptTypes.find(
+          (i) => this.convertToSelectType !== i
+        );
+      }
+    },
     opReturnItemToString(opReturnItem) {
       return Buffer.from(opReturnItem).toString();
     },
     onScriptEditorScroll() {
-      const scrollTop = $(".scriptInput")[0].scrollTop;
-      $(".lineNumContainer")[0].scrollTop = scrollTop;
-      $(".contextsContainer")[0].scrollTop = scrollTop;
+      const scrollTop = $(".scriptInput")[0]?.scrollTop;
+      if (scrollTop) {
+        $(".lineNumContainer")[0].scrollTop = scrollTop;
+        $(".contextsContainer")[0].scrollTop = scrollTop;
+      }
     },
-    setUrlPathParameter() {
-      if (this.$route.params.rawscript !== this.rawScript) {
-        this.$router.push(
-          "/tools/scripteval/" + encodeURIComponent(this.rawScript || "")
-        );
+    setUrlPathParameters() {
+      if (
+        this.$route.params.rawscript !== this.rawScript ||
+        this.$route.query.type !== this.expectedScriptType
+      ) {
+        this.$router.push({
+          path: "/tools/scripteval/" + encodeURIComponent(this.rawScript || ""),
+          query: { type: this.expectedScriptType },
+        });
       }
     },
     onScriptEditorInput() {
       this.onScriptEditorScroll();
-      this.setUrlPathParameter();
+      this.setUrlPathParameters();
       this.scriptLines = (this.rawScript + "").split("\n");
       this.lineCount = this.scriptLines.length;
 
-      const {
-        options: [asmParsedData, bitdParsedData, hexParsedData],
-        mostMatchedLines,
-        detectedScriptIndex,
-      } = this.parse(this.scriptLines);
+      const { options, mostMatchedLines, detectedScriptIndex } = this.parse(
+        this.scriptLines
+      );
 
       this.mostMatchedLines = mostMatchedLines;
-      this.asmParsedData = asmParsedData;
-      this.bitdParsedData = bitdParsedData;
-      this.hexParsedData = hexParsedData;
+      this.asmParsedData = options[0];
+      this.bitdParsedData = options[1];
+      this.hexParsedData = options[2];
 
-      this.selectedParsingData = [asmParsedData, bitdParsedData, hexParsedData][
-        detectedScriptIndex
-      ];
-      this.parsedScriptType = this.selectedParsingData.type;
+      this.parsedScriptType = options[detectedScriptIndex].type;
+
+      const expectedIndex = this.possibleScriptTypes.indexOf(
+        this.expectedScriptType
+      );
+      this.selectedParsingData = options[expectedIndex];
+
       this.parsedAsmLines = this.selectedParsingData.lines.map(
         (i) => i?.toAsmString() || `undefined`
       );
@@ -236,17 +343,17 @@ export default {
 
       const options = [
         {
-          type: "ASM Script",
+          type: this.possibleScriptTypes[0],
           lines: asmLines,
           matchCount: asmLines.filter((i) => i).length,
         },
         {
-          type: "BitcoinD Script",
+          type: this.possibleScriptTypes[1],
           lines: bitdLines,
           matchCount: bitdLines.filter((i) => i).length,
         },
         {
-          type: "HEX Script",
+          type: this.possibleScriptTypes[2],
           lines: hexLines,
           matchCount: hexLines.filter((i) => i).length,
         },
@@ -299,6 +406,46 @@ export default {
         }
       }
       return contexts;
+    },
+    convertScript(fromType, toType) {
+      const errorDetectedShown = false;
+      const converted = [];
+
+      const scripts =
+        fromType === this.possibleScriptTypes[0]
+          ? this.asmParsedData.lines
+          : fromType === this.possibleScriptTypes[1]
+          ? this.bitdParsedData.lines
+          : fromType === this.possibleScriptTypes[2]
+          ? this.hexParsedData.lines
+          : this.selectedParsingData.lines;
+
+      for (let i = 0; i < scripts.length; i++) {
+        const line = scripts[i];
+
+        if (!line && this.parsedAsmLines[i] !== "undefined") {
+          if (!errorDetectedShown) {
+            // TODO: Show error and ask to continue parse or to stop
+            // if continue: set errorDetectedShown to TRUE and go out of the if
+            // else - exit this function
+          }
+          converted.push(this.scriptLines[i]); // push original line, because parse is failing
+        } else if (!line) {
+          converted.push("");
+        } else {
+          if (toType === this.possibleScriptTypes[0]) {
+            converted.push(line.toAsmString());
+          } else if (toType === this.possibleScriptTypes[1]) {
+            converted.push(line.toBitcoindString());
+          } else if (toType === this.possibleScriptTypes[2]) {
+            converted.push(line.toHex());
+          }
+        }
+      }
+
+      this.rawScript = converted.join("\n");
+      this.expectedScriptType = toType;
+      this.onScriptEditorInput();
     },
   },
   props: {},
