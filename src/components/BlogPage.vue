@@ -31,8 +31,7 @@ const feedDefinitions = require("../assets/feedDefinitions.json");
 const feedNames = feedDefinitions.map((i) => i.feedName);
 
 const feed = feedDefinitions[feedNames.indexOf(feedName)];
-console.log(feed);
-const articles = feed.items.map((id) => {
+const articles = feed?.items.map((id) => {
   const loadedData = require(`../assets/raw-blog/${feed.blogDir}/${id}.json`);
   return { ...loadedData, id };
 });
