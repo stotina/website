@@ -20,11 +20,6 @@
     "icon": "/images/icons/compiler.png"
   },
   {
-    "path": "/tools/generatekey",
-    "name": "Generate Testing Keys",
-    "icon": "/images/icons/keys.png"
-  },
-  {
     "path": "/tools/convertdata",
     "name": "Convert Data Formats",
     "icon": "/images/icons/formats.png"
@@ -33,6 +28,21 @@
     "path": "/tools/txdemo",
     "name": "Make Transactions Demo",
     "icon": "/images/icons/demonstration.png"
+  },
+  {
+    "path": "/tools/debugbsv15",
+    "name": "Console with BSVJS 1.5",
+    "icon": "/images/icons/term1.png"
+  },
+  {
+    "path": "/tools/debugbsv2",
+    "name": "Console with BSVJS 2.0",
+    "icon": "/images/icons/term2.png"
+  },
+  {
+    "path": "/tools/generatekey",
+    "name": "Generate Testing Keys",
+    "icon": "/images/icons/keys.png"
   },
   {
     "path": "/tools/testnetwallet",
@@ -58,15 +68,5 @@
     "path": "/tools/blockstats",
     "name": "Block Inspector",
     "icon": "/images/icons/chain.png"
-  },
-  {
-    "path": "/tools/debugbsv15",
-    "name": "Console with BSVJS 1.5",
-    "icon": "/images/icons/term1.png"
-  },
-  {
-    "path": "/tools/debugbsv2",
-    "name": "Console with BSVJS 2.0",
-    "icon": "/images/icons/term2.png"
   }
 ]
