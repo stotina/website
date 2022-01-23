@@ -13,6 +13,7 @@ import FaqPage from "./components/FaqPage.vue";
 import PrivacyPage from "./components/PrivacyPage.vue";
 import TermsPage from "./components/TermsPage.vue";
 
+import BlokInspector from "./components/tools/BlokInspector.vue"
 import BsvTestnetWalletPage from "./components/tools/BsvTestnetWalletPage.vue"
 import ConsoleBsvJs15Page from "./components/tools/ConsoleBsvJs15Page.vue"
 import ConsoleBsvJs20Page from "./components/tools/ConsoleBsvJs20Page.vue"
@@ -24,6 +25,7 @@ import GenerateTestKeysPage from "./components/tools/GenerateTestKeysPage.vue"
 import MapiGuiPage from "./components/tools/MapiGuiPage.vue"
 import ParseBitcoinUriPage from "./components/tools/ParseBitcoinUriPage.vue"
 import RpcDashboardPage from "./components/tools/RpcDashboardPage.vue"
+import TransactionGraph from "./components/tools/TransactionGraph.vue"
 import TxDemoPage from "./components/tools/TxDemoPage.vue"
 
 require("jquery");
@@ -43,6 +45,7 @@ const router = new VueRouter({
 
     { path: "/tools", component: ToolsPage },
 
+    { path: "/tools/blockstats", component: BlokInspector },
     { path: "/tools/decoderaw", component: DecodeRawTxPage },
     { path: "/tools/decoderaw/:rawtx", component: DecodeRawTxPage },
     { path: "/tools/parseuri", component: ParseBitcoinUriPage },
@@ -52,6 +55,7 @@ const router = new VueRouter({
     { path: "/tools/scripteval/:rawscript", component: EvalBitcoinScriptPage },
     { path: "/tools/generatekey", component: GenerateTestKeysPage },
     { path: "/tools/convertdata", component: ConvertDataPage },
+    { path: "/tools/txgraph", component: TransactionGraph },
     { path: "/tools/txdemo", component: TxDemoPage },
     { path: "/tools/testnetwallet", component: BsvTestnetWalletPage },
     { path: "/tools/debugbsv15", component: ConsoleBsvJs15Page },

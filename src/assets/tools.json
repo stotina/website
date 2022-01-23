@@ -40,16 +40,6 @@
     "icon": "/images/icons/wallet.png"
   },
   {
-    "path": "/tools/debugbsv15",
-    "name": "Console with BSVJS 1.5",
-    "icon": "/images/icons/term1.png"
-  },
-  {
-    "path": "/tools/debugbsv2",
-    "name": "Console with BSVJS 2.0",
-    "icon": "/images/icons/term2.png"
-  },
-  {
     "path": "/tools/rpcdashboard",
     "name": "RPC Dashboard",
     "icon": "/images/icons/dashboard.png"
@@ -58,5 +48,25 @@
     "path": "/tools/mapigui",
     "name": "MAPI User Interface",
     "icon": "/images/icons/broadcast.png"
+  },
+  {
+    "path": "/tools/txgraph",
+    "name": "Transaction Graph",
+    "icon": "/images/icons/graph.png"
+  },
+  {
+    "path": "/tools/blockstats",
+    "name": "Block Inspector",
+    "icon": "/images/icons/chain.png"
+  },
+  {
+    "path": "/tools/debugbsv15",
+    "name": "Console with BSVJS 1.5",
+    "icon": "/images/icons/term1.png"
+  },
+  {
+    "path": "/tools/debugbsv2",
+    "name": "Console with BSVJS 2.0",
+    "icon": "/images/icons/term2.png"
   }
 ]
