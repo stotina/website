@@ -245,7 +245,7 @@ export default {
     this.$nextTick(async () => {
       this.rawScript = this.$route.params.rawscript || "";
       this.expectedScriptType =
-        this.$route.query.type || possibleScriptTypes[0];
+        this.$route.query.type?.toUpperCase() || possibleScriptTypes[0];
 
       const txInput = this.$route.query.txInput;
       if (txInput) await this.fromTxInputPointer(txInput);
@@ -268,10 +268,23 @@ export default {
         const script = bsvjs.Script.fromHex(
           tx.txIns[vin].script.toHex() + output.script.toHex()
         );
-        this.rawScript = script
-          .toAsmString()
-          .split(" ")
-          .join("\n");
+        if (this.expectedScriptType === possibleScriptTypes[0]) {
+          this.rawScript = script
+            .toAsmString()
+            .split(" ")
+            .join("\n");
+        } else if (this.expectedScriptType === possibleScriptTypes[1]) {
+          this.rawScript = script
+            .toBitcoindString()
+            .split(" ")
+            .join("\n");
+        } else if (this.expectedScriptType === possibleScriptTypes[2]) {
+          this.rawScript = script
+            .toBitcoindString()
+            .split(" ")
+            .map((line) => bsvjs.Script.fromBitcoindString(line).toHex())
+            .join("\n");
+        }
       } catch (error) {
         console.warn(`Failed to parse txInput (${txInput}): ${error.message}`);
       }
