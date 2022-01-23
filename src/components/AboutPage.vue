@@ -39,7 +39,7 @@
             </li>
             <li class="list-group-item">
               <i class="fab fa-twitter"></i> :
-              <a href="https://twitter.com/BitcoinSofia">@BitcoinSofia</a>
+              <a href="https://twitter.com/BitcoinSofia" target=”_blank”>@BitcoinSofia</a>
             </li>
           </ul>
           <br />

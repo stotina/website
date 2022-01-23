@@ -216,6 +216,7 @@ import { Buffer } from "../../assets/js/buffer";
 import bsvjs from "../../assets/js/bsv.2.0.10/bsv.bundle";
 import { bitcoinScriptEval } from "../../assets/js/bitcoin-script-eval/index";
 import $ from "jquery";
+import { getRawTx } from "../../assets/js/whatsOnChain";
 
 const possibleScriptTypes = ["ASM", "BITD", "HEX"];
 
@@ -241,13 +242,40 @@ export default {
     };
   },
   mounted() {
-    this.$nextTick(() => {
+    this.$nextTick(async () => {
       this.rawScript = this.$route.params.rawscript || "";
-      this.expectedScriptType = this.$route.query.type || possibleScriptTypes[0]
+      this.expectedScriptType =
+        this.$route.query.type || possibleScriptTypes[0];
+
+      const txInput = this.$route.query.txInput;
+      if (txInput) await this.fromTxInputPointer(txInput);
       this.onScriptEditorInput();
     });
   },
   methods: {
+    async fromTxInputPointer(txInput) {
+      try {
+        const [txid, vinStr] = txInput.split("_i");
+        const vin = parseInt(vinStr || "0");
+        const hex = await getRawTx(txid, "main");
+        const tx = bsvjs.Tx.fromHex(hex);
+        const parentHex = await getRawTx(
+          tx.txIns[vin].txHashBuf.reverse().toString("hex"),
+          "main"
+        );
+        const parentTx = bsvjs.Tx.fromHex(parentHex);
+        const output = parentTx.txOuts[tx.txIns[vin].txOutNum];
+        const script = bsvjs.Script.fromHex(
+          tx.txIns[vin].script.toHex() + output.script.toHex()
+        );
+        this.rawScript = script
+          .toAsmString()
+          .split(" ")
+          .join("\n");
+      } catch (error) {
+        console.warn(`Failed to parse txInput (${txInput}): ${error.message}`);
+      }
+    },
     onExpectedTypeChange() {
       if (this.convertFromSelectType !== this.expectedScriptType) {
         this.convertFromSelectType = this.expectedScriptType;

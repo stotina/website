@@ -1,5 +1,6 @@
 import { PRIV_KET_MAIN, PRIV_KEY_TEST, PRIV_KEY_FAKE } from "./settings.js";
 import bsvjs from "../../../assets/js/bsv.2.0.10/bsv.bundle.js"
+import { getRawTx, getUtxos as getUtxosFromWoC } from "../../../assets/js/whatsOnChain.js";
 
 let inputSourceNetwork = "main";
 
@@ -92,34 +93,10 @@ async function getFakeUtxos(addr) {
 }
 
 export async function getWocUtxos(address, network = "main") {
-  const url = `https://api.whatsonchain.com/v1/bsv/${network}/address/${address}/unspent`;
-  const result = await fetch(url).then((res) => res.json());
-
-  if (!Array.isArray(result))
-    throw new Error(`Failed to GET ${url} : Data = ${JSON.stringify(result)}`);
-
-  const addr =
-    network === "main"
-      ? bsvjs.Address.fromString(address.toString())
-      : bsvjs.Address.Testnet.fromString(address.toString());
-  const script = bsvjs.Script.fromPubKeyHash(addr.hashBuf);
-  const scriptLen = bsvjs.VarInt.fromNumber(script.toBuffer().length);
-
-  return result.map((i) => {
-    const res = {
-      txid: i.tx_hash,
-      vout: i.tx_pos,
-      value: i.value,
-      height: i.height,
-    };
-    const out = new bsvjs.TxOut(new bsvjs.Bn(res.value), scriptLen, script);
-    const txid = Buffer.from(res.txid, "hex").reverse();
-    return { out, txid, vout: res.vout };
-  });
+  return await getUtxosFromWoC(address, network);
 }
 
 export async function getWocTx(txid, network = "main") {
-  const url = `https://api.whatsonchain.com/v1/bsv/${network}/tx/${txid}/hex`;
-  const result = await fetch(url).then((res) => res.text());
-  return bsvjs.Tx.fromHex(result);
+  const hex = await getRawTx(txid, network);
+  return bsvjs.Tx.fromHex(hex)
 }

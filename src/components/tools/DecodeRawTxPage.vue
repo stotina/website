@@ -76,6 +76,7 @@ import bsvjs from "../../assets/js/bsv.2.0.10/bsv.bundle";
 import * as TXO from "../../assets/js/txo/index";
 import { decodeTxParts } from "../tools/txDecoder/txDecoder";
 import $ from "jquery";
+import { getRawTx } from "../../assets/js/whatsOnChain";
 
 export default {
   name: "Decode-Raw-Tx",
@@ -124,9 +125,7 @@ export default {
       } catch (error) {
         if (this.rawtx.length === 64) {
           // This could be a txid. try to get from WhatsOnChain
-          const hex = await fetch(
-            `https://api.whatsonchain.com/v1/bsv/main/tx/${this.rawtx}/hex`
-          ).then((i) => i.text());
+          const hex = await getRawTx(this.rawtx, "main");
           this.rawtx = hex;
           if (this.$route.params.rawtx !== this.rawtx) {
             this.$router.push(
@@ -218,13 +217,21 @@ export default {
         const i = split[1];
         const t = split[2];
         this.decodedGroupHint = `This is the '${t}' - a part of the ${i}-th Input`;
-        this.decodedPartHint = part.val;
+        if (t === "script") {
+          this.decodedPartHint =
+            `<a href="/#/tools/scripteval/?type=ASM&txInput=${this.parsedBsv.id()}_i${i}" target=”_blank”">` +
+            `Go to the script evaluator` +
+            `</a> to inspect scirpt`;
+        } else {
+          this.decodedPartHint = part.val;
+        }
       } else if (byte.group.startsWith("output_")) {
         const split = byte.type.split("_");
         const i = split[1];
         const t = split[2];
         this.decodedGroupHint = `This is the '${t}' - a part of the ${i}-th Output`;
         this.decodedPartHint = part.val;
+        // TODO: if script is OP_RETURN, add URL that redirects to DATA CONVERSION PAGE (convert hex to utf8)
       } else {
         this.decodedGroupHint = `This is the '${byte.type}'`;
         this.decodedPartHint = part?.val;

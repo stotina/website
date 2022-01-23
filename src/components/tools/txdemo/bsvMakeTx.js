@@ -85,11 +85,9 @@ export async function readTx(txid, network="main") {
 function logTx(tx) {
   const formatTxidLink = (txid) => {
     if (network === "main") {
-      const url = "https://whatsonchain.com/tx/" + txid;
-      return `<a target=”_blank” href="${url}">${txid}</a>`;
+      return `<a href="https://whatsonchain.com/tx/${txid}" target=”_blank”>${txid}</a>`;
     } else if (network === "test") {
-      const url = "https://test.whatsonchain.com/tx/" + txid;
-      return `<a target=”_blank” href="${url}">${txid}</a>`;
+      return `<a href="https://test.whatsonchain.com/tx/${txid}" target=”_blank”>${txid}</a>`;
     } else {
       return txid;
     }

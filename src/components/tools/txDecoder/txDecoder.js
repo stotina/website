@@ -24,7 +24,7 @@ export function decodeTxParts(rawtx) {
     parts.push({
       group: `input_${i}`,
       type: `input_${i}_txHashBuf`,
-      val: `Here's the previous transaction: <a href="https://whatsonchain.com/tx/${prevTxid}">${prevTxid}</a>`,
+      val: `Here's the previous transaction: <a href="https://whatsonchain.com/tx/${prevTxid}" target=”_blank”>${prevTxid}</a>`,
       buf: tx.txIns[i].txHashBuf,
     });
     parts.push({
