@@ -231,7 +231,33 @@ export default {
         const t = split[2];
         this.decodedGroupHint = `This is the '${t}' - a part of the ${i}-th Output`;
         this.decodedPartHint = part.val;
-        // TODO: if script is OP_RETURN, add URL that redirects to DATA CONVERSION PAGE (convert hex to utf8)
+
+        if (t === "script") {
+          const script = bsvjs.Script.fromObject(
+            this.parsedBsv.txOuts[parseInt(i)].script
+          );
+          if (script.isSafeDataOut()) {
+            this.decodedPartHint =
+              `This is an OP_0 OP_RETURN script : ` +
+              `<a href="#/tools/convertdata?from=asm-script&to=utf8&value=${script
+                .toAsmString()
+                .split(" ")
+                .slice(2)
+                .join(" ")}" target=”_blank”">` +
+              `parse it with the data decoder` +
+              `</a> to inspect the contents`;
+          } else if (script.isOpReturn()) {
+            this.decodedPartHint =
+              `This is an OP_RETURN script : ` +
+              `<a href="#/tools/convertdata?from=asm-script&to=utf8&value=${script
+                .toAsmString()
+                .split(" ")
+                .slice(1)
+                .join(" ")}" target=”_blank”">` +
+              `parse it with the data decoder` +
+              `</a> to inspect the contents`;
+          }
+        }
       } else {
         this.decodedGroupHint = `This is the '${byte.type}'`;
         this.decodedPartHint = part?.val;

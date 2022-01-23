@@ -114,9 +114,9 @@ export default {
   data() {
     return {
       dataTypes,
-      selectedTypeFrom: localStorage.getItem("selectedTypeFrom") || "utf8",
-      selectedTypeTo: localStorage.getItem("selectedTypeTo") || "hex",
-      inputValue: localStorage.getItem("inputValue") || "",
+      selectedTypeFrom: this.$route.query.from || "utf8",
+      selectedTypeTo: this.$route.query.to || "hex",
+      inputValue: this.$route.query.value || "",
       outputValue: "",
     };
   },
@@ -178,12 +178,19 @@ export default {
       }
     },
     saveState() {
-      localStorage.setItem("selectedTypeFrom", this.selectedTypeFrom);
-      localStorage.setItem("selectedTypeTo", this.selectedTypeTo);
-      localStorage.setItem(
-        "inputValue",
-        this.inputValue.toString().substring(0, 5000)
-      );
+      const query = {
+        from: this.selectedTypeFrom,
+        to: this.selectedTypeTo,
+        value: this.inputValue,
+      };
+
+      if (
+        this.$route.query.from !== query.from ||
+        this.$route.query.to !== query.to ||
+        this.$route.query.value !== query.value
+      ) {
+        this.$router.push({ path: "/tools/convertdata", query });
+      }
     },
     buf2Binary(buf) {
       const parts = [];
