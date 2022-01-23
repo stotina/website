@@ -68,5 +68,10 @@
     "path": "/tools/blockstats",
     "name": "Block Inspector",
     "icon": "/images/icons/chain.png"
+  },
+  {
+    "path": "/tools/duplicatetoken/run",
+    "name": "Duplicate RUN Tokens",
+    "icon": "/images/icons/clone.png"
   }
 ]

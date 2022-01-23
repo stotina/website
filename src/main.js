@@ -20,6 +20,7 @@ import ConsoleBsvJs20Page from "./components/tools/ConsoleBsvJs20Page.vue"
 import ConvertDataPage from "./components/tools/ConvertDataPage.vue"
 import CurrencyConverterPage from "./components/tools/CurrencyConverterPage.vue"
 import DecodeRawTxPage from "./components/tools/DecodeRawTxPage.vue"
+import DuplicateRunTokens from "./components/tools/DuplicateRunTokens.vue"
 import EvalBitcoinScriptPage from "./components/tools/EvalBitcoinScriptPage.vue"
 import GenerateTestKeysPage from "./components/tools/GenerateTestKeysPage.vue"
 import MapiGuiPage from "./components/tools/MapiGuiPage.vue"
@@ -62,6 +63,7 @@ const router = new VueRouter({
     { path: "/tools/debugbsv2", component: ConsoleBsvJs20Page },
     { path: "/tools/rpcdashboard", component: RpcDashboardPage },
     { path: "/tools/mapigui", component: MapiGuiPage },
+    { path: "/tools/duplicatetoken/run", component: DuplicateRunTokens },
 
     { path: "/apps", component: AppsPage },
 
