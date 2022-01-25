@@ -4,11 +4,14 @@
       <div v-for="tool in tools" v-bind:key="tool.id" class="col-lg-3 col-md-4">
         <a
           class="toolListItem theme-br-mainFont"
-          :class="tool.path ? 'pointer animate' : 'empty'"
+          :class="tool.unfinished ? 'unfinished' : 'finished'"
           v-on:click="$router.push(tool.path)"
           v-bind:href="'/#' + tool.path"
         >
-          <div class="toolTitleArea">
+          <div
+            class="toolTitleArea"
+            v-bind:title="tool.unfinished ? 'Unfinished Tool' : tool.name"
+          >
             <div class="toolTitleIconBox theme-bg-mainFont">
               <img v-if="tool.icon" v-bind:src="tool.icon" :alt="tool.name" />
             </div>
@@ -72,25 +75,21 @@ export default {
   font-size: 1.2em;
   font-weight: bold;
 }
-.toolListItem.animate:hover .toolPhoneFrame {
-  transform: rotate(5deg);
-  transition: transform 0.3s ease-in-out;
-}
-.toolListItem.empty:hover .toolPhoneFrame {
-  border: 10px solid #ffffff44 !important;
-  border-top: 30px solid #ffffff44 !important;
-  transition: 0.5s ease-in-out;
-}
 
-.toolListItem:hover .toolTitleArea {
+.toolListItem.finished:hover .toolTitleArea {
   transition: color 0.5s;
   color: var(--font-footerLinks) !important;
   transform: scale(1.05);
 }
 
-.toolListItem:hover .toolTitleArea .toolTitleIconBox {
+.toolListItem.finished:hover .toolTitleArea .toolTitleIconBox {
   transition: background-color 0.5s, transform 0.3s ease-in-out;
   background-color: var(--font-footerLinks) !important;
   transform: rotate(5deg);
+}
+
+.toolListItem.unfinished:hover {
+  transition: opacity 0.5s;
+  opacity: 30%;
 }
 </style>

@@ -12,7 +12,8 @@
   {
     "path": "/tools/currencyconverter",
     "name": "Currency Converter",
-    "icon": "/images/icons/prices.png"
+    "icon": "/images/icons/prices.png",
+    "unfinished": true
   },
   {
     "path": "/tools/scripteval",
@@ -47,31 +48,37 @@
   {
     "path": "/tools/testnetwallet",
     "name": "BSV Testnet Wallet",
-    "icon": "/images/icons/wallet.png"
+    "icon": "/images/icons/wallet.png",
+    "unfinished": true
   },
   {
     "path": "/tools/rpcdashboard",
     "name": "RPC Dashboard",
-    "icon": "/images/icons/dashboard.png"
+    "icon": "/images/icons/dashboard.png",
+    "unfinished": true
   },
   {
     "path": "/tools/mapigui",
     "name": "MAPI User Interface",
-    "icon": "/images/icons/broadcast.png"
+    "icon": "/images/icons/broadcast.png",
+    "unfinished": true
   },
   {
     "path": "/tools/txgraph",
     "name": "Transaction Graph",
-    "icon": "/images/icons/graph.png"
+    "icon": "/images/icons/graph.png",
+    "unfinished": true
   },
   {
     "path": "/tools/blockstats",
     "name": "Block Inspector",
-    "icon": "/images/icons/chain.png"
+    "icon": "/images/icons/chain.png",
+    "unfinished": true
   },
   {
     "path": "/tools/duplicatetoken/run",
-    "name": "Duplicate RUN Tokens",
-    "icon": "/images/icons/clone.png"
+    "name": "RUN NFT Duplicator",
+    "icon": "/images/icons/clone.png",
+    "unfinished": true
   }
 ]
