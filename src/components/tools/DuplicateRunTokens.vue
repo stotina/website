@@ -45,10 +45,30 @@
           title="Must be a whole number between 1 and 1000"
         />
       </div>
+      <div class="my-3">
+        <div class="tocCheck text-center mx-auto row">
+          <input
+            type="checkbox"
+            class="col-sm-12 col-md-3 form-control"
+            id="agreeTocInput"
+            v-model="agreeToC"
+          />
+          <label
+            for="agreeTocInput"
+            class="col-sm-12 col-md-9 input-group-text"
+          >
+            I accept the terms and conditions
+          </label>
+        </div>
+      </div>
       <div class="inputContainer input-group mx-auto row my-3 px-5">
         <input
-          v-bind:value="`Duplicate ${count} time(s)`"
-          v-bind:disabled="!metadata"
+          v-bind:value="
+            duplicateButtonDisabled
+              ? `Fill the Form to Enable Duplication`
+              : `Duplicate ${count} time(s)`
+          "
+          v-bind:disabled="duplicateButtonDisabled"
           type="button"
           id="nftCopyBtn"
           v-on:click="mint"
@@ -81,6 +101,14 @@
         style="width:70%;"
       ></textarea>
     </div>
+    <div class="tocCheck text-center mx-auto col-8 row">
+      <label
+        class="col-12 readTocBtn input-group-text"
+        v-on:click="onTocViewClick"
+      >
+        read Terms and Condtions
+      </label>
+    </div>
   </div>
 </template>
 
@@ -91,6 +119,7 @@ import {
   readRelayNFT,
   issueDuplicateNFTs,
 } from "./nftDuplicator/runDuplicator";
+import termsAndConditions from "./nftDuplicator/termsAndConditions";
 
 export default {
   name: "RUN-NFT-Duplicator",
@@ -103,6 +132,7 @@ export default {
       location: "",
       destinationAddr: "",
       count: 1,
+      agreeToC: false,
       error: undefined,
       metadata: undefined,
     };
@@ -144,6 +174,9 @@ export default {
         if (!this.countIsValid) {
           throw new Error("Provided count is invalid");
         }
+        if (!this.agreeToC) {
+          throw new Error("You must accept the terms and conditions");
+        }
 
         await issueDuplicateNFTs(
           this.runKey.toString(),
@@ -157,6 +190,9 @@ export default {
       } catch (error) {
         this.error = error.toString().replace(/\n/g, "<br/>");
       }
+    },
+    onTocViewClick() {
+      alert(termsAndConditions);
     },
   },
   props: {},
@@ -200,6 +236,14 @@ export default {
       const imageBuf = qr.imageSync(uri);
       return imageBuf.toString("base64");
     },
+    duplicateButtonDisabled() {
+      return (
+        !this.metadata ||
+        !this.addressIsValid ||
+        !this.countIsValid ||
+        !this.agreeToC
+      );
+    },
   },
 };
 </script>
@@ -215,5 +259,12 @@ export default {
 }
 .errorMessage {
   font-size: 1.6rem;
+}
+.readTocBtn {
+  display: block;
+  color: var(--font-footerLinks) !important;
+}
+.readTocBtn:hover {
+  text-decoration: underline;
 }
 </style>
