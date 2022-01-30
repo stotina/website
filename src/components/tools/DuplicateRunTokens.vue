@@ -55,17 +55,13 @@
           class="btn btn-primary form-control col"
         />
       </div>
-      <div
-        v-if="error"
-        class="errorBox mx-auto text-center mx-auto mb-3 px-5"
-      >
-        <div v-html="error" class="text-danger errorMessage">
-        </div>
-          <img
-            v-if="error.includes('Not enough funds')"
-            class="mx-auto mt-4"
-            v-bind:src="`data:image/png;base64,${addressQrCodeBase64}`"
-          />
+      <div v-if="error" class="errorBox mx-auto text-center mx-auto mb-3 px-5">
+        <div v-html="error" class="text-danger errorMessage"></div>
+        <img
+          v-if="error.includes('Not enough funds')"
+          class="mx-auto mt-4"
+          v-bind:src="`data:image/png;base64,${addressQrCodeBase64}`"
+        />
       </div>
     </div>
     <div class="mx-auto py-4 text-center">
@@ -77,7 +73,7 @@
         <img v-bind:src="imageUrl" id="nftImage" />
       </div>
     </div>
-    <div class="mx-auto py-4 text-center">
+    <div class="mx-auto py-4 text-center" v-if="!!metadata">
       <textarea
         disabled
         v-bind:value="JSON.stringify(metadata, null, 2)"
@@ -90,19 +86,11 @@
 
 <script>
 import bsvjs from "../../assets/js/bsv.2.0.10/bsv.bundle";
-import Run from "run-sdk";
 import qr from "qr-image";
-
-const runTxidsToTrust = [
-  // RelayX's contracts
-  "cdea2c203af755cd9477ca310c61021abaafc135a21d8f93b8ebfc6ca5f95712",
-  "97a4c947cb96c1f22ec2759a86ad41dc3b48d2f1a3cc0f8400fac449d3c45b14",
-  "2c7b03b26378be307f3778517694c66b35effc1c4de932661602663529157449",
-  "84e20d29a122c6c3ad3776cc16c049d196fa28f9447b0745053d2b9ea9c0ff11",
-
-  // Stotina's Duplicator
-  "4495104c5e5fe20ffa106e54e3d78599bf3a00c7434d0c1b318a68014c2b4985"
-];
+import {
+  readRelayNFT,
+  issueDuplicateNFTs,
+} from "./nftDuplicator/runDuplicator";
 
 export default {
   name: "RUN-NFT-Duplicator",
@@ -112,9 +100,8 @@ export default {
         "KzggDyULMLDFbSBidJUBmbozbSgwmdDV7mCD39VjWYtTvrxWALmi"
       ),
       type: "run-relayx-nft",
-      location:
-        "2c7b03b26378be307f3778517694c66b35effc1c4de932661602663529157449_o2",
-      destinationAddr: "1DaYHfPvZ69kX55KWAX46dyk3V26dZnPsj",
+      location: "",
+      destinationAddr: "",
       count: 1,
       error: undefined,
       metadata: undefined,
@@ -136,14 +123,7 @@ export default {
         this.metadata = undefined;
       }
       try {
-        const runReaderInstance = new Run({
-          network: "main",
-          app: "stotina-duplicator",
-        });
-        for (const txid of runTxidsToTrust) {
-          runReaderInstance.trust(txid);
-        }
-        const jig = await runReaderInstance.load(this.location);
+        const jig = await readRelayNFT(this.location);
         this.metadata = JSON.parse(JSON.stringify(jig.metadata));
         console.log(this.metadata);
       } catch (error) {
@@ -152,73 +132,31 @@ export default {
       }
     },
     async mint() {
-      if (!this.metadata) {
-        throw new Error("No metadata available to copy");
-      }
-      if (!this.addressIsValid) {
-        throw new Error("Provided owner address appears to be invalid");
-      }
-      if (!this.countIsValid) {
-        throw new Error("Provided count is invalid");
-      }
+      this.error = undefined;
 
-      const run = new Run({
-        network: "main",
-        app: "stotina-duplicator",
-        owner: this.runKey.toString(),
-        purse: this.runKey.toString(),
-      });
-      for (const txid of runTxidsToTrust) {
-        run.trust(txid);
-      }
       try {
-        const DuplicatorNFT = await run.load(
-          "4495104c5e5fe20ffa106e54e3d78599bf3a00c7434d0c1b318a68014c2b4985_o1"
-        );
+        if (!this.metadata) {
+          throw new Error("No metadata available to copy");
+        }
+        if (!this.addressIsValid) {
+          throw new Error("Provided owner address appears to be invalid");
+        }
+        if (!this.countIsValid) {
+          throw new Error("Provided count is invalid");
+        }
 
-        await this.mintNftBulkToOne(
-          DuplicatorNFT,
+        await issueDuplicateNFTs(
+          this.runKey.toString(),
           { ...this.metadata, image: this.imageLocation },
           this.count,
           this.destinationAddr
         );
-        alert(`Done!\n\nMinted ${this.count} token(s) to ${this.destinationAddr}`)
+        alert(
+          `Done!\n\nMinted ${this.count} token(s) to ${this.destinationAddr}`
+        );
       } catch (error) {
         this.error = error.toString().replace(/\n/g, "<br/>");
       }
-    },
-    async mintNftBulkToOne(Contract, metadata, count, address) {
-      let counter = 0;
-      const jigs = await this.bulkOperation(
-        () => counter < count,
-        () => {
-          counter++;
-          return Contract.mint(address, metadata);
-        }
-      );
-      return jigs.map((i) => i.location);
-    },
-    async mintNftBulkToMany(Contract, metadata, ...addressList) {
-      let counter = 0;
-      const jigs = await this.bulkOperation(
-        () => counter <= addressList.length,
-        () => {
-          return Contract.mint(addressList[counter++], metadata);
-        }
-      );
-      return jigs.map((i) => i.location);
-    },
-    async bulkOperation(loopCondition, callbackOnEachItteration) {
-      const tx = new Run.Transaction();
-      let counter = 0;
-      const callbackResults = [];
-      while (loopCondition(counter++)) {
-        tx.update(() => {
-          callbackResults.push(callbackOnEachItteration());
-        });
-      }
-      await tx.publish();
-      return callbackResults;
     },
   },
   props: {},
@@ -229,10 +167,12 @@ export default {
       return isMatch;
     },
     addressIsValid() {
-      const isMatch = /^1[a-km-zA-HJ-NP-Z1-9]{25,34}$/g.test(
-        this.destinationAddr
-      );
-      return isMatch;
+      try {
+        bsvjs.Address.fromString(this.destinationAddr);
+        return true;
+      } catch (error) {
+        return false;
+      }
     },
     countIsValid() {
       return 0 < this.count && this.count < 1001;
@@ -240,14 +180,12 @@ export default {
     imageLocation() {
       if (!this.metadata) return undefined;
       const img = this.metadata.image;
-      console.log("img : " + img);
       if (/^[0-9a-f]{64}_o[1-9][0-9]*$/g.test(img)) return img;
       else if (/^_o[1-9][0-9]*$/g.test(img))
         return this.location.split("_")[0] + img;
       else return undefined;
     },
     imageUrl() {
-      console.log("Getting image url for : " + this.imageLocation);
       if (!this.imageLocation) return undefined;
       return `https://berry.relayx.com/${this.imageLocation}`;
     },
