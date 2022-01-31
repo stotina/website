@@ -1,6 +1,8 @@
-import Run from "run-sdk/dist/run.browser.min.js";
+import { loadRunSdk } from "../../../assets/js/run.sdk";
 
 export async function readRelayNFT(location) {
+  const Run = await loadRunSdk();
+
   const runReaderInstance = new Run({
     network: "main",
     app: "stotina-duplicator",
@@ -19,6 +21,8 @@ export async function issueDuplicateNFTs(
   count,
   destinationAddr
 ) {
+  const Run = await loadRunSdk();
+  
   const run = new Run({
     network: "main",
     app: "stotina-duplicator",
@@ -81,6 +85,8 @@ export async function mintNftBulkToMany(Contract, metadata, ...addressList) {
 }
 
 export async function bulkOperation(loopCondition, callbackOnEachItteration) {
+  const Run = await loadRunSdk();
+  
   const tx = new Run.Transaction();
   let counter = 0;
   const callbackResults = [];

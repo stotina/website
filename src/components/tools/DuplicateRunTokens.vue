@@ -157,7 +157,7 @@ export default {
         this.metadata = JSON.parse(JSON.stringify(jig.metadata));
         console.log(this.metadata);
       } catch (error) {
-        console.warn(error);
+        console.warn(error.stack);
         this.metadata = undefined;
       }
     },
