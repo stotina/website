@@ -78,7 +78,6 @@
   {
     "path": "/tools/duplicatetoken/run",
     "name": "RUN NFT Duplicator",
-    "icon": "/images/icons/clone.png",
-    "unfinished": true
+    "icon": "/images/icons/clone.png"
   }
 ]
