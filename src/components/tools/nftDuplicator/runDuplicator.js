@@ -4,6 +4,8 @@ export async function readRelayNFT(location) {
   const runReaderInstance = new Run({
     network: "main",
     app: "stotina-duplicator",
+    owner: "L1oypiDZJdk7XVd15DiA8pd1nhzqdMDosGX3R8W7fGzszsUjDHL8", // 1J8EEhrSvJ8E42Ho3BKEPWd4bRNdPpdUNv
+    purse: "L1oypiDZJdk7XVd15DiA8pd1nhzqdMDosGX3R8W7fGzszsUjDHL8",
   });
   runReaderInstance.trust("*");
 
