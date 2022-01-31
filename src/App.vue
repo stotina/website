@@ -2,9 +2,11 @@
   <div id="app" class="theme-bg-appBase theme-c-mainFont">
     <link rel="stylesheet" href="/styles/colorScheme.css" />
     <HeaderElement></HeaderElement>
-    
+
     <div class="bellow-slogan theme-bg-main">
-      <router-view></router-view>
+      <div class="container-fluid">
+        <router-view></router-view>
+      </div>
     </div>
     <FooterElement></FooterElement>
   </div>

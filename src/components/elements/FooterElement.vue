@@ -1,80 +1,82 @@
 <template>
-  <div class="footer theme-bg-nav row">
-    <div class="footer-group col-md-5 col-lg-1" style="text-align:center;">
-      <div>
-        <img src="/images/logo.png" alt />
+  <div class="container-fluid">
+    <div class="footer theme-bg-nav row">
+      <div class="footer-group col-md-5 col-lg-1" style="text-align:center;">
+        <div>
+          <img src="/images/logo.png" alt />
+        </div>
+        <div>Copyright © 2020 Stotina</div>
       </div>
-      <div>Copyright © 2020 Stotina</div>
-    </div>
 
-    <div class="footer-group col-md-7 col-lg-2">
-      <div class="row footer-group-title">Stotina</div>
-      <div class="row">
-        <a
-          class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
-          v-on:click="navigate('/about')"
-          href="/#/about"
-        >
-          About Us
-        </a>
-        <a
-          class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
-          v-on:click="navigate('/blog')"
-          href="/#/blog"
-        >
-          News Blog
-        </a>
-        <a
-          class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
-          v-on:click="navigate('/faq')"
-          href="/#/faq"
-        >
-          FAQ
-        </a>
-        <a
-          class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
-          v-on:click="navigate('/terms')"
-          href="/#/terms"
-        >
-          Terms
-        </a>
-        <a
-          class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
-          v-on:click="navigate('/privacy')"
-          href="/#/privacy"
-        >
-          Privacy
-        </a>
+      <div class="footer-group col-md-7 col-lg-2">
+        <div class="row footer-group-title">Stotina</div>
+        <div class="row">
+          <a
+            class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
+            v-on:click="navigate('/about')"
+            href="/#/about"
+          >
+            About Us
+          </a>
+          <a
+            class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
+            v-on:click="navigate('/blog')"
+            href="/#/blog"
+          >
+            News Blog
+          </a>
+          <a
+            class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
+            v-on:click="navigate('/faq')"
+            href="/#/faq"
+          >
+            FAQ
+          </a>
+          <a
+            class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
+            v-on:click="navigate('/terms')"
+            href="/#/terms"
+          >
+            Terms
+          </a>
+          <a
+            class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12"
+            v-on:click="navigate('/privacy')"
+            href="/#/privacy"
+          >
+            Privacy
+          </a>
+        </div>
       </div>
-    </div>
 
-    <div class="footer-group col-md-12 col-lg-4">
-      <div class="row footer-group-title">Tools</div>
-      <div class="row">
-        <a
-          v-for="tool in this.tools"
-          :key="tool.id"
-          class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12 col-md-4 col-lg-6"
-          v-on:click="navigate(tool.path)"
-          v-bind:href="'/#' + tool.path"
-        >
-          {{ tool.name }}
-        </a>
+      <div class="footer-group col-md-12 col-lg-4">
+        <div class="row footer-group-title">Tools</div>
+        <div class="row">
+          <a
+            v-for="tool in this.tools"
+            :key="tool.id"
+            class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12 col-md-4 col-lg-6"
+            v-on:click="navigate(tool.path)"
+            v-bind:href="'/#' + tool.path"
+          >
+            {{ tool.name }}
+          </a>
+        </div>
       </div>
-    </div>
 
-    <div class="footer-group col-md-12 col-lg-4">
-      <div class="row footer-group-title">Apps</div>
-      <div class="row">
-        <a
-          v-for="app in this.apps"
-          :key="app.id"
-          class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12 col-md-4 col-lg-6"
-          v-on:click="navigate(app.path)"
-          v-bind:href="'/#' + app.path"
-        >
-          {{ app.name }}
-        </a>
+      <div class="footer-group col-md-12 col-lg-4">
+        <div class="row footer-group-title">Apps</div>
+        <div class="row">
+          <a
+            v-for="app in this.apps"
+            :key="app.id"
+            class="footer-link theme-c-footerLinks theme-c-hover pointer col-sm-12 col-md-4 col-lg-6"
+            v-on:click="navigate(app.path)"
+            v-bind:href="'/#' + app.path"
+          >
+            {{ app.name }}
+          </a>
+        </div>
       </div>
     </div>
   </div>
