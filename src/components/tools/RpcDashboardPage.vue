@@ -1,6 +1,14 @@
 <template>
   <div>
     <h1 class="text-center">RPC Dashboard</h1>
+    <div>
+      <h3 class="text-center text-warning">
+        This tool cannot be implemented because of CORS sequrity issues.
+      </h3>
+      <h3 class="text-center pb-5 text-warning">
+        It can be made into a smartphone app or a desktop app at a later point.
+      </h3>
+    </div>
     <div class="row">
       <div class="rpcSettings col-md-8 row m-auto">
         <input

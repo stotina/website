@@ -52,12 +52,6 @@
     "unfinished": true
   },
   {
-    "path": "/tools/rpcdashboard",
-    "name": "RPC Dashboard",
-    "icon": "/images/icons/dashboard.png",
-    "unfinished": true
-  },
-  {
     "path": "/tools/mapigui",
     "name": "MAPI User Interface",
     "icon": "/images/icons/broadcast.png",
