@@ -22,12 +22,7 @@
           placeholder="RPC_PASSWORD"
         />
         <div class="col-md-12 text-center">
-          {{
-            RPC_FULL_URL.replace(
-              RPC_USERNAME + ":" + RPC_PASSWORD,
-              RPC_USERNAME + ":" + new Array(RPC_PASSWORD.length + 1).join("*")
-            )
-          }}
+          {{ RPC_FULL_URL_HIDDEN_PASSWORD }}
         </div>
       </div>
     </div>
@@ -54,53 +49,103 @@
     </div>
     <div class="accordion" id="infoOptions">
       <div class="accordion-item">
-        <h3 class="accordion-header" id="info_title_blockchain" v-on:click="expandedElement='blockchain'">
+        <h3
+          class="accordion-header"
+          id="info_title_blockchain"
+          v-on:click="expandedElement = 'blockchain'"
+        >
           <div class="accordion-button collapsed">
             Blockchain info
           </div>
         </h3>
-        <div v-bind:class="{ 'accordion-collapse':true, 'collapse':true, show: expandedElement === 'blockchain' }">
-          AAAAAAAAAA
+        <div
+          v-bind:class="{
+            'accordion-collapse': true,
+            collapse: true,
+            show: expandedElement === 'blockchain',
+          }"
+        >
+          {{ JSON.stringify(rpcData.blockchain) }}
         </div>
       </div>
       <div class="accordion-item">
-        <h3 class="accordion-header" id="info_title_mempool" v-on:click="expandedElement='mempool'">
+        <h3
+          class="accordion-header"
+          id="info_title_mempool"
+          v-on:click="expandedElement = 'mempool'"
+        >
           <div class="accordion-button collapsed">
             Mempool info
           </div>
         </h3>
-        <div v-bind:class="{ 'accordion-collapse':true, 'collapse':true, show: expandedElement === 'mempool' }">
-          AAAAAAAAAA
+        <div
+          v-bind:class="{
+            'accordion-collapse': true,
+            collapse: true,
+            show: expandedElement === 'mempool',
+          }"
+        >
+          {{ JSON.stringify(rpcData.mempool) }}
         </div>
       </div>
       <div class="accordion-item">
-        <h3 class="accordion-header" id="info_title_rpc" v-on:click="expandedElement='rpc'">
+        <h3
+          class="accordion-header"
+          id="info_title_rpc"
+          v-on:click="expandedElement = 'rpc'"
+        >
           <div class="accordion-button collapsed">
             RPC info
           </div>
         </h3>
-        <div v-bind:class="{ 'accordion-collapse':true, 'collapse':true, show: expandedElement === 'rpc' }">
-          AAAAAAAAAA
+        <div
+          v-bind:class="{
+            'accordion-collapse': true,
+            collapse: true,
+            show: expandedElement === 'rpc',
+          }"
+        >
+          {{ JSON.stringify(rpcData.rpc) }}
         </div>
       </div>
       <div class="accordion-item">
-        <h3 class="accordion-header" id="info_title_mining" v-on:click="expandedElement='mining'">
+        <h3
+          class="accordion-header"
+          id="info_title_mining"
+          v-on:click="expandedElement = 'mining'"
+        >
           <div class="accordion-button collapsed">
             Mining info
           </div>
         </h3>
-        <div v-bind:class="{ 'accordion-collapse':true, 'collapse':true, show: expandedElement === 'mining' }">
-          AAAAAAAAAA
+        <div
+          v-bind:class="{
+            'accordion-collapse': true,
+            collapse: true,
+            show: expandedElement === 'mining',
+          }"
+        >
+          {{ JSON.stringify(rpcData.mining) }}
         </div>
       </div>
       <div class="accordion-item">
-        <h3 class="accordion-header" id="info_title_utxo" v-on:click="expandedElement='utxo'">
+        <h3
+          class="accordion-header"
+          id="info_title_utxo"
+          v-on:click="expandedElement = 'utxo'"
+        >
           <div class="accordion-button collapsed">
             UTXO info
           </div>
         </h3>
-        <div v-bind:class="{ 'accordion-collapse':true, 'collapse':true, show: expandedElement === 'utxo' }">
-          AAAAAAAAAA
+        <div
+          v-bind:class="{
+            'accordion-collapse': true,
+            collapse: true,
+            show: expandedElement === 'utxo',
+          }"
+        >
+          {{ JSON.stringify(rpcData.utxo) }}
         </div>
       </div>
     </div>
@@ -108,20 +153,28 @@
 </template>
 
 <script>
+import { RpcClient } from "../../assets/js/rpcClient";
 
 export default {
   name: "RPC-Dashboard",
   data() {
     return {
-      RPC_URL: "http://localhost:18332/",
+      RPC_URL: "http://127.0.0.1:17332/",
       RPC_USERNAME: "root",
       RPC_PASSWORD: "bitcoin",
 
       expandedElement: "blockchain",
+      rpcData: {
+        blockchain: undefined,
+        mempool: undefined,
+        rpc: undefined,
+        mining: undefined,
+        utxo: undefined,
+      },
     };
   },
   mounted() {
-    //
+    this.updateDataForCurrentElement();
   },
   props: {},
   computed: {
@@ -134,12 +187,68 @@ export default {
         : `${this.RPC_USERNAME}:${this.RPC_PASSWORD}@`;
       return `${parsedUrl.protocol}//${auth}${parsedUrl.host}${parsedUrl.pathname}`;
     },
+    RPC_FULL_URL_HIDDEN_PASSWORD() {
+      return this.RPC_FULL_URL.replace(
+        this.RPC_USERNAME + ":" + this.RPC_PASSWORD,
+        this.RPC_USERNAME +
+          ":" +
+          new Array(this.RPC_PASSWORD.length + 1).join("*")
+      );
+    },
+    rpcClient() {
+      return new RpcClient(this.RPC_FULL_URL);
+    },
   },
   watch: {
-    //
+    expandedElement() {
+      this.updateDataForCurrentElement();
+    },
+    rpcClient() {
+      this.updateDataForCurrentElement();
+    },
   },
   methods: {
-    //
+    async updateDataForCurrentElement() {
+      switch (this.expandedElement) {
+        case "blockchain":
+          this.rpcData.blockchain = await this.rpcClient
+            .call("getblockchaininfo")
+            .then((res) => this.parseRpcResult(res));
+          console.log(this.rpcData);
+          break;
+        case "mempool":
+          this.rpcData.mempool = await this.rpcClient
+            .call("getblockchaininfo")
+            .then((res) => this.parseRpcResult(res));
+          console.log(this.rpcData);
+          break;
+        case "rpc":
+          this.rpcData.rpc = await this.rpcClient
+            .call("getblockchaininfo")
+            .then((res) => this.parseRpcResult(res));
+          console.log(this.rpcData);
+          break;
+        case "mining":
+          this.rpcData.mining = await this.rpcClient
+            .call("getblockchaininfo")
+            .then((res) => this.parseRpcResult(res));
+          console.log(this.rpcData);
+          break;
+        case "utxo":
+          this.rpcData.utxo = await this.rpcClient
+            .call("getblockchaininfo")
+            .then((res) => this.parseRpcResult(res));
+          console.log(this.rpcData);
+          break;
+
+        default:
+          throw new Error("Unknown type : " + this.expandedElement);
+      }
+    },
+    parseRpcResult(res) {
+      if (res.error) throw new Error(res.error);
+      else return res.result;
+    },
   },
   components: {},
 };
