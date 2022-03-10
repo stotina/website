@@ -21,7 +21,7 @@
       <!-- ACCORDION: INFO -->
 
       <div class="accordion-item">
-        <h3 class="accordion-header" v-on:click="expandedElement = 'info'">
+        <h3 class="accordion-header" v-on:click="focusedElement = 'info'">
           <div class="accordion-button collapsed">
             MAPI Info
           </div>
@@ -30,7 +30,7 @@
           v-bind:class="{
             'accordion-collapse': true,
             collapse: true,
-            show: expandedElement === 'info',
+            show: true, // focusedElement === 'info',
           }"
         >
           <div v-if="mapiData.info">
@@ -38,127 +38,225 @@
               {{ mapiData.info.message }}
             </div>
             <div v-else>
-              <div class="row">
-                <div class="col-md-4">VERSION</div>
-                <div class="col-md-8">
-                  {{ mapiData.info.apiVersion }}
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-4">MINER ID</div>
-                <div class="col-md-8">
-                  {{ mapiData.info.minerId }}
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-4">HIGHEST BLOCK HASH</div>
-                <div class="col-md-8">
-                  {{ mapiData.info.currentHighestBlockHash }}
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-4">HIGHEST BLOCK INDEX</div>
-                <div class="col-md-8">
-                  {{ mapiData.info.currentHighestBlockHeight }}
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-4">STANDARD FEE</div>
-                <div class="col-md-8">
-                  {{ parsedFeeData.standard }}
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-4">DATA FEE</div>
-                <div class="col-md-8">
-                  {{ parsedFeeData.data }}
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-4">STANDARD RELAY FEE</div>
-                <div class="col-md-8">
-                  {{ parsedFeeData.standardRelay }}
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-4">DATA RELAY FEE</div>
-                <div class="col-md-8">
-                  {{ parsedFeeData.dataRelay }}
-                </div>
-              </div>
-
-              <!-- 
-                apiVersion
-                minerId
-                currentHighestBlockHash
-                currentHighestBlockHeight
-                fees: [
-                  {
-                    id: 1,
-                    feeType: "standard",
-                    miningFee: { satoshis: 500, bytes: 1000 },
-                    relayFee: { satoshis: 250, bytes: 1000 },
-                  },
-                  {
-                    id: 2,
-                    feeType: "data",
-                    miningFee: { satoshis: 500, bytes: 1000 },
-                    relayFee: { satoshis: 250, bytes: 1000 },
-                  },
-                ],
-               -->
+              <KeyValueRow
+                :name="'Version'"
+                :value="mapiData.info.apiVersion"
+              ></KeyValueRow>
+              <KeyValueRow
+                :name="'MINER ID'"
+                :value="mapiData.info.minerId"
+              ></KeyValueRow>
+              <KeyValueRow
+                :name="'HIGHEST BLOCK HASH'"
+                :value="mapiData.info.currentHighestBlockHash"
+              ></KeyValueRow>
+              <KeyValueRow
+                :name="'HIGHEST BLOCK INDEX'"
+                :value="mapiData.info.currentHighestBlockHeight"
+              ></KeyValueRow>
+              <KeyValueRow
+                :name="'STANDARD FEE'"
+                :value="parsedFeeData.standard"
+              ></KeyValueRow>
+              <KeyValueRow
+                :name="'DATA FEE'"
+                :value="parsedFeeData.data"
+              ></KeyValueRow>
+              <KeyValueRow
+                :name="'STANDARD RELAY FEE'"
+                :value="parsedFeeData.standardRelay"
+              ></KeyValueRow>
+              <KeyValueRow
+                :name="'DATA RELAY FEE'"
+                :value="parsedFeeData.dataRelay"
+              ></KeyValueRow>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ACCORDION: QUERY -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12 col-lg-6">
+            <!-- ACCORDION: QUERY -->
 
-      <div class="accordion-item">
-        <h3 class="accordion-header" v-on:click="expandedElement = 'query'">
-          <div class="accordion-button collapsed">
-            Query Transaction Status
-          </div>
-        </h3>
-        <div
-          v-bind:class="{
-            'accordion-collapse': true,
-            collapse: true,
-            show: expandedElement === 'query',
-          }"
-        >
-          <div v-if="mapiData.query">
-            <div v-if="mapiData.query.message" class="text-danger text-center">
-              {{ mapiData.query.message }}
+            <div class="accordion-item">
+              <h3
+                class="accordion-header"
+                v-on:click="focusedElement = 'query'"
+              >
+                <div class="accordion-button collapsed">
+                  Query Transaction Status
+                </div>
+              </h3>
+              <div
+                v-bind:class="{
+                  'accordion-collapse': true,
+                  collapse: true,
+                  show: true, //focusedElement === 'query',
+                }"
+              >
+                <div class="container-fluid">
+                  <div class="input-group row  mx-auto">
+                    <input
+                      v-model="queryTxid"
+                      v-bind:class="
+                        `form-control col-md-9 ${
+                          queryTxidIsValid > 0
+                            ? 'border border-primary'
+                            : queryTxidIsInvalid
+                            ? 'border border-danger'
+                            : 'border border-light'
+                        }`
+                      "
+                      placeholder="TXID"
+                    />
+                    <input
+                      type="button"
+                      v-bind:class="
+                        `btn ${
+                          queryTxidIsValid ? 'btn-primary' : 'btn-light'
+                        } form-control col-md-3`
+                      "
+                      @click="
+                        () => {
+                          if (queryTxidIsValid) queryTxStatus();
+                        }
+                      "
+                      value="Check"
+                    />
+                  </div>
+                </div>
+                <div v-if="mapiData.query">
+                  <div
+                    v-if="mapiData.query.message"
+                    class="text-danger text-center"
+                  >
+                    {{ mapiData.query.message }}
+                  </div>
+                  <div v-else>
+                    <div class="mt-3"></div>
+                    <KeyValueRow
+                      name="Status"
+                      :value="mapiData.query.returnResult"
+                    ></KeyValueRow>
+                    <KeyValueRow
+                      name="Error"
+                      :value="mapiData.query.resultDescription"
+                      :showIfValueMissing="false"
+                    ></KeyValueRow>
+                    <KeyValueRow
+                      name="Confirmations"
+                      :value="mapiData.query.confirmations"
+                      :showIfValueMissing="false"
+                    ></KeyValueRow>
+                    <KeyValueRow
+                      name="Block Hash"
+                      :value="mapiData.query.blockHash"
+                      :showIfValueMissing="false"
+                    ></KeyValueRow>
+                    <KeyValueRow
+                      name="Block Height"
+                      :value="mapiData.query.blockHeight"
+                      :showIfValueMissing="false"
+                    ></KeyValueRow>
+                    <KeyValueRow
+                      name="Miner ID"
+                      :value="mapiData.query.minerId"
+                    ></KeyValueRow>
+                    <KeyValueRow
+                      name="Timestamp"
+                      :value="mapiData.query.timestamp"
+                    ></KeyValueRow>
+                    <KeyValueRow
+                      name="Mempool Expiry"
+                      :value="mapiData.query.txSecondMempoolExpiry"
+                      :showIfValueMissing="false"
+                    ></KeyValueRow>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div v-else>
-              {{ JSON.stringify(mapiData.query) }}
-            </div>
           </div>
-        </div>
-      </div>
+          <div class="col-md-12 col-lg-6">
+            <!-- ACCORDION: SUBMIT -->
 
-      <!-- ACCORDION: SUBMIT -->
-
-      <div class="accordion-item">
-        <h3 class="accordion-header" v-on:click="expandedElement = 'submit'">
-          <div class="accordion-button collapsed">
-            Submit Transaction(s)
-          </div>
-        </h3>
-        <div
-          v-bind:class="{
-            'accordion-collapse': true,
-            collapse: true,
-            show: expandedElement === 'submit',
-          }"
-        >
-          <div v-if="mapiData.submit">
-            <div v-if="mapiData.submit.message" class="text-danger text-center">
-              {{ mapiData.submit.message }}
-            </div>
-            <div v-else>
-              {{ JSON.stringify(mapiData.submit) }}
+            <div class="accordion-item">
+              <h3
+                class="accordion-header"
+                v-on:click="focusedElement = 'submit'"
+              >
+                <div class="accordion-button collapsed">
+                  Submit Transaction(s)
+                </div>
+              </h3>
+              <div
+                v-bind:class="{
+                  'accordion-collapse': true,
+                  collapse: true,
+                  show: true, //focusedElement === 'submit',
+                }"
+              >
+                <div class="container-fluid">
+                  <div class="input-group row mx-auto">
+                    <textarea
+                      wrap="off"
+                      v-model="rawTxsToSubmit"
+                      v-bind:class="
+                        `form-control col-md-9 ${
+                          transactionsToSubmit.length === 0
+                            ? 'border border-light'
+                            : transactionsToSubmitParsingError
+                            ? 'border border-danger'
+                            : 'border border-primary'
+                        }`
+                      "
+                      style="min-height: 8rem;"
+                      placeholder="Paste raw transactions, where each transaction is on a separate row."
+                    />
+                    <button
+                      style="height: 8rem"
+                      type="button"
+                      v-bind:class="
+                        `btn ${
+                          transactionsToSubmit.length &&
+                          transactionsToSubmitParsingError
+                            ? 'btn-light'
+                            : 'btn-primary'
+                        } form-control col-md-3`
+                      "
+                      @click="
+                        () => {
+                          if (
+                            transactionsToSubmit.length &&
+                            !transactionsToSubmitParsingError
+                          )
+                            submitTransactions();
+                        }
+                      "
+                    >
+                      Submit<br />{{ transactionsToSubmit.length }} TX(s)
+                    </button>
+                  </div>
+                  <div
+                    v-if="transactionsToSubmitParsingError"
+                    class="text-danger"
+                  >
+                    {{ transactionsToSubmitParsingError }}
+                  </div>
+                </div>
+                <div v-if="mapiData.submit">
+                  <div
+                    v-if="mapiData.submit.message"
+                    class="text-danger text-center"
+                  >
+                    {{ mapiData.submit.message }}
+                  </div>
+                  <div v-else>
+                    {{ JSON.stringify(mapiData.submit) }}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -168,21 +266,27 @@
 </template>
 
 <script>
-//import axios from "../../assets/js/axios";
+import axios from "../../assets/js/axios";
+import bsvjs from "../../assets/js/bsv.2.0.10/bsv.bundle";
 
 export default {
   name: "MAPI-GUI",
   data() {
     return {
       MAPI_URL: "https://mapi.taal.com/mapi",
-      expandedElement: "info",
+      focusedElement: "query",
       mapiData: {
         info: undefined,
         query: undefined,
         submit: undefined,
       },
+      queryTxid:
+        "6373773322684eefea457fc52ae39921dde8c464de635e6515da082fc6f4eb57",
+      rawTxsToSubmit:
+        "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff1c03d7c6082f7376706f6f6c2e636f6d2f3edff034600055b8467f0040ffffffff01247e814a000000001976a914492558fb8ca71a3591316d095afc0f20ef7d42f788ac00000000\n01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff1c03d7c6082f7376706f6f6c2e636f6d2f3edff034600055b8467f0040ffffffff01247e814a000000001976a914492558fb8ca71a3591316d095afc0f20ef7d42f788ac00000000",
     };
   },
+  components: { KeyValueRow: () => import("../elements/KeyValueRow") },
   props: {},
   mounted() {
     this.updateMapiInfo();
@@ -197,43 +301,51 @@ export default {
       console.log(satoshis, bytes);
       return `${satoshis} sats per ${bytes / 1000} KB`;
     },
+    async queryTxStatus() {
+      const url = this.MAPI_URL + "/tx/" + this.queryTxid;
+      console.log("GET: " + url);
+      const promise = axios.get(url).then((i) => JSON.parse(i.data.payload));
+      this.mapiData.query = await promise;
+    },
     async updateMapiInfo() {
       this.mapiData.info = { message: "Loading..." };
 
-      this.mapiData.info = {
-        apiVersion: "1.4.1",
-        timestamp: "2022-02-15T08:36:19.407Z",
-        expiryTime: "2022-02-15T08:46:19.407Z",
-        minerId:
-          "03e92d3e5c3f7bd945dfbf48e7a99393b1bfb3f11f380ae30d286e7ff2aec5a270",
-        currentHighestBlockHash:
-          "00000000000000000bed3cb582a84d14828ea7570b8cdde9654cedc6a39c5934",
-        currentHighestBlockHeight: 726758,
-        minerReputation: null,
-        fees: [
-          {
-            id: 1,
-            feeType: "standard",
-            miningFee: { satoshis: 500, bytes: 1000 },
-            relayFee: { satoshis: 250, bytes: 1000 },
-          },
-          {
-            id: 2,
-            feeType: "data",
-            miningFee: { satoshis: 500, bytes: 1000 },
-            relayFee: { satoshis: 250, bytes: 1000 },
-          },
-        ],
-      };
-
-      // const feePromise = axios
-      //   .get(this.MAPI_URL + "/feeQuote")
-      //   .then((i) => JSON.parse(i.data.payload));
-
-      // this.mapiData.info = await feePromise
+      const url = this.MAPI_URL + "/feeQuote";
+      console.log("GET: " + url);
+      const promise = axios.get(url).then((i) => JSON.parse(i.data.payload));
+      this.mapiData.info = await promise;
+    },
+    async submitTransactions() {
+      throw new Error("Not Implemented");
     },
   },
   computed: {
+    queryTxidIsInvalid() {
+      return (
+        this.queryTxid !== "" && !/^[a-fA-F0-9]{64}$/g.test(this.queryTxid)
+      );
+    },
+    queryTxidIsValid() {
+      return this.queryTxid.length > 0 && !this.queryTxidIsInvalid;
+    },
+    transactionsToSubmit() {
+      return this.rawTxsToSubmit
+        .split("\n")
+        .map((i) => i.trim())
+        .filter((i) => i);
+    },
+    transactionsToSubmitParsingError() {
+      return this.transactionsToSubmit
+        .map((rawTx, i) => {
+          try {
+            bsvjs.Tx.fromHex(rawTx);
+            return undefined;
+          } catch (error) {
+            return `Failed to parse transaction at row ${i + 1}. ${error}`;
+          }
+        })
+        .filter((i) => i)[0];
+    },
     parsedFeeData() {
       const stFee = this.mapiData.info.fees?.find(
         (i) => i.feeType === "standard"
@@ -257,7 +369,6 @@ export default {
       };
     },
   },
-  components: {},
 };
 </script>
 
