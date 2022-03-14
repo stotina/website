@@ -138,38 +138,65 @@
                     <div class="mt-3"></div>
                     <KeyValueRow
                       name="Status"
+                      :keyColumnSize="3"
                       :value="mapiData.query.returnResult"
-                    ></KeyValueRow>
+                    >
+                      <div
+                        v-bind:class="
+                          'text-uppercase ' +
+                            (mapiData.query.returnResult === 'success'
+                              ? 'text-success'
+                              : 'text-danger')
+                        "
+                      >
+                        {{ mapiData.query.returnResult }}
+                      </div>
+                    </KeyValueRow>
                     <KeyValueRow
                       name="Error"
+                      :keyColumnSize="3"
                       :value="mapiData.query.resultDescription"
                       :showIfValueMissing="false"
                     ></KeyValueRow>
                     <KeyValueRow
                       name="Confirmations"
+                      :keyColumnSize="3"
                       :value="mapiData.query.confirmations"
                       :showIfValueMissing="false"
                     ></KeyValueRow>
                     <KeyValueRow
                       name="Block Hash"
+                      :keyColumnSize="3"
                       :value="mapiData.query.blockHash"
                       :showIfValueMissing="false"
-                    ></KeyValueRow>
+                    >
+                      <a
+                        v-bind:href="
+                          `https://whatsonchain.com/block/${mapiData.query.blockHash}`
+                        "
+                        target="_blank"
+                        >{{ mapiData.query.blockHash }}</a
+                      >
+                    </KeyValueRow>
                     <KeyValueRow
                       name="Block Height"
+                      :keyColumnSize="3"
                       :value="mapiData.query.blockHeight"
                       :showIfValueMissing="false"
                     ></KeyValueRow>
                     <KeyValueRow
                       name="Miner ID"
+                      :keyColumnSize="3"
                       :value="mapiData.query.minerId"
                     ></KeyValueRow>
                     <KeyValueRow
                       name="Timestamp"
+                      :keyColumnSize="3"
                       :value="mapiData.query.timestamp"
                     ></KeyValueRow>
                     <KeyValueRow
                       name="Mempool Expiry"
+                      :keyColumnSize="3"
                       :value="mapiData.query.txSecondMempoolExpiry"
                       :showIfValueMissing="false"
                     ></KeyValueRow>
@@ -253,7 +280,65 @@
                     {{ mapiData.submit.message }}
                   </div>
                   <div v-else>
-                    {{ JSON.stringify(mapiData.submit) }}
+                    <div
+                      v-for="tx in mapiData.submit.txs"
+                      :key="tx.txid + Math.random()"
+                    >
+                      <div class="border m-3 p-1">
+                        <KeyValueRow
+                          :keyColumnSize="3"
+                          name="TxID"
+                          :value="tx.txid"
+                        >
+                          <a
+                            v-bind:href="
+                              `https://whatsonchain.com/tx/${tx.txid}`
+                            "
+                            target="_blank"
+                            >{{ tx.txid }}</a
+                          >
+                        </KeyValueRow>
+
+                        <KeyValueRow
+                          :keyColumnSize="3"
+                          name="Status"
+                          :value="tx.returnResult"
+                        >
+                          <div
+                            v-bind:class="
+                              'text-uppercase ' +
+                                (tx.returnResult === 'success'
+                                  ? 'text-success'
+                                  : 'text-danger')
+                            "
+                          >
+                            {{ tx.returnResult }}
+                          </div>
+                        </KeyValueRow>
+                        <KeyValueRow
+                          v-if="tx.resultDescription"
+                          :keyColumnSize="3"
+                          name="Error"
+                          :value="tx.resultDescription"
+                        ></KeyValueRow>
+                        <div v-if="tx.conflictedWith">
+                          <h5>Conflicts:</h5>
+                          <div
+                            class="conflicts m-1"
+                            v-for="conflict in tx.conflictedWith"
+                            :key="conflict.txid + Math.random()"
+                          >
+                            <a
+                              v-bind:href="
+                                `https://whatsonchain.com/tx/${conflict.txid}`
+                              "
+                              target="_blank"
+                              >{{ conflict.txid }}</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -298,25 +383,36 @@ export default {
   },
   methods: {
     feeToString(satoshis, bytes) {
-      console.log(satoshis, bytes);
       return `${satoshis} sats per ${bytes / 1000} KB`;
     },
     async queryTxStatus() {
       const url = this.MAPI_URL + "/tx/" + this.queryTxid;
       console.log("GET: " + url);
-      const promise = axios.get(url).then((i) => JSON.parse(i.data.payload));
-      this.mapiData.query = await promise;
+      const response = await axios.get(url);
+      const result = JSON.parse(response.data.payload);
+
+      this.mapiData.query = result;
     },
     async updateMapiInfo() {
       this.mapiData.info = { message: "Loading..." };
 
       const url = this.MAPI_URL + "/feeQuote";
       console.log("GET: " + url);
-      const promise = axios.get(url).then((i) => JSON.parse(i.data.payload));
-      this.mapiData.info = await promise;
+      const response = await axios.get(url);
+      const result = JSON.parse(response.data.payload);
+
+      this.mapiData.info = result;
     },
     async submitTransactions() {
-      throw new Error("Not Implemented");
+      const url = this.MAPI_URL + "/txs";
+      console.log("GET: " + url);
+      const body = this.transactionsToSubmit.map((rawtx) => ({ rawtx }));
+      const response = await axios.post(url, body, {
+        headers: { "Content-Type": "application/json" },
+      });
+      const result = JSON.parse(response.data.payload);
+
+      this.mapiData.submit = result;
     },
   },
   computed: {
