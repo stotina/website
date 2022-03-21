@@ -54,8 +54,7 @@
   {
     "path": "/tools/mapigui",
     "name": "MAPI User Interface",
-    "icon": "/images/icons/broadcast.png",
-    "unfinished": true
+    "icon": "/images/icons/broadcast.png"
   },
   {
     "path": "/tools/txgraph",

@@ -405,12 +405,15 @@ export default {
     },
     async submitTransactions() {
       const url = this.MAPI_URL + "/txs";
-      console.log("GET: " + url);
-      const body = this.transactionsToSubmit.map((rawtx) => ({ rawtx }));
-      const response = await axios.post(url, body, {
+      console.log("POST: " + url);
+      const data = this.transactionsToSubmit.map((rawtx) => ({ rawtx }));
+      const response = await axios.post(url, data, {
         headers: { "Content-Type": "application/json" },
+        validateStatus: () => true,
       });
-      const result = JSON.parse(response.data.payload);
+      const result = response.data.message
+        ? response.data
+        : JSON.parse(response.data.payload);
 
       this.mapiData.submit = result;
     },
