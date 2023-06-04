@@ -45,6 +45,15 @@
             Apps
           </a>
         </li>
+        <li class="nav-item">
+          <a
+            class="nav-link theme-c-headerLinks theme-c-hover pointer"
+            v-on:click="navigate('/apps')"
+            href="/#/joke-apps"
+          >
+            Fun
+          </a>
+        </li>
       </ul>
     </nav>
   </div>

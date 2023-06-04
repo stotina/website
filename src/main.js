@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import App from "./App.vue";
 
 import AppsPage from "./components/AppsPage.vue";
+import JokeAppsPage from "./components/JokeAppsPage.vue";
 import ToolsPage from "./components/ToolsPage.vue";
 import HomePage from "./components/HomePage.vue";
 
@@ -12,6 +13,8 @@ import BlogPage from "./components/BlogPage.vue";
 import FaqPage from "./components/FaqPage.vue";
 import PrivacyPage from "./components/PrivacyPage.vue";
 import TermsPage from "./components/TermsPage.vue";
+
+import ProbablyNothingPage from "./components/apps/ProbablyNothingPage.vue";
 
 import BlokInspector from "./components/tools/BlokInspector.vue"
 import BsvTestnetWalletPage from "./components/tools/BsvTestnetWalletPage.vue"
@@ -66,6 +69,9 @@ const router = new VueRouter({
     { path: "/tools/duplicatetoken/run", component: DuplicateRunTokens },
 
     { path: "/apps", component: AppsPage },
+
+    { path: "/joke-apps", component: JokeAppsPage },
+    { path: "/joke-apps/probably-nothing", component: ProbablyNothingPage },
 
     { path: "/about", component: AboutPage },
     { path: "/article", component: ArticlePage },
