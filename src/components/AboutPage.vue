@@ -27,15 +27,15 @@
             </li>
             <li class="list-group-item">
               <i class="fas fa-envelope-open-text"></i> :
-              <a href="mailto:aleks@stotina.com">aleks@stotina.com</a>
+              <a href="mailto:alexander.n.dinkov@gmail.com">alexander.n.dinkov@gmail.com</a>
             </li>
             <li class="list-group-item">
               <i class="fas fa-phone"></i> :
               <span>+359883332088</span>
             </li>
             <li class="list-group-item">
-              <i class="fab fa-google-play"></i> :
-              <span>Not yet...</span>
+              <i class="fab fa-linkedin"></i>
+              <a href="https://www.linkedin.com/in/alexander-dinkov-26951ba8/" target=”_blank”>LinkedIn</a>
             </li>
             <li class="list-group-item">
               <i class="fab fa-twitter"></i> :
