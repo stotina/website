@@ -34,7 +34,7 @@
               <span>+359883332088</span>
             </li>
             <li class="list-group-item">
-              <i class="fab fa-linkedin"></i>
+              <i class="fab fa-linkedin"></i> :
               <a href="https://www.linkedin.com/in/alexander-dinkov-26951ba8/" target=”_blank”>LinkedIn</a>
             </li>
             <li class="list-group-item">
